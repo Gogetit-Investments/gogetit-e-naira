@@ -1,3 +1,4 @@
+@if (auth()->check())
 <div class="page-header">
   <div class="header-wrapper row m-0">
     <form class="form-inline search-full col" action="#" method="get">
@@ -350,7 +351,7 @@
             <li><a href="#"><i data-feather="mail"></i><span>Inbox</span></a></li>
             <li><a href="#"><i data-feather="file-text"></i><span>Taskboard</span></a></li>
             <li><a href="#"><i data-feather="settings"></i><span>Settings</span></a></li>
-            <li><a href="#"><i data-feather="log-in"> </i><span>Log in</span></a></li>
+            <li><a href="/login"><i data-feather="log-in"> </i><span>Logout</span></a></li>
           </ul>
         </li>
       </ul>
@@ -366,3 +367,8 @@
     <script class="empty-template" type="text/x-handlebars-template"><div class="EmptyMessage">Your search turned up 0 results. This most likely means the backend is down, yikes!</div></script>
   </div>
 </div>
+@else
+<script type="text/javascript">
+  window.location = "/login";
+</script>
+@endif

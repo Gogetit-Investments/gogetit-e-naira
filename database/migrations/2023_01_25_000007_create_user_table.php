@@ -33,7 +33,7 @@ class CreateUserTable extends Migration
             $table->string('email', 100);
             $table->string('password')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->integer('phone_number')->nullable();
+            $table->string('phone_number')->nullable();
             $table->string('status', 45)->default('ACTIVE');
             $table->unsignedInteger('added_by')->nullable();
             $table->unique(["email"], 'email_UNIQUE');

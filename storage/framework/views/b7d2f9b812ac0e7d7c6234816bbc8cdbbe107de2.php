@@ -12,18 +12,36 @@
       <div class="col-12 p-0">
          <div class="login-card">
             <div>
-               <div><a class="logo" href="<?php echo e(route('index')); ?>"><img class="img-fluid for-light" src="<?php echo e(asset('assets/images/logo/login.png')); ?>" alt="looginpage"><img class="img-fluid for-dark" src="<?php echo e(asset('assets/images/logo/logo_dark.png')); ?>" alt="looginpage"></a></div>
+               <div><a class="logo" href="<?php echo e(route('index')); ?>"><img  src="<?php echo e(asset('assets/images/cbn_logo.png')); ?>" alt="CBN Logo" height="100px"><img class="img-fluid for-dark" src="<?php echo e(asset('assets/images/logo/logo_dark.png')); ?>" alt="looginpage"></a></div>
                <div class="login-main">
-                  <form class="theme-form">
+                  <form class="theme-form"  action="<?php echo e(route('login.perform')); ?>" method="POST">
+                     <?php echo csrf_field(); ?>
                      <h4>Welcome to Gogetit e-Naira Data Agents Portal</h4>
                      <p>Enter your email & password to continue</p>
+                     <?php if(session('success')): ?>
+          <div class="alert alert-success" role="alert">
+            <?php echo e(@session('success')); ?>  
+          </div>
+          <?php endif; ?>
+          <?php if(session('error')): ?>
+          <div class="alert alert-danger" role="alert">
+            <?php echo e(@session('error')); ?>  
+          </div>
+          <?php endif; ?>
                      <div class="form-group">
                         <label class="col-form-label">Email Address</label>
-                        <input class="form-control" type="email" required="" placeholder="Enter email">
+                        <input class="form-control <?php echo e($errors->has('username') ? 'error' : ''); ?>" type="text" required name="username" placeholder="Enter email">
+                                 <!-- Error -->
+                                 <?php if($errors->has('username')): ?>
+                                 <div class="error">
+                                     <?php echo e($errors->first('username')); ?>
+
+                                 </div>
+                                 <?php endif; ?>
                      </div>
                      <div class="form-group">
                         <label class="col-form-label">Password</label>
-                        <input class="form-control" type="password" name="login[password]" required="" placeholder="*********">
+                        <input class="form-control" type="password" name="password" required placeholder="*********">
                         <div class="show-hide"><span class="show">                         </span></div>
                      </div>
                      <div class="form-group mb-0">
@@ -33,9 +51,12 @@
                         </div>
                         <a class="link" href="<?php echo e(route('forget-password')); ?>">Forgot password?</a>
                         <button class="btn btn-primary btn-block" type="submit">Sign in</button>
-                     </div>
-                     <h6 class="text-muted mt-4 or">in partnership with:</h6>
-                     <div class="social mt-4">
+                     </div><br/>
+                     <h6 >in partnership with:</h6>
+                     <div >
+                        
+                           <img  src="<?php echo e(asset('assets/images/cbn_logo.png')); ?>" alt="CBN Logo" height="100px">
+                           
                         
                      </div>
                      

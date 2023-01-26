@@ -4,11 +4,18 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LogoutController;
 
 Route::get('/', function () {
     // return redirect()->route('index');
-    return redirect()->route('login');
+    return redirect()->route('login.show');
 })->name('/');
+
+// Main Page Route
+// Route::get('/dashboard', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics');
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard.show');
 
 //Language Change
 Route::get('lang/{locale}', function ($locale) {
@@ -248,7 +255,12 @@ Route::prefix('others')->group(function () {
     Route::view('503', 'errors.503')->name('error-503');
 });
 
+Route::get('/login', [LoginController::class, 'show'])->name('login.show');
+Route::post('/login', [LoginController::class, 'login'])->name('login.perform');
+Route::get('/logout', [LogoutController::class, 'perform'])->name('logout.perform'); 
+
 Route::prefix('authentication')->group(function () {
+
     Route::view('login', 'authentication.login')->name('login');
     Route::view('login-one', 'authentication.login-one')->name('login-one');
     Route::view('login-two', 'authentication.login-two')->name('login-two');
