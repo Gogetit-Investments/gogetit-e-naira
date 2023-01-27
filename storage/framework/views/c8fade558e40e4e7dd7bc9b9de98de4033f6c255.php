@@ -59,6 +59,22 @@
                      		<p class="lan-9"><?php echo e(trans('lang.Ready to use Apps')); ?></p>
 						</div>
 					</li>
+
+
+					<li class="sidebar-list">
+						
+						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'active' : ''); ?>" href="#">
+							<i data-feather="box"></i><span>Consumer Data </span>
+							<div class="according-menu"><i class="fa fa-angle-<?php echo e(request()->route()->getPrefix() == '/consumer' ? 'down' : 'right'); ?>"></i></div>
+						</a>
+						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;'); ?>">
+		                    <li><a href="<?php echo e(route('consumer-list.show')); ?>" class="<?php echo e(Route::currentRouteName()=='consumer' ? 'active' : ''); ?>">Consumer List</a></li>
+		                    <li><a href="<?php echo e(route('consumer.upload')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Upload Consumers</a></li>
+		                </ul>
+					</li>
+
+
+					
 					<li class="sidebar-list">
 						<label class="badge badge-danger"><?php echo e(trans('lang.New')); ?></label>
 						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/project' ? 'active' : ''); ?>" href="#">

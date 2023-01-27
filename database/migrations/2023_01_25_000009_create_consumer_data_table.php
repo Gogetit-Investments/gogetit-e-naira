@@ -43,7 +43,7 @@ class CreateConsumerDataTable extends Migration
             $table->string('referral_code', 45)->nullable();
             $table->unsignedInteger('added_by')->nullable();
 
-            $table->unique(["tier_id"], 'tier_id_UNIQUE');
+            // $table->unique(["tier_id"], 'tier_id_UNIQUE');
 
             $table->unique(["bvn"], 'bvn_UNIQUE');
 

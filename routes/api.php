@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ConsumerController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,3 +28,7 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 // Route::get('/login', 'LoginController@show')->name('login.show');
 // Route::post('/login', 'LoginController@login')->name('login.perform');
 Route::post('/login', [LoginController::class, 'login'])->name('login.perform');
+
+
+Route::get('file-import-export', [UserController::class, 'fileImportExport']);
+Route::post('file-import', [ConsumerController::class, 'fileImport'])->name('file-import');

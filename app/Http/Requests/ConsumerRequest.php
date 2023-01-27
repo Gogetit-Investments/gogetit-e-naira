@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
-class RegisterRequest extends FormRequest
+class ConsumerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,19 +25,12 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'phone_number' => 'required|max:11',
-            'email' => 'required|email:rfc,dns|unique:users,email',
-            'username' => 'required|',
-            'password' => 'required|min:8',
-            'password_confirmation' => 'required|same:password',
+            'tier_id' => 'int',
+            'bvn' => 'string',
+            'nin' => 'string',
             'first_name' => 'string',
             'last_name' => 'string',
-            'other_names' => 'string',
-            'role_id' => 'int',
+            'added_by' =>  Auth::user()->id,
         ];
-
-        
     }
-
-    
 }

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ConsumerController;
 
 Route::get('/', function () {
     // return redirect()->route('index');
@@ -370,3 +372,10 @@ Route::get('/clear-cache', function() {
     Artisan::call('route:clear');
     return "Cache is cleared";
 })->name('clear.cache');
+
+Route::get('file-import-export', [UserController::class, 'fileImportExport']);
+Route::post('file-import', [UserController::class, 'fileImport'])->name('file-import');
+
+Route::get('consumer-upload', [ConsumerController::class, 'show'])->name('consumer.show');
+Route::get('consumer-list', [ConsumerController::class, 'allConsumers'])->name('consumer-list.show');
+Route::post('consumer-upload', [ConsumerController::class, 'fileImport'])->name('consumer.upload');

@@ -33,8 +33,8 @@ class LoginController extends Controller
         $credentials = $request->getCredentials();
 
         if(!Auth::validate($credentials)):
-            return redirect()->to('/login')
-                ->withErrors(trans('auth.failed'));
+            // return redirect()->to('/login')->withErrors(trans('auth.failed'));
+            return redirect('/login')->with('error', "Wrong login credentioals or no account created yet");
         endif;
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);

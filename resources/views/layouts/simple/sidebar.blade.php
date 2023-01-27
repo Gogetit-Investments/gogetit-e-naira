@@ -59,6 +59,22 @@
                      		<p class="lan-9">{{ trans('lang.Ready to use Apps') }}</p>
 						</div>
 					</li>
+
+
+					<li class="sidebar-list">
+						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
+						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/consumer' ? 'active' : '' }}" href="#">
+							<i data-feather="box"></i><span>Consumer Data </span>
+							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/consumer' ? 'down' : 'right' }}"></i></div>
+						</a>
+						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;' }}">
+		                    <li><a href="{{route('consumer-list.show')}}" class="{{ Route::currentRouteName()=='consumer' ? 'active' : '' }}">Consumer List</a></li>
+		                    <li><a href="{{route('consumer.upload')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Upload Consumers</a></li>
+		                </ul>
+					</li>
+
+
+					
 					<li class="sidebar-list">
 						<label class="badge badge-danger">{{ trans('lang.New') }}</label>
 						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/project' ? 'active' : '' }}" href="#">

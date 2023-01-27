@@ -14,12 +14,12 @@
       </div>
     </form>
     <div class="header-logo-wrapper col-auto p-0">
-      <div class="logo-wrapper"><a href="{{route('/')}}"><img class="img-fluid" src="{{asset('assets/images/logo/logo.png')}}" alt=""></a></div>
+      <div class="logo-wrapper"><a href="{{route('/')}}"><img class="img-fluid" src="{{asset('assets/images/Gogetit-logo2.png')}}" alt="" width="120px"></a></div>
       <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i></div>
     </div>
     <div class="left-header col horizontal-wrapper ps-0">
       <ul class="horizontal-menu">
-        <li class="mega-menu outside">
+        {{-- <li class="mega-menu outside">
           <a class="nav-link" href="#!"><i data-feather="layers"></i><span>Bonus Ui</span></a>
           <div class="mega-menu-container nav-submenu menu-to-be-close header-mega">
             <div class="container-fluid">
@@ -109,8 +109,8 @@
               </div>
             </div>
           </div>
-        </li>
-        <li class="level-menu outside">
+        </li> --}}
+        {{-- <li class="level-menu outside">
           <a class="nav-link" href="#!"><i data-feather="inbox"></i><span>Level Menu</span></a>
           <ul class="header-level-menu menu-to-be-close">
            <li>
@@ -140,12 +140,12 @@
               <a href="{{ route('social-app') }}" data-original-title="" title=""> <i data-feather="zap"></i><span>Social App </span></a>
             </li>
           </ul>
-        </li>
+        </li> --}}
       </ul>
     </div>
     <div class="nav-right col-8 pull-right right-header p-0">
       <ul class="nav-menus">
-        <li class="language-nav">
+        {{-- <li class="language-nav">
           <div class="translate_wrapper">
             <div class="current_lang">
               <div class="lang"><i class="flag-icon flag-icon-{{ (App::getLocale() == 'en') ? 'us' : App::getLocale() }}"></i><span class="lang-txt">{{ App::getLocale() }} </span></div>
@@ -174,9 +174,9 @@
               </a>
             </div>
           </div>
-        </li>
-        <li>                         <span class="header-search"><i data-feather="search"></i></span></li>
-        <li class="onhover-dropdown">
+        </li> --}}
+        <li><span class="header-search"><i data-feather="search"></i></span></li>
+        {{-- <li class="onhover-dropdown">
           <div class="notification-box"><i data-feather="bell"> </i><span class="badge rounded-pill badge-secondary">4                                </span></div>
           <ul class="notification-dropdown onhover-show-div">
             <li>
@@ -197,9 +197,9 @@
             </li>
             <li><a class="btn btn-primary" href="#">Check all notification</a></li>
           </ul>
-        </li>
-        <li class="onhover-dropdown">
-          <div class="notification-box"><i data-feather="star"></i></div>
+        </li> --}}
+      {{-- <li class="onhover-dropdown">
+        <div class="notification-box"><i data-feather="star"></i></div>
           <div class="onhover-show-div bookmark-flip">
             <div class="flip-card">
               <div class="flip-card-inner">
@@ -238,12 +238,12 @@
                 </div>
               </div>
             </div>
-          </div>
-        </li>
-        <li>
-          <div class="mode"><i class="fa fa-moon-o"></i></div>
-        </li>
-        <li class="cart-nav onhover-dropdown">
+          </div> --}}
+          {{-- </li> --}}
+          
+          {{-- <li><div class="mode"><i class="fa fa-moon-o"></i></div></li> --}}
+
+        {{-- <li class="cart-nav onhover-dropdown">
           <div class="cart-box"><i data-feather="shopping-cart"></i><span class="badge rounded-pill badge-primary">2</span></div>
           <ul class="cart-dropdown onhover-show-div">
             <li>
@@ -293,8 +293,8 @@
             </li>
             <li><a class="btn btn-block w-100 mb-2 btn-primary view-cart" href="{{ route('cart') }}">Go to shoping bag</a><a class="btn btn-block w-100 btn-secondary view-cart" href="{{ route('checkout') }}">Checkout</a></li>
           </ul>
-        </li>
-        <li class="onhover-dropdown">
+        </li> --}}
+        {{-- <li class="onhover-dropdown">
           <i data-feather="message-square"></i>
           <ul class="chat-dropdown onhover-show-div">
             <li>
@@ -336,21 +336,22 @@
             </li>
             <li class="text-center"> <a class="btn btn-primary" href="#">View All     </a></li>
           </ul>
-        </li>
-        <li class="maximize"><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
+        </li> --}}
+        {{-- <li class="maximize"><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li> --}}
+       
         <li class="profile-nav onhover-dropdown p-0 me-0">
           <div class="media profile-media">
             <img class="b-r-10" src="{{asset('assets/images/dashboard/profile.jpg')}}" alt="">
             <div class="media-body">
-              <span>Emay Walter</span>
+              <span>{{Auth::user()->first_name}} {{Auth::user()->last_name}}</span>
               <p class="mb-0 font-roboto">Admin <i class="middle fa fa-angle-down"></i></p>
             </div>
           </div>
           <ul class="profile-dropdown onhover-show-div">
             <li><a href="#"><i data-feather="user"></i><span>Account </span></a></li>
-            <li><a href="#"><i data-feather="mail"></i><span>Inbox</span></a></li>
+            {{-- <li><a href="#"><i data-feather="mail"></i><span>Inbox</span></a></li>
             <li><a href="#"><i data-feather="file-text"></i><span>Taskboard</span></a></li>
-            <li><a href="#"><i data-feather="settings"></i><span>Settings</span></a></li>
+            <li><a href="#"><i data-feather="settings"></i><span>Settings</span></a></li> --}}
             <li><a href="/login"><i data-feather="log-in"> </i><span>Logout</span></a></li>
           </ul>
         </li>

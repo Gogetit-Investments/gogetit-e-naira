@@ -13,19 +13,20 @@
       <div class="col-12 p-0">
          <div class="login-card">
             <div>
-               <div><a class="logo" href="{{ route('index') }}"><img  src="{{asset('assets/images/cbn_logo.png')}}" alt="CBN Logo" height="100px"><img class="img-fluid for-dark" src="{{asset('assets/images/logo/logo_dark.png')}}" alt="looginpage"></a></div>
+               <div><a class="logo" href="{{ route('index') }}"><img class="img-fluid for-dark" src="{{asset('assets/images/logo/logo_dark.png')}}" alt="looginpage"></a></div>
                <div class="login-main">
                   <form class="theme-form"  action="{{route('login.perform')}}" method="POST">
                      @csrf
+                     <img  src="{{asset('assets/images/Gogetit-logo2.png')}}" alt="Gogetit Logo" width="200px"><br/><br/>
                      <h4>Welcome to Gogetit e-Naira Data Agents Portal</h4>
                      <p>Enter your email & password to continue</p>
                      @if(session('success'))
-          <div class="alert alert-success" role="alert">
+          <div class="alert alert-success dark" role="alert">
             {{ @session('success') }}  
           </div>
           @endif
           @if(session('error'))
-          <div class="alert alert-danger" role="alert">
+          <div class="alert alert-danger dark" role="alert">
             {{ @session('error') }}  
           </div>
           @endif
