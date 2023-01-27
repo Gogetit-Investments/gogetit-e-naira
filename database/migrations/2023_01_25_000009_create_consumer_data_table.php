@@ -25,6 +25,7 @@ class CreateConsumerDataTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->string('registration_number');
             $table->unsignedInteger('tier_id');
             $table->integer('bvn');
             $table->integer('nin');
@@ -45,6 +46,7 @@ class CreateConsumerDataTable extends Migration
 
             // $table->unique(["tier_id"], 'tier_id_UNIQUE');
 
+            $table->unique(["registration_number"], 'registration_number_UNIQUE');
             $table->unique(["bvn"], 'bvn_UNIQUE');
 
             $table->unique(["nin"], 'nin_UNIQUE');

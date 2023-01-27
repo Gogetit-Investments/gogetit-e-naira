@@ -46,7 +46,7 @@
 							<tbody>
 								@forelse ($consumers as $consumer)
 								<tr>
-									<td>{{$consumer->tier_id}}</td>
+									<td>{{$consumer->registration_number}}</td>
 									<td>{{$consumer->tier_name}}</td>
 									<td>{{$consumer->nin}}</td>
 									<td>{{$consumer->bvn}}</td>

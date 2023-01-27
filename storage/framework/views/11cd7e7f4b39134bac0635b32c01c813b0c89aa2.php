@@ -45,7 +45,7 @@
 							<tbody>
 								<?php $__empty_1 = true; $__currentLoopData = $consumers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $consumer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
 								<tr>
-									<td><?php echo e($consumer->tier_id); ?></td>
+									<td><?php echo e($consumer->registration_number); ?></td>
 									<td><?php echo e($consumer->tier_name); ?></td>
 									<td><?php echo e($consumer->nin); ?></td>
 									<td><?php echo e($consumer->bvn); ?></td>
