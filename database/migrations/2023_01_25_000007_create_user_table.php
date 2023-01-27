@@ -29,7 +29,7 @@ class CreateUserTable extends Migration
             $table->string('first_name', 45)->nullable();
             $table->string('last_name', 45)->nullable();
             $table->string('other_names', 45)->nullable();
-            $table->string('role_id', 45)->nullable();
+            $table->unsignedInteger('role_id')->nullable();
             $table->string('email', 100);
             $table->string('password')->nullable();
             $table->timestamp('email_verified_at')->nullable();

@@ -53,12 +53,7 @@
                           <li><a href="<?php echo e(route('footer-fixed')); ?>" class="<?php echo e(Route::currentRouteName() == 'footer-fixed' ? 'active' : ''); ?>">Footer Fixed</a></li>
                       </ul>
                   	</li>
-					<li class="sidebar-main-title">
-						<div>
-							<h6 class="lan-8"><?php echo e(trans('lang.Applications')); ?></h6>
-                     		<p class="lan-9"><?php echo e(trans('lang.Ready to use Apps')); ?></p>
-						</div>
-					</li>
+					
 
 
 					<li class="sidebar-list">
@@ -73,7 +68,17 @@
 		                </ul>
 					</li>
 
-
+					<li class="sidebar-list">
+						
+						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/user' ? 'active' : ''); ?>" href="#">
+							<i data-feather="users"></i><span>Users </span>
+							<div class="according-menu"><i class="fa fa-angle-<?php echo e(request()->route()->getPrefix() == '/user' ? 'down' : 'right'); ?>"></i></div>
+						</a>
+						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/user' ? 'block;' : 'none;'); ?>">
+		                    <li><a href="<?php echo e(route('user-list.show')); ?>" class="<?php echo e(Route::currentRouteName()=='user' ? 'active' : ''); ?>">User List</a></li>
+		                    <li><a href="<?php echo e(route('create.user')); ?>" class="<?php echo e(Route::currentRouteName()=='create-user' ? 'active' : ''); ?>">Create New User</a></li>
+		                </ul>
+					</li>
 					
 					<li class="sidebar-list">
 						<label class="badge badge-danger"><?php echo e(trans('lang.New')); ?></label>

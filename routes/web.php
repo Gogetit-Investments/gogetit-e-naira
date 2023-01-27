@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ConsumerController;
+use App\Http\Controllers\RegisterController;
 
 Route::get('/', function () {
     // return redirect()->route('index');
@@ -379,3 +380,10 @@ Route::post('file-import', [UserController::class, 'fileImport'])->name('file-im
 Route::get('consumer-upload', [ConsumerController::class, 'show'])->name('consumer.show');
 Route::get('consumer-list', [ConsumerController::class, 'allConsumers'])->name('consumer-list.show');
 Route::post('consumer-upload', [ConsumerController::class, 'fileImport'])->name('consumer.upload');
+
+
+Route::get('create-user', [RegisterController::class, 'create_user'])->name('create.user');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.perform');
+
+
+Route::get('user-list', [RegisterController::class, 'allUsers'])->name('user-list.show');

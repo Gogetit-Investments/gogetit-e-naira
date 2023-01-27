@@ -53,12 +53,12 @@
                           <li><a href="{{ route('footer-fixed') }}" class="{{ Route::currentRouteName() == 'footer-fixed' ? 'active' : '' }}">Footer Fixed</a></li>
                       </ul>
                   	</li>
-					<li class="sidebar-main-title">
+					{{-- <li class="sidebar-main-title">
 						<div>
 							<h6 class="lan-8">{{ trans('lang.Applications') }}</h6>
                      		<p class="lan-9">{{ trans('lang.Ready to use Apps') }}</p>
 						</div>
-					</li>
+					</li> --}}
 
 
 					<li class="sidebar-list">
@@ -73,7 +73,17 @@
 		                </ul>
 					</li>
 
-
+					<li class="sidebar-list">
+						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
+						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/user' ? 'active' : '' }}" href="#">
+							<i data-feather="users"></i><span>Users </span>
+							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/user' ? 'down' : 'right' }}"></i></div>
+						</a>
+						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/user' ? 'block;' : 'none;' }}">
+		                    <li><a href="{{route('user-list.show')}}" class="{{ Route::currentRouteName()=='user' ? 'active' : '' }}">User List</a></li>
+		                    <li><a href="{{route('create.user')}}" class="{{ Route::currentRouteName()=='create-user' ? 'active' : '' }}">Create New User</a></li>
+		                </ul>
+					</li>
 					
 					<li class="sidebar-list">
 						<label class="badge badge-danger">{{ trans('lang.New') }}</label>

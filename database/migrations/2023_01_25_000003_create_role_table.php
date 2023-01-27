@@ -24,7 +24,8 @@ class CreateRoleTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->string('id', 45)->primary();
+            // $table->string('id', 45)->primary();
+            $table->increments('id');
             $table->string('role_name', 45)->nullable();
             $table->softDeletes();
             $table->nullableTimestamps();
