@@ -107,6 +107,16 @@
               <div class="col">
                 <div class="mb-3">
                   <label>Upload consumer list</label>
+                  @if(session('success'))
+                  <div class="alert alert-success dark" role="alert">
+                    {{ @session('success') }}  
+                  </div>
+                  @endif
+                  @if(session('error'))
+                  <div class="alert alert-danger dark" role="alert">
+                    {{ @session('error') }}  
+                  </div>
+                  @endif	
                   {{-- <form id="singleFileUpload" action="/upload.php"> --}}
                     <form class="theme-form"  action="{{route('consumer.upload')}}" method="POST" enctype="multipart/form-data">
                       @csrf

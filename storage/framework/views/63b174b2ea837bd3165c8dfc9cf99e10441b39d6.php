@@ -32,6 +32,16 @@
               <div class="col">
                 <div class="mb-3">
                   <label>Upload consumer list</label>
+                  <?php if(session('success')): ?>
+                  <div class="alert alert-success dark" role="alert">
+                    <?php echo e(@session('success')); ?>  
+                  </div>
+                  <?php endif; ?>
+                  <?php if(session('error')): ?>
+                  <div class="alert alert-danger dark" role="alert">
+                    <?php echo e(@session('error')); ?>  
+                  </div>
+                  <?php endif; ?>	
                   
                     <form class="theme-form"  action="<?php echo e(route('consumer.upload')); ?>" method="POST" enctype="multipart/form-data">
                       <?php echo csrf_field(); ?>

@@ -19,7 +19,19 @@ class ConsumerImport implements ToModel, WithStartRow
     {
         return 2;
     }
-
+    // public function rules(): array
+    // {
+    //     return [
+    //         'bvn' => Consumer::unique('consumer_data', 'bvn'), // Table name, field in your db
+    //     ];
+    // }
+    
+    // public function customValidationMessages()
+    // {
+    //     return [
+    //         'bvn.unique' => 'Custom message',
+    //     ];
+    // }
     public function model(array $row)
     {
                 // Available alpha caracters
@@ -45,4 +57,6 @@ $string = str_shuffle($pin);
         ]);
     
     }
+
+    
 }

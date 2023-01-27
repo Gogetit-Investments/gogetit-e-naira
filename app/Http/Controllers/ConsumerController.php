@@ -30,8 +30,24 @@ class ConsumerController extends Controller
 
     public function fileImport(Request $request) 
     {
+
+        try {
+            Excel::import(new ConsumerImport, $request->file('file')->store('temp'));
+            // return back();
+            return  back()->with('success', 'Uploaded successfully');
+        } catch(\Illuminate\Database\QueryException $e){
+            $errorCode = $e->errorInfo[1];
+            if($errorCode == '1062'){
+               return back()->with('error', 'There was an error uploading your records. You might have some duplicates');
+            }
+            else{
+             return back()->with('error', $e->getMessage());
+            }
+        }
+
         Excel::import(new ConsumerImport, $request->file('file')->store('temp'));
         return back();
+        // return redirect('/consumer-list')->with('success', "Account successfully registered.");
     }
 
     /**

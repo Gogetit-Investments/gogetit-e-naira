@@ -30,7 +30,16 @@
 					<div class="dt-ext table-responsive">
 						<table class="display" id="export-button">
 							
-								
+							@if(session('success'))
+							<div class="alert alert-success dark" role="alert">
+							  {{ @session('success') }}  
+							</div>
+							@endif
+							@if(session('error'))
+							<div class="alert alert-danger dark" role="alert">
+							  {{ @session('error') }}  
+							</div>
+							@endif			
 						
 							<thead>
 								<tr>

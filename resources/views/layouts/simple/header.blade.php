@@ -5,7 +5,7 @@
       <div class="mb-3 w-100">
         <div class="Typeahead Typeahead--twitterUsers">
           <div class="u-posRelative">
-            <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text" placeholder="Search Cuba .." name="q" title="" autofocus>
+            <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text" placeholder="Search GEDA..." name="q" title="" autofocus>
             <div class="spinner-border Typeahead-spinner" role="status"><span class="sr-only">Loading...</span></div>
             <i class="close-search" data-feather="x"></i>
           </div>
@@ -14,7 +14,7 @@
       </div>
     </form>
     <div class="header-logo-wrapper col-auto p-0">
-      <div class="logo-wrapper"><a href="{{route('/')}}"><img class="img-fluid" src="{{asset('assets/images/Gogetit-logo2.png')}}" alt="" width="120px"></a></div>
+      <div class="logo-wrapper"><a href="{{route('dashboard.show')}}"><img class="img-fluid" src="{{asset('assets/images/Gogetit-logo2.png')}}" alt="" width="120px"></a></div>
       <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i></div>
     </div>
     <div class="left-header col horizontal-wrapper ps-0">

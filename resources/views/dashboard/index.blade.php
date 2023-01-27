@@ -13,7 +13,7 @@
 @endsection
 
 @section('breadcrumb-title')
-<h3>Default</h3>
+<h3>Welcome <b>{{Auth::user()->first_name}}!</b></h3>
 @endsection
 
 @section('breadcrumb-items')
@@ -24,7 +24,65 @@
 @section('content')
 <div class="container-fluid">
 	<div class="row second-chart-list third-news-update">
-		<div class="col-xl-4 col-lg-12 xl-50 morning-sec box-col-12">
+		<div class="col-sm-6 col-xl-3 col-lg-6">
+			<div class="card o-hidden">
+			   <div class="bg-primary b-r-4 card-body">
+				  <div class="media static-top-widget">
+					 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
+					 <div class="media-body">
+						<span class="m-0">Enrolments Today</span>
+						<h4 class="mb-0 counter">6659</h4>
+						<i class="icon-bg" data-feather="calendar"></i>
+					 </div>
+				  </div>
+			   </div>
+			</div>
+		 </div>
+
+		 <div class="col-sm-6 col-xl-3 col-lg-6">
+			<div class="card o-hidden">
+			   <div class="bg-primary b-r-4 card-body">
+				  <div class="media static-top-widget">
+					 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
+					 <div class="media-body">
+						<span class="m-0">Enrolments This Week</span>
+						<h4 class="mb-0 counter">893</h4>
+						<i class="icon-bg" data-feather="calendar"></i>
+					 </div>
+				  </div>
+			   </div>
+			</div>
+		 </div>
+		 <div class="col-sm-6 col-xl-3 col-lg-6">
+			<div class="card o-hidden">
+			   <div class="bg-primary b-r-4 card-body">
+				  <div class="media static-top-widget">
+					 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
+					 <div class="media-body">
+						<span class="m-0">Enrolments This Week</span>
+						<h4 class="mb-0 counter">45631</h4>
+						<i class="icon-bg" data-feather="calendar"></i>
+					 </div>
+				  </div>
+			   </div>
+			</div>
+		 </div>
+
+		 <div class="col-sm-6 col-xl-3 col-lg-6">
+			<div class="card o-hidden">
+			   <div class="bg-secondary b-r-4 card-body">
+				  <div class="media static-top-widget">
+					 <div class="align-self-center text-center">Total Enrolments<i data-feather="calendar"></i></div>
+					 <div class="media-body">
+						<span class="m-0"></span>
+						<h4 class="mb-0 counter">9856</h4>
+						<i class="icon-bg" data-feather="calendar"></i>
+					 </div>
+				  </div>
+			   </div>
+			</div>
+		 </div>
+		{{-- <div class="col-xl-4 col-lg-12 xl-50 morning-sec box-col-12">
 			<div class="card o-hidden profile-greeting">
 				<div class="card-body">
 					<div class="media">
@@ -42,8 +100,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-xl-8 xl-100 dashboard-sec box-col-12">
+		</div> --}}
+		{{-- <div class="col-xl-8 xl-100 dashboard-sec box-col-12">
 			<div class="card earning-card">
 				<div class="card-body p-0">
 					<div class="row m-0">
@@ -133,8 +191,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-xl-9 xl-100 chart_data_left box-col-12">
+		</div> --}}
+		{{-- <div class="col-xl-9 xl-100 chart_data_left box-col-12">
 			<div class="card">
 				<div class="card-body p-0">
 					<div class="row m-0 chart-main">
@@ -201,8 +259,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-xl-3 xl-50 chart_data_right box-col-12">
+		</div> --}}
+		{{-- <div class="col-xl-3 xl-50 chart_data_right box-col-12">
 			<div class="card">
 				<div class="card-body">
 					<div class="media align-items-center">
@@ -231,7 +289,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> --}}
 		<div class="col-xl-4 xl-50 news box-col-6">
 			<div class="card">
 				<div class="card-header">
@@ -265,7 +323,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xl-4 xl-50 appointment-sec box-col-6">
+		{{-- <div class="col-xl-4 xl-50 appointment-sec box-col-6">
 			<div class="row">
 				<div class="col-xl-12 appointment">
 					<div class="card">
@@ -334,8 +392,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-xl-4 xl-50 notification box-col-6">
+		</div> --}}
+		{{-- <div class="col-xl-4 xl-50 notification box-col-6">
 			<div class="card">
 				<div class="card-header card-no-border">
 					<div class="header-top">
@@ -375,8 +433,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-xl-4 xl-50 appointment box-col-6">
+		</div> --}}
+		{{-- <div class="col-xl-4 xl-50 appointment box-col-6">
 			<div class="card">
 				<div class="card-header">
 					<div class="header-top">
@@ -396,8 +454,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-xl-4 xl-100 chat-sec box-col-6">
+		</div> --}}
+		{{-- <div class="col-xl-4 xl-100 chat-sec box-col-6">
 			<div class="card chat-default">
 				<div class="card-header card-no-border">
 					<div class="media media-dashboard">
@@ -449,8 +507,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-xl-4 col-lg-12 xl-50 calendar-sec box-col-6">
+		</div> --}}
+		{{-- <div class="col-xl-4 col-lg-12 xl-50 calendar-sec box-col-6">
 			<div class="card gradient-primary o-hidden">
 				<div class="card-body">
 					<div class="setting-dot">
@@ -462,7 +520,7 @@
 					<span class="default-dots-stay overview-dots full-width-dots"><span class="dots-group"><span class="dots dots1"></span><span class="dots dots2 dot-small"></span><span class="dots dots3 dot-small"></span><span class="dots dots4 dot-medium"></span><span class="dots dots5 dot-small"></span><span class="dots dots6 dot-small"></span><span class="dots dots7 dot-small-semi"></span><span class="dots dots8 dot-small-semi"></span><span class="dots dots9 dot-small">                </span></span></span>
 				</div>
 			</div>
-		</div>
+		</div> --}}
 	</div>
 </div>
 <script type="text/javascript">
