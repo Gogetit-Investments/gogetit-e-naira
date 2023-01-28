@@ -52,6 +52,7 @@ $string = str_shuffle($pin);
             'nin' => $row[2],
             'first_name' => $row[3],
             'last_name'    => $row[4],
+            'phone_number'    => $row[5],
             // 'added_by' => Hash::make($row[5])
             'added_by' =>  Auth::user()->id,
         ]);

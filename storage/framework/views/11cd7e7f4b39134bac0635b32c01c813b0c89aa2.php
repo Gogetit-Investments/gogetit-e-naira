@@ -42,8 +42,8 @@
 						
 							<thead>
 								<tr>
-									<th>Registration Number</th>
 									<th>Tier</th>
+									<th>Phone Number</th>
 									<th>TIN</th>
 									<th>BVN</th>
 									<th>Name</th>
@@ -54,8 +54,8 @@
 							<tbody>
 								<?php $__empty_1 = true; $__currentLoopData = $consumers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $consumer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
 								<tr>
-									<td><?php echo e($consumer->registration_number); ?></td>
 									<td><?php echo e($consumer->tier_name); ?></td>
+									<td><?php echo e($consumer->phone_number); ?></td>
 									<td><?php echo e($consumer->nin); ?></td>
 									<td><?php echo e($consumer->bvn); ?></td>
 									<td><?php echo e($consumer->first_name); ?> <?php echo e($consumer->last_name); ?> <?php echo e($consumer->other_names); ?></td>
@@ -65,7 +65,7 @@
 
 								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 								<tr>
-									<td colspan="5" style="color:red">Oops! No users registered yet</td>
+									<td colspan="5" style="color:red">Oops! No consumers captured yet</td>
 								  </tr>
 								<?php endif; ?>
 								

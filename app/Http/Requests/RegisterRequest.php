@@ -23,20 +23,17 @@ class RegisterRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
             'phone_number' => 'required|max:11',
-            'email' => 'required|email:rfc,dns|unique:users,email',
-            'username' => 'phone_number',
+            'email' => 'required|unique:user,email',
+            // 'username' => 'required|',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password',
             'first_name' => 'string',
             'last_name' => 'string',
-            'other_names' => 'string',
+            'other_names' => 'string|nullable',
             'role_id' => 'int',
         ];
-
-        
     }
-
-    
 }

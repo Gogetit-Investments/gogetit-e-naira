@@ -43,8 +43,8 @@
 						
 							<thead>
 								<tr>
-									<th>Registration Number</th>
 									<th>Tier</th>
+									<th>Phone Number</th>
 									<th>TIN</th>
 									<th>BVN</th>
 									<th>Name</th>
@@ -55,8 +55,8 @@
 							<tbody>
 								@forelse ($consumers as $consumer)
 								<tr>
-									<td>{{$consumer->registration_number}}</td>
 									<td>{{$consumer->tier_name}}</td>
+									<td>{{$consumer->phone_number}}</td>
 									<td>{{$consumer->nin}}</td>
 									<td>{{$consumer->bvn}}</td>
 									<td>{{$consumer->first_name}} {{$consumer->last_name}} {{$consumer->other_names}}</td>
@@ -66,7 +66,7 @@
 
 								@empty
 								<tr>
-									<td colspan="5" style="color:red">Oops! No users registered yet</td>
+									<td colspan="5" style="color:red">Oops! No consumers captured yet</td>
 								  </tr>
 								@endforelse
 								{{-- <tr>

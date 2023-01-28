@@ -46,6 +46,8 @@ class CreateMerchantDataTable extends Migration
             $table->unsignedInteger('lga')->nullable();
             $table->unsignedInteger('state_of_origin')->nullable();
 
+            $table->unique(["director_phone_number"], 'director_phone_number_UNIQUE');
+
             $table->index(["bank_id"], 'bankId_idx2');
 
             $table->index(["added_by"], 'addedBy_idx3');

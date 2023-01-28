@@ -9,5 +9,5 @@ class Consumer extends Model
 {
     use HasFactory;
     protected $table = 'consumer_data';
-    public $fillable = ['registration_number','tier_id', 'bvn', 'nin', 'first_name', 'last_name', 'other_names', 'added_by'];
+    public $fillable = ['registration_number','tier_id', 'bvn', 'nin', 'first_name', 'last_name', 'other_names', 'added_by', 'phone_number'];
 }

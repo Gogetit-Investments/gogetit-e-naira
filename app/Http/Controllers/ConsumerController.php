@@ -61,9 +61,9 @@ class ConsumerController extends Controller
     {
         $user = Consumer::create($request->validated());
 
-        auth()->login($user);
+        // auth()->login($user);
 
-        return redirect('/')->with('success', "Account successfully registered.");
+        return redirect('/')->with('success', "Upload successful.");
     }
 
 

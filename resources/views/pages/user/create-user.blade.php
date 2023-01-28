@@ -45,7 +45,18 @@
 								  {{ @session('error') }}  
 								</div>
 								@endif
-
+								<?php
+								// Available alpha caracters
+								$characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+								
+								// generate a pin based on 2 * 7 digits + a random character
+								$pin = mt_rand(1000, 9999)
+									. mt_rand(1000, 9999)
+									. $characters[rand(0, strlen($characters) - 1)];
+								
+								// shuffle the result
+								$string = str_shuffle($pin);
+								?>
 								<div class="mb-3">
 									<label class="col-form-label pt-0" for="exampleInputEmail1">Email address</label>
 									<input class="form-control " id="exampleInputEmail1" type="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
@@ -56,15 +67,15 @@
 									@endif
 								</div>
 
-								<div class="mb-3">
+								<input class="form-control" id="exampleInputPassword1" type="hidden" name="password" value="<?php echo $string ?>">
+								<input class="form-control" id="exampleInputPassword1" type="hidden" name="password_confirmation" value="<?php echo $string ?>">
+								{{-- <div class="mb-3">
 									<label class="col-form-label pt-0" for="exampleInputPassword1">Password</label>
-									<input class="form-control" id="exampleInputPassword1" type="text" name="password" placeholder="Password">
 								</div>
 
 								<div class="mb-3">
 									<label class="col-form-label pt-0" for="exampleInputPassword1">Confirm Password</label>
-									<input class="form-control" id="exampleInputPassword1" type="text" name="password_confirmation" placeholder="Confirm Password">
-								</div>
+								</div> --}}
 
 								{{-- <small class="form-text text-muted" id="emailHelp">                                 
 									<!-- Error -->

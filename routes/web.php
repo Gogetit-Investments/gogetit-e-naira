@@ -11,6 +11,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ConsumerController;
 use App\Http\Controllers\RegisterController;
 
+// use App\Mail\SignupMail;
+// use Illuminate\Support\Facades\Mail;
+
+
 Route::get('/', function () {
     // return redirect()->route('index');
     return redirect()->route('login.show');
@@ -387,3 +391,19 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 
 
 Route::get('user-list', [RegisterController::class, 'allUsers'])->name('user-list.show');
+
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+
+
+
+Route::get('/testroute', function() {
+    // $first_name = "Funny Coder";
+    // $email = $request->email;
+    // $first_name = $request->first_name;
+    // $last_name = $request->last_name;
+//The email sending is done using the to method on the Mail facade
+    Mail::to('testreceiver@gmail.com’')->send(new SignupMail($email, $first_name, $last_name));
+});
