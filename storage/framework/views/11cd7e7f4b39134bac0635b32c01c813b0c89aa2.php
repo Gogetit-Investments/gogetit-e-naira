@@ -43,24 +43,45 @@
 							<thead>
 								<tr>
 									<th>Tier</th>
-									<th>Phone Number</th>
-									<th>TIN</th>
 									<th>BVN</th>
+									<th>NIN</th>
+									<th>Phone Number</th>
 									<th>Name</th>
-									<th>Uploaded By</th>
+									<th>Postal Code</th>
+									<th>Address</th>
+									<th>City</th>
+									<th>LGA</th>
+									<th>State</th>
+									<th>Country of Residence</th>
+									<th>DOB</th>
+									<th>Country of Birth</th>
+									<th>State Of Birth</th>
+									<th>Referral Code</th>
+									
 									<th>Uploaded Date</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php $__empty_1 = true; $__currentLoopData = $consumers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $consumer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
 								<tr>
-									<td><?php echo e($consumer->tier_name); ?></td>
-									<td><?php echo e($consumer->phone_number); ?></td>
-									<td><?php echo e($consumer->nin); ?></td>
-									<td><?php echo e($consumer->bvn); ?></td>
-									<td><?php echo e($consumer->first_name); ?> <?php echo e($consumer->last_name); ?> <?php echo e($consumer->other_names); ?></td>
-									<td><?php echo e($consumer->addedby); ?></td>
-									<td><?php echo e($consumer->created_at); ?></td>
+									<td><?php echo e($consumer->tier_info->tier_name ?? null); ?></td>
+									<td><?php echo e($consumer->bvn ?? null); ?></td>
+									<td><?php echo e($consumer->nin ?? null); ?></td>
+									<td><?php echo e($consumer->phone_number ?? null); ?></td>
+									<td><?php echo e($consumer->title ?? null); ?> <?php echo e($consumer->last_name ?? null); ?> <?php echo e($consumer->first_name ?? null); ?> <?php echo e($consumer->middle_name ?? null); ?></td>
+									<td><?php echo e($consumer->postal_code ?? null); ?></td>
+									<td><?php echo e($consumer->contact_address ?? null); ?></td>
+									<td><?php echo e($consumer->city ?? null); ?></td>
+									<td><?php echo e($consumer->lga_info->lga_of_residence ?? null); ?></td>
+									<td><?php echo e($consumer->state_of_residence->state_of_residence ?? null); ?></td>
+									<td><?php echo e($consumer->country_info->country_of_residence); ?></td>
+									<td><?php echo e($consumer->dob ?? null); ?></td>
+									<td><?php echo e($consumer->country_of_origin->country_of_birth ?? null); ?></td>
+									<td><?php echo e($consumer->state_of_origin->state_of_birth ?? null); ?></td>
+									<td><?php echo e($consumer->referral_code ?? null); ?></td>
+									
+									
+									<td><?php echo e($consumer->created_at ?? null); ?></td>
 								</tr>
 
 								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>

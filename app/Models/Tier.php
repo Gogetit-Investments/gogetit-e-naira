@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Tier extends Model
 {
     use HasFactory;
-    protected $table = 'role';
-    public $fillable = ['id', 'role_name'];
+    protected $table = 'tier';
+    public $fillable = ['code', 'description'];
+
+
 }

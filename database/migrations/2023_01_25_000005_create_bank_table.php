@@ -25,7 +25,8 @@ class CreateBankTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('bank_name', 45)->nullable();
+            $table->string('institution_code', 45)->nullable();
+            $table->string('institution_name', 45)->nullable();
             $table->softDeletes();
             $table->nullableTimestamps();
         });

@@ -1,22 +1,14 @@
 <?php
 
-// namespace Database\Migrations;
-
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateTierTable extends Migration
+class Country extends Migration
 {
-    /**
-     * Schema table name to migrate
-     * @var string
-     */
-    public $tableName = 'tier';
-
+    public $tableName = 'country';
     /**
      * Run the migrations.
-     * @table tier
      *
      * @return void
      */
@@ -25,11 +17,12 @@ class CreateTierTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            // $table->string('code', 45)->nullable();
-            $table->string('code', 32)->index();
-            $table->string('description', 45)->nullable();
+            $table->string('country_code', 32)->index();
+            $table->string('country_name', 45)->nullable();
             $table->softDeletes();
             $table->nullableTimestamps();
+
+
         });
     }
 
@@ -40,6 +33,6 @@ class CreateTierTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists($this->tableName);
+        //
     }
 }

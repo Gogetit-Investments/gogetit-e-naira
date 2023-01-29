@@ -25,7 +25,11 @@ class CreateStateTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            // $table->integer('state_code', 45)->nullable();
+            $table->string('state_code', 32)->index();
+            // $table->bigInteger('state_code')->unsigned();
             $table->string('state_name', 45)->nullable();
+            $table->string('region', 45)->nullable();
             $table->softDeletes();
             $table->nullableTimestamps();
         });

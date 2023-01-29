@@ -25,18 +25,21 @@ class CreateLgaTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->unsignedInteger('state_id')->nullable();
+            $table->string('lga_code', 32)->index();
+            // $table->string('lga_code', 45)->nullable();
             $table->string('lga_name', 45)->nullable();
+            $table->string('state_code', 32)->references('state_code')->on('state');
+            // $table->unsignedBigInteger('state_code');
 
-            $table->index(["state_id"], 'stateid_id22x');
+            // $table->index(["state_code"], 'state_code_idx');
             $table->softDeletes();
             $table->nullableTimestamps();
 
 
-            $table->foreign('state_id', 'stateid_id22x')
-                ->references('id')->on('state')
-                ->onDelete('no action')
-                ->onUpdate('no action');
+            // $table->foreign('state_code', 'state_code_idx')
+            //     ->references('state_code')->on('state')
+            //     ->onDelete('no action')
+            //     ->onUpdate('no action');
         });
     }
 

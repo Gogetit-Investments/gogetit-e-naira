@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Services\Login\RememberMeExpiration;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class LoginController extends Controller
 {
@@ -37,7 +38,9 @@ class LoginController extends Controller
             return redirect('/login')->with('error', "Wrong login credentioals or no account created yet");
         endif;
 
-        $user = Auth::getProvider()->retrieveByCredentials($credentials);
+        $user = Auth::getProvider()
+        ->with(['role_info' => function ($query) {$query->select('id', 'role_name');}])
+        ->retrieveByCredentials($credentials);
 
         Auth::login($user, $request->get('remember'));
 

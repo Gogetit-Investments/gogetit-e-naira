@@ -50,11 +50,24 @@ $string = str_shuffle($pin);
             'tier_id'     => $row[0],
             'bvn' => $row[1],
             'nin' => $row[2],
-            'first_name' => $row[3],
-            'last_name'    => $row[4],
-            'phone_number'    => $row[5],
-            // 'added_by' => Hash::make($row[5])
+            'phone_number'    => $row[3],
+            'title_code'    => $row[4],
+            'last_name'    => $row[5],
+            'first_name' => $row[6],
+            'middle_name'    => $row[7],
+            'postal_code'    => $row[8],
+            'contact_address'    => $row[9],
+            'city'    => $row[10],
+            'lga'    => $row[11],
+            'state_code'    => $row[12],
+            'country'    => $row[13],
+            'dob'    => $row[14],
+            'country_of_birth'    => $row[15],
+            'state_of_birth'    => $row[16],
+            'referral_code'    => $row[17],
             'added_by' =>  Auth::user()->id,
+
+            // 'added_by' => Hash::make($row[5])
         ]);
     
     }

@@ -27,6 +27,11 @@ class RegisterController extends Controller
         return view('pages.user.create-user');
     }
 
+    public function edit_profile()
+    {
+        return view('pages.user.edit-profile');
+    }
+
     /**
      * Handle account registration request
      * 

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
@@ -53,6 +54,16 @@ class User extends Authenticatable
     public function setPasswordAttribute($value)
 {
    $this->attributes['password'] = bcrypt($value);
+}
+
+/**
+ * Get the role associated with the User
+ *
+ * @return \Illuminate\Database\Eloquent\Relations\HasOne
+ */
+public function role_info(): HasOne
+{
+    return $this->hasOne(Role::class, 'id', 'role_id');
 }
 
 }

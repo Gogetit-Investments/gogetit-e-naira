@@ -386,6 +386,7 @@ Route::get('consumer-list', [ConsumerController::class, 'allConsumers'])->name('
 Route::post('consumer-upload', [ConsumerController::class, 'fileImport'])->name('consumer.upload');
 
 
+Route::get('edit-profile', [RegisterController::class, 'edit_profile'])->name('edit.profile');
 Route::get('create-user', [RegisterController::class, 'create_user'])->name('create.user');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.perform');
 

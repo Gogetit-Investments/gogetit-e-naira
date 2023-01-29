@@ -131,7 +131,7 @@
 								</div>
 								<div class="mb-2">
 									<div class="col-form-label">Assign Role</div>
-									<select class="js-example-basic-single col-sm-12">
+									<select class="js-example-basic-single col-sm-12" name="role_id">
 										<optgroup label="Roles">
 											{{$roles =  App\Models\Role::select('role_name', 'id')->get();}}
 											@forelse($roles as $item)

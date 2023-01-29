@@ -44,24 +44,45 @@
 							<thead>
 								<tr>
 									<th>Tier</th>
-									<th>Phone Number</th>
-									<th>TIN</th>
 									<th>BVN</th>
+									<th>NIN</th>
+									<th>Phone Number</th>
 									<th>Name</th>
-									<th>Uploaded By</th>
+									<th>Postal Code</th>
+									<th>Address</th>
+									<th>City</th>
+									<th>LGA</th>
+									<th>State</th>
+									<th>Country of Residence</th>
+									<th>DOB</th>
+									<th>Country of Birth</th>
+									<th>State Of Birth</th>
+									<th>Referral Code</th>
+									{{-- <th>Uploaded By</th> --}}
 									<th>Uploaded Date</th>
 								</tr>
 							</thead>
 							<tbody>
 								@forelse ($consumers as $consumer)
 								<tr>
-									<td>{{$consumer->tier_name}}</td>
-									<td>{{$consumer->phone_number}}</td>
-									<td>{{$consumer->nin}}</td>
-									<td>{{$consumer->bvn}}</td>
-									<td>{{$consumer->first_name}} {{$consumer->last_name}} {{$consumer->other_names}}</td>
-									<td>{{$consumer->addedby}}</td>
-									<td>{{$consumer->created_at}}</td>
+									<td>{{$consumer->tier_info->tier_name ?? null}}</td>
+									<td>{{$consumer->bvn ?? null}}</td>
+									<td>{{$consumer->nin ?? null}}</td>
+									<td>{{$consumer->phone_number ?? null}}</td>
+									<td>{{$consumer->title ?? null}} {{$consumer->last_name ?? null}} {{$consumer->first_name ?? null}} {{$consumer->middle_name ?? null}}</td>
+									<td>{{$consumer->postal_code ?? null}}</td>
+									<td>{{$consumer->contact_address ?? null}}</td>
+									<td>{{$consumer->city ?? null}}</td>
+									<td>{{$consumer->lga_info->lga_of_residence ?? null}}</td>
+									<td>{{$consumer->state_of_residence->state_of_residence ?? null}}</td>
+									<td>{{$consumer->country_info->country_of_residence}}</td>
+									<td>{{$consumer->dob ?? null}}</td>
+									<td>{{$consumer->country_of_origin->country_of_birth ?? null}}</td>
+									<td>{{$consumer->state_of_origin->state_of_birth ?? null}}</td>
+									<td>{{$consumer->referral_code ?? null}}</td>
+									{{-- <td>{{$consumer->country}}</td> --}}
+									{{-- <td>{{$consumer->addedby}}</td> --}}
+									<td>{{$consumer->created_at ?? null}}</td>
 								</tr>
 
 								@empty
