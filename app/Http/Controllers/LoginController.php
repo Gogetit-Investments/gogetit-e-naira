@@ -7,6 +7,7 @@ use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Services\Login\RememberMeExpiration;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Auth\EloquentUserProvider;
 
 class LoginController extends Controller
 {
@@ -39,7 +40,8 @@ class LoginController extends Controller
         endif;
 
         $user = Auth::getProvider()
-        ->with(['role_info' => function ($query) {$query->select('id', 'role_name');}])
+        // ->with(['role_info'])
+        // ->with(['role_info' => function ($query) {$query->select('id', 'role_name');}])
         ->retrieveByCredentials($credentials);
 
         Auth::login($user, $request->get('remember'));

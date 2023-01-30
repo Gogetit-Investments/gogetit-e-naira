@@ -27,10 +27,22 @@
 						<div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a></div>
 					</div>
 					<div class="card-body">
-						<form>
+						@if (session('status'))
+						<div class="alert alert-success dark" role="alert">
+					{{ session('status') }}
+				</div>
+			@elseif (session('error'))
+			<div class="alert alert-danger dark" role="alert">
+					{{ session('error') }}
+				</div>
+			@endif
+						<form method="POST" action="{{ route('update-password') }}">
+							@csrf
 							<div class="row mb-2">
 								<div class="profile-title">
 									<div class="media">
+					
+
 										{{-- <img class="img-70 rounded-circle" alt="" src="{{ asset('assets/images/user/7.jpg')}}"> --}}
 										<div class="media-body">
 											<h3 class="mb-1">{{Auth::user()->last_name}} {{Auth::user()->first_name}} {{Auth::user()->middle_name}}</h3>
@@ -53,17 +65,43 @@
 								<input class="form-control" type="text" readonly value="{{Auth::user()->phone_number}}">
 							</div>
 
+<hr/>
+							<div class="mb-3">
+								<label class="form-label">Current Password</label>
+								<input class="form-control" type="text" name="old_password">
+								@if ($errors->has('old_password'))
+								<span class="help-block">
+									<strong>{{ $errors->first('old_password') }}</strong>
+								</span>
+							@endif
+							</div>
+							
 
 							<div class="mb-3">
-								<label class="form-label">Change Password</label>
-								<input class="form-control" type="password" value="password">
+								<label class="form-label">New Password</label>
+								<input class="form-control" type="text"  name="new_password">
+								@if ($errors->has('new_password'))
+								<span class="help-block">
+									<strong>{{ $errors->first('new_password') }}</strong>
+								</span>
+							@endif
+							</div>
+
+							<div class="mb-3">
+								<label class="form-label">Confirm New Password</label>
+								<input class="form-control" type="text" name="new_password_confirmation">
+								@if ($errors->has('new_password_confirmation'))
+								<span class="help-block">
+									<strong>{{ $errors->first('new_password_confirmation') }}</strong>
+								</span>
+							@endif
 							</div>
 							{{-- <div class="mb-3">
 								<label class="form-label">Website</label>
 								<input class="form-control" placeholder="http://Uplor .com">
 							</div> --}}
 							<div class="form-footer">
-								<button class="btn btn-primary btn-block">Update</button>
+								<button class="btn btn-primary btn-block" type="submit">Update</button>
 							</div>
 						</form>
 					</div>

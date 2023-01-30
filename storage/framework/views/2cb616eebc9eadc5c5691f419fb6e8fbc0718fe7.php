@@ -26,10 +26,24 @@
 						<div class="card-options"><a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a></div>
 					</div>
 					<div class="card-body">
-						<form>
+						<?php if(session('status')): ?>
+						<div class="alert alert-success dark" role="alert">
+					<?php echo e(session('status')); ?>
+
+				</div>
+			<?php elseif(session('error')): ?>
+			<div class="alert alert-danger dark" role="alert">
+					<?php echo e(session('error')); ?>
+
+				</div>
+			<?php endif; ?>
+						<form method="POST" action="<?php echo e(route('update-password')); ?>">
+							<?php echo csrf_field(); ?>
 							<div class="row mb-2">
 								<div class="profile-title">
 									<div class="media">
+					
+
 										
 										<div class="media-body">
 											<h3 class="mb-1"><?php echo e(Auth::user()->last_name); ?> <?php echo e(Auth::user()->first_name); ?> <?php echo e(Auth::user()->middle_name); ?></h3>
@@ -49,14 +63,40 @@
 								<input class="form-control" type="text" readonly value="<?php echo e(Auth::user()->phone_number); ?>">
 							</div>
 
+<hr/>
+							<div class="mb-3">
+								<label class="form-label">Current Password</label>
+								<input class="form-control" type="text" name="old_password">
+								<?php if($errors->has('old_password')): ?>
+								<span class="help-block">
+									<strong><?php echo e($errors->first('old_password')); ?></strong>
+								</span>
+							<?php endif; ?>
+							</div>
+							
 
 							<div class="mb-3">
-								<label class="form-label">Change Password</label>
-								<input class="form-control" type="password" value="password">
+								<label class="form-label">New Password</label>
+								<input class="form-control" type="text"  name="new_password">
+								<?php if($errors->has('new_password')): ?>
+								<span class="help-block">
+									<strong><?php echo e($errors->first('new_password')); ?></strong>
+								</span>
+							<?php endif; ?>
+							</div>
+
+							<div class="mb-3">
+								<label class="form-label">Confirm New Password</label>
+								<input class="form-control" type="text" name="new_password_confirmation">
+								<?php if($errors->has('new_password_confirmation')): ?>
+								<span class="help-block">
+									<strong><?php echo e($errors->first('new_password_confirmation')); ?></strong>
+								</span>
+							<?php endif; ?>
 							</div>
 							
 							<div class="form-footer">
-								<button class="btn btn-primary btn-block">Update</button>
+								<button class="btn btn-primary btn-block" type="submit">Update</button>
 							</div>
 						</form>
 					</div>

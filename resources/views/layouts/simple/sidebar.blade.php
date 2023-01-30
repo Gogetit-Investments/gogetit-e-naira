@@ -16,11 +16,11 @@
 					</li>
 					<li class="sidebar-main-title">
 						<div>
-							<h6 class="lan-1">{{ trans('lang.General') }} </h6>
-                     		<p class="lan-2">{{ trans('lang.Dashboards,widgets & layout.') }}</p>
+							<h6 class="lan-1"><a href="/dashboard">Dashboard </a></h6>
+                     		{{-- <p class="lan-2">{{ trans('lang.Dashboards,widgets & layout.') }}</p> --}}
 						</div>
 					</li>
-					<li class="sidebar-list">
+					{{-- <li class="sidebar-list">
 						<label class="badge badge-success">2</label><a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/dashboard' ? 'active' : '' }}" href="#"><i data-feather="home"></i><span class="lan-3">{{ trans('lang.Dashboards') }}</span>
 							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/dashboard' ? 'down' : 'right' }}"></i></div>
 						</a>
@@ -28,8 +28,8 @@
 							<li><a class="lan-4 {{ Route::currentRouteName()=='index' ? 'active' : '' }}" href="{{route('index')}}">{{ trans('lang.Default') }}</a></li>
                      		<li><a class="lan-5 {{ Route::currentRouteName()=='dashboard-02' ? 'active' : '' }}" href="{{route('dashboard-02')}}">{{ trans('lang.Ecommerce') }}</a></li>
 						</ul>
-					</li>
-					<li class="sidebar-list">
+					</li> --}}
+					{{-- <li class="sidebar-list">
 							<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/widgets' ? 'active' : '' }}" href="#"><i data-feather="airplay"></i><span class="lan-6">{{ trans('lang.Widgets') }}</span>
 								<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/widgets' ? 'down' : 'right' }}"></i></div>
 							</a>
@@ -37,8 +37,8 @@
 			                    <li><a href="{{route('general-widget')}}" class="{{ Route::currentRouteName()=='general-widget' ? 'active' : '' }}">{{ trans('lang.General') }}</a></li>
 			                    <li><a href="{{route('chart-widget')}}" class="{{ Route::currentRouteName()=='chart-widget' ? 'active' : '' }}">{{ trans('lang.Chart') }}</a></li>
 		                  	</ul>
-					</li>
-					<li class="sidebar-list">
+					</li> --}}
+					{{-- <li class="sidebar-list">
 						<a class="sidebar-link sidebar-title {{ request()->route()->getPrefix() == '/page-layouts' ? 'active' : '' }}" href="#"><i data-feather="layout"></i>
 							<span class="lan-7">{{ trans('lang.Page layout') }}</span>
 							<div class="according-menu"><i class="fa fa-angle-{{ request()->route()->getPrefix() == '/page-layouts' ? 'down' : 'right' }}"></i></div>
@@ -52,7 +52,7 @@
                           <li><a href="{{ route('footer-dark') }}" class="{{ Route::currentRouteName() == 'footer-dark' ? 'active' : '' }}">Footer Dark</a></li>
                           <li><a href="{{ route('footer-fixed') }}" class="{{ Route::currentRouteName() == 'footer-fixed' ? 'active' : '' }}">Footer Fixed</a></li>
                       </ul>
-                  	</li>
+                  	</li> --}}
 					{{-- <li class="sidebar-main-title">
 						<div>
 							<h6 class="lan-8">{{ trans('lang.Applications') }}</h6>
@@ -60,6 +60,17 @@
 						</div>
 					</li> --}}
 
+					<li class="sidebar-list">
+						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
+						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/user' ? 'active' : '' }}" href="#">
+							<i data-feather="users"></i><span>Users </span>
+							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/user' ? 'down' : 'right' }}"></i></div>
+						</a>
+						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/user' ? 'block;' : 'none;' }}">
+		                    <li><a href="{{route('user-list.show')}}" class="{{ Route::currentRouteName()=='user' ? 'active' : '' }}">User List</a></li>
+		                    <li><a href="{{route('create.user')}}" class="{{ Route::currentRouteName()=='create-user' ? 'active' : '' }}">Create New User</a></li>
+		                </ul>
+					</li>
 
 					<li class="sidebar-list">
 						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
@@ -75,17 +86,41 @@
 
 					<li class="sidebar-list">
 						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
-						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/user' ? 'active' : '' }}" href="#">
-							<i data-feather="users"></i><span>Users </span>
-							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/user' ? 'down' : 'right' }}"></i></div>
+						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/consumer' ? 'active' : '' }}" href="#">
+							<i data-feather="box"></i><span>Merchant Data </span>
+							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/consumer' ? 'down' : 'right' }}"></i></div>
 						</a>
-						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/user' ? 'block;' : 'none;' }}">
-		                    <li><a href="{{route('user-list.show')}}" class="{{ Route::currentRouteName()=='user' ? 'active' : '' }}">User List</a></li>
-		                    <li><a href="{{route('create.user')}}" class="{{ Route::currentRouteName()=='create-user' ? 'active' : '' }}">Create New User</a></li>
+						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;' }}">
+		                    <li><a href="{{route('consumer-list.show')}}" class="{{ Route::currentRouteName()=='consumer' ? 'active' : '' }}">Consumer List</a></li>
+		                    <li><a href="{{route('consumer.upload')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Upload Consumers</a></li>
+		                </ul>
+					</li>
+
+					<li class="sidebar-list">
+						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
+						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/consumer' ? 'active' : '' }}" href="#">
+							<i data-feather="box"></i><span>My Consumer Data </span>
+							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/consumer' ? 'down' : 'right' }}"></i></div>
+						</a>
+						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;' }}">
+		                    <li><a href="{{route('consumer-list.show')}}" class="{{ Route::currentRouteName()=='consumer' ? 'active' : '' }}">Consumer List</a></li>
+		                    <li><a href="{{route('consumer.upload')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Upload Consumers</a></li>
+		                </ul>
+					</li>
+
+					<li class="sidebar-list">
+						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
+						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/consumer' ? 'active' : '' }}" href="#">
+							<i data-feather="box"></i><span>My Merchant Data </span>
+							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/consumer' ? 'down' : 'right' }}"></i></div>
+						</a>
+						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;' }}">
+		                    <li><a href="{{route('consumer-list.show')}}" class="{{ Route::currentRouteName()=='consumer' ? 'active' : '' }}">Consumer List</a></li>
+		                    <li><a href="{{route('consumer.upload')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Upload Consumers</a></li>
 		                </ul>
 					</li>
 					
-					<li class="sidebar-list">
+					{{-- <li class="sidebar-list">
 						<label class="badge badge-danger">{{ trans('lang.New') }}</label>
 						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/project' ? 'active' : '' }}" href="#">
 							<i data-feather="box"></i><span>{{ trans('lang.Project') }} </span>
@@ -567,7 +602,7 @@
 						</ul>
 					</li>
 					<li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav {{ Route::currentRouteName() == 'knowledgebase' ? 'active' : ''}}" href="{{ route('knowledgebase') }}"><i data-feather="sunrise"> </i><span>{{ trans('lang.Knowledgebase') }}</span></a></li>
-					<li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav {{ Route::currentRouteName()=='support-ticket' ? 'active' : '' }}" href="{{route('support-ticket')}}"><i data-feather="users"> </i><span>{{ trans('lang.Support Ticket') }}</span></a></li>
+					<li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav {{ Route::currentRouteName()=='support-ticket' ? 'active' : '' }}" href="{{route('support-ticket')}}"><i data-feather="users"> </i><span>{{ trans('lang.Support Ticket') }}</span></a></li> --}}
 				</ul>
 			</div>
 			<div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

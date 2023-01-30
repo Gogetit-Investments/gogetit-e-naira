@@ -1,7 +1,7 @@
 
 @extends('layouts.simple.master')
 
-@section('title', 'Default')
+@section('title', 'Dashboard')
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/animate.css')}}">
@@ -13,13 +13,14 @@
 @endsection
 
 @section('breadcrumb-title')
-<h3>Welcome <b>{{Auth::user()->first_name}}!</b></h3>
+<h3>Welcome <b>{{Auth::user()->first_name ?? null}}!</b> <br/>You're logged in as a <b>{{Auth::user()->role_info->role_name}}</b></h3>
+
 @endsection
 
-@section('breadcrumb-items')
+{{-- @section('breadcrumb-items')
 <li class="breadcrumb-item">Dashboard</li>
 <li class="breadcrumb-item active">Default</li>
-@endsection
+@endsection --}}
 
 @section('content')
 <div class="container-fluid">
@@ -295,13 +296,13 @@
 				<div class="card-header">
 					<div class="header-top">
 						<h5 class="m-0">News & Update</h5>
-						<div class="card-header-right-icon">
+						{{-- <div class="card-header-right-icon">
 							<select class="button btn btn-primary">
 								<option>Today</option>
 								<option>Tomorrow</option>
 								<option>Yesterday</option>
 							</select>
-						</div>
+						</div> --}}
 					</div>
 				</div>
 				<div class="card-body p-0">
@@ -313,14 +314,14 @@
 						<h6>We are produce new product this</h6>
 						<span> Lorem Ipsum is simply text of the printing... </span>
 					</div>
-					<div class="news-update">
+					{{-- <div class="news-update">
 						<h6>50% off For COVID Couslations Types.</h6>
 						<span>Lorem Ipsum is simply dummy...</span>
 					</div>
 				</div>
 				<div class="card-footer">
 					<div class="bottom-btn"><a href="#">More...</a></div>
-				</div>
+				</div> --}}
 			</div>
 		</div>
 		{{-- <div class="col-xl-4 xl-50 appointment-sec box-col-6">

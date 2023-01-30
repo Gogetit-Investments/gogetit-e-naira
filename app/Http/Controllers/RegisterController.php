@@ -9,6 +9,8 @@ use App\Models\RoleController;
 use DB;
 use App\Mail\SignupMail;
 use Illuminate\Support\Facades\Mail;
+use Hash;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -31,6 +33,54 @@ class RegisterController extends Controller
     {
         return view('pages.user.edit-profile');
     }
+
+    // public function changePasswordPost(Request $request) {
+    //     if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
+    //         // The passwords matches
+    //         return redirect()->back()->with("error","Your current password does not matches with the password.");
+    //     }
+
+    //     if(strcmp($request->get('current-password'), $request->get('new-password')) == 0){
+    //         // Current password and new password same
+    //         return redirect()->back()->with("error","New Password cannot be same as your current password.");
+    //     }
+
+    //     $validatedData = $request->validate([
+    //         'current-password' => 'required',
+    //         'new-password' => 'required|string|min:8|confirmed',
+    //     ]);
+
+    //     //Change Password
+    //     $user = Auth::user();
+    //     $user->password = bcrypt($request->get('new-password'));
+    //     $user->save();
+
+    //     return redirect()->back()->with("success","Password successfully changed!");
+    // }
+
+    public function updatePassword(Request $request)
+{
+        # Validation
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+
+
+        #Match The Old Password
+        if(!Hash::check($request->old_password, auth()->user()->password)){
+            return back()->with("error", "Old Password Doesn't match!");
+        }
+
+
+        #Update the new Password
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return back()->with("status", "Password changed successfully!");
+}
+
 
     /**
      * Handle account registration request

@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', 'Default'); ?>
+<?php $__env->startSection('title', 'Dashboard'); ?>
 
 <?php $__env->startSection('css'); ?>
 <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/animate.css')); ?>">
@@ -10,13 +10,11 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb-title'); ?>
-<h3>Welcome <b><?php echo e(Auth::user()->first_name); ?>!</b></h3>
+<h3>Welcome <b><?php echo e(Auth::user()->first_name ?? null); ?>!</b> <br/>You're logged in as a <b><?php echo e(Auth::user()->role_info->role_name); ?></b></h3>
+
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('breadcrumb-items'); ?>
-<li class="breadcrumb-item">Dashboard</li>
-<li class="breadcrumb-item active">Default</li>
-<?php $__env->stopSection(); ?>
+
 
 <?php $__env->startSection('content'); ?>
 <div class="container-fluid">
@@ -88,13 +86,7 @@
 				<div class="card-header">
 					<div class="header-top">
 						<h5 class="m-0">News & Update</h5>
-						<div class="card-header-right-icon">
-							<select class="button btn btn-primary">
-								<option>Today</option>
-								<option>Tomorrow</option>
-								<option>Yesterday</option>
-							</select>
-						</div>
+						
 					</div>
 				</div>
 				<div class="card-body p-0">
@@ -106,14 +98,7 @@
 						<h6>We are produce new product this</h6>
 						<span> Lorem Ipsum is simply text of the printing... </span>
 					</div>
-					<div class="news-update">
-						<h6>50% off For COVID Couslations Types.</h6>
-						<span>Lorem Ipsum is simply dummy...</span>
-					</div>
-				</div>
-				<div class="card-footer">
-					<div class="bottom-btn"><a href="#">More...</a></div>
-				</div>
+					
 			</div>
 		</div>
 		

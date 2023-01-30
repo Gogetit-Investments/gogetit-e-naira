@@ -408,3 +408,7 @@ Route::get('/testroute', function() {
 //The email sending is done using the to method on the Mail facade
     Mail::to('testreceiver@gmail.com’')->send(new SignupMail($email, $first_name, $last_name));
 });
+
+Route::post('/changePassword', [App\Http\Controllers\RegisterController::class, 'changePasswordPost'])->name('changePasswordPost');
+
+Route::post('/change-password', [App\Http\Controllers\RegisterController::class, 'updatePassword'])->name('update-password');
