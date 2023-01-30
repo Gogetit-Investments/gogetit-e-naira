@@ -60,6 +60,48 @@
 						</div>
 					</li> --}}
 
+	
+
+
+					{{------------------------------Data Agent Menu-------------------------}}
+					@if (Auth::user()->role_id=="1")
+						
+					
+					<li class="sidebar-list">
+						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
+						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/consumer' ? 'active' : '' }}" href="#">
+							<i data-feather="box"></i><span>My Consumer Data </span>
+							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/consumer' ? 'down' : 'right' }}"></i></div>
+						</a>
+						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;' }}">
+		                    <li><a href="{{route('consumer-list.show')}}" class="{{ Route::currentRouteName()=='consumer' ? 'active' : '' }}">Consumer List</a></li>
+		                    <li><a href="{{route('consumer.upload')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Upload Consumers</a></li>
+		                </ul>
+					</li>
+
+					<li class="sidebar-list">
+						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
+						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/consumer' ? 'active' : '' }}" href="#">
+							<i data-feather="box"></i><span>My Merchant Data </span>
+							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/consumer' ? 'down' : 'right' }}"></i></div>
+						</a>
+						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;' }}">
+		                    <li><a href="{{route('consumer-list.show')}}" class="{{ Route::currentRouteName()=='consumer' ? 'active' : '' }}">Consumer List</a></li>
+		                    <li><a href="{{route('consumer.upload')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Upload Consumers</a></li>
+		                </ul>
+					</li>
+
+
+					<li class="sidebar-list">
+						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
+						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/consumer' ? 'active' : '' }}" href="#">
+							<i data-feather="arrow-down-circle"></i><span>Download Template </span>
+							<div class="according-menu"><i class=""></i></div>
+						</a>
+					
+					</li>
+
+					@else
 					<li class="sidebar-list">
 						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
 						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/user' ? 'active' : '' }}" href="#">
@@ -99,26 +141,13 @@
 					<li class="sidebar-list">
 						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
 						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/consumer' ? 'active' : '' }}" href="#">
-							<i data-feather="box"></i><span>My Consumer Data </span>
-							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/consumer' ? 'down' : 'right' }}"></i></div>
+							<i data-feather="arrow-down-circle"></i><span>Download Template </span>
+							<div class="according-menu"><i class=""></i></div>
 						</a>
-						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;' }}">
-		                    <li><a href="{{route('consumer-list.show')}}" class="{{ Route::currentRouteName()=='consumer' ? 'active' : '' }}">Consumer List</a></li>
-		                    <li><a href="{{route('consumer.upload')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Upload Consumers</a></li>
-		                </ul>
+					
 					</li>
 
-					<li class="sidebar-list">
-						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
-						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/consumer' ? 'active' : '' }}" href="#">
-							<i data-feather="box"></i><span>My Merchant Data </span>
-							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/consumer' ? 'down' : 'right' }}"></i></div>
-						</a>
-						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;' }}">
-		                    <li><a href="{{route('consumer-list.show')}}" class="{{ Route::currentRouteName()=='consumer' ? 'active' : '' }}">Consumer List</a></li>
-		                    <li><a href="{{route('consumer.upload')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Upload Consumers</a></li>
-		                </ul>
-					</li>
+					@endif
 					
 					{{-- <li class="sidebar-list">
 						<label class="badge badge-danger">{{ trans('lang.New') }}</label>
