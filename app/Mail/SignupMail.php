@@ -62,7 +62,12 @@ class SignupMail extends Mailable
         //     view: 'email.signup',
         //     with: ['first_name' => $this->first_name],
         // );
-        return $this->from("hello@gogetit.com.ng")->view('email.signup');
+        return 
+        $this->view('email.signup')
+        ->from("hello@gogetit.com.ng", "Gogetit eNaira")
+        ->subject("Gogetit e-Naira Data Agent Portal - New Account Registration");
+        
+        // -subject("Gogetit e-Naira Data Agent Portal - New Account Registration")
     }
 
 }
