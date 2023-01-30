@@ -38,6 +38,11 @@ class ConsumerController extends Controller
         return view('pages.consumer-data.consumer-list');
     }
 
+    public function download_templates()
+    {
+        return view('pages.download-template');
+    }
+
 
     public function fileImport(Request $request) 
     {

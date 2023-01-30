@@ -11,12 +11,12 @@
 @endsection
 
 @section('breadcrumb-title')
-<h3>Project Create</h3>
+<h3>Consumers Bulk Upload</h3>
 @endsection
 
 @section('breadcrumb-items')
-<li class="breadcrumb-item">Project</li>
-<li class="breadcrumb-item active">Project Create</li>
+<li class="breadcrumb-item">Consumers</li>
+<li class="breadcrumb-item active">Bulk Upload</li>
 @endsection
 {{-- <form action="{{route('consumer.upload')}}" method="POST" > --}}
 @section('content')

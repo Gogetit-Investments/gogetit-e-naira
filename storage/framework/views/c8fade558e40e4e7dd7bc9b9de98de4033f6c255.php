@@ -35,7 +35,7 @@
 					<li class="sidebar-list">
 						
 						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'active' : ''); ?>" href="#">
-							<i data-feather="box"></i><span>My Consumer Data </span>
+							<i data-feather="database"></i><span>My Consumer Data </span>
 							<div class="according-menu"><i class="fa fa-angle-<?php echo e(request()->route()->getPrefix() == '/consumer' ? 'down' : 'right'); ?>"></i></div>
 						</a>
 						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;'); ?>">
@@ -66,7 +66,8 @@
 					
 					</li>
 
-					<?php else: ?>
+					<?php elseif(Auth::user()->role_id=="2"): ?>
+
 					<li class="sidebar-list">
 						
 						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/user' ? 'active' : ''); ?>" href="#">
@@ -82,7 +83,55 @@
 					<li class="sidebar-list">
 						
 						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'active' : ''); ?>" href="#">
-							<i data-feather="box"></i><span>Consumer Data </span>
+							<i data-feather="database"></i><span>Consumer Data </span>
+							<div class="according-menu"><i class="fa fa-angle-<?php echo e(request()->route()->getPrefix() == '/consumer' ? 'down' : 'right'); ?>"></i></div>
+						</a>
+						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;'); ?>">
+		                    <li><a href="<?php echo e(route('consumer-list.show')); ?>" class="<?php echo e(Route::currentRouteName()=='consumer' ? 'active' : ''); ?>">Consumer List</a></li>
+		                    <li><a href="<?php echo e(route('consumer.upload')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Upload Consumers</a></li>
+		                </ul>
+					</li>
+
+					<li class="sidebar-list">
+						
+						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'active' : ''); ?>" href="#">
+							<i data-feather="box"></i><span>Merchant Data </span>
+							<div class="according-menu"><i class="fa fa-angle-<?php echo e(request()->route()->getPrefix() == '/consumer' ? 'down' : 'right'); ?>"></i></div>
+						</a>
+						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;'); ?>">
+		                    <li><a href="<?php echo e(route('consumer-list.show')); ?>" class="<?php echo e(Route::currentRouteName()=='consumer' ? 'active' : ''); ?>">Consumer List</a></li>
+		                    <li><a href="<?php echo e(route('consumer.upload')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Upload Consumers</a></li>
+		                </ul>
+					</li>
+
+					<li class="sidebar-list">
+						
+						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'active' : ''); ?>" href="#">
+							<i data-feather="arrow-down-circle"></i><span>Download Template </span>
+							<div class="according-menu"><i class=""></i></div>
+						</a>
+					
+					</li>
+
+
+					<?php elseif(Auth::user()->role_id=="3"): ?>
+
+					<li class="sidebar-list">
+						
+						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/user' ? 'active' : ''); ?>" href="#">
+							<i data-feather="users"></i><span>Users </span>
+							<div class="according-menu"><i class="fa fa-angle-<?php echo e(request()->route()->getPrefix() == '/user' ? 'down' : 'right'); ?>"></i></div>
+						</a>
+						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/user' ? 'block;' : 'none;'); ?>">
+		                    <li><a href="<?php echo e(route('user-list.show')); ?>" class="<?php echo e(Route::currentRouteName()=='user' ? 'active' : ''); ?>">User List</a></li>
+		                    <li><a href="<?php echo e(route('create.user')); ?>" class="<?php echo e(Route::currentRouteName()=='create-user' ? 'active' : ''); ?>">Create New User</a></li>
+		                </ul>
+					</li>
+
+					<li class="sidebar-list">
+						
+						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'active' : ''); ?>" href="#">
+							<i data-feather="database"></i><span>Consumer Data </span>
 							<div class="according-menu"><i class="fa fa-angle-<?php echo e(request()->route()->getPrefix() == '/consumer' ? 'down' : 'right'); ?>"></i></div>
 						</a>
 						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;'); ?>">

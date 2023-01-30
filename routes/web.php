@@ -412,3 +412,6 @@ Route::get('/testroute', function() {
 Route::post('/changePassword', [App\Http\Controllers\RegisterController::class, 'changePasswordPost'])->name('changePasswordPost');
 
 Route::post('/change-password', [App\Http\Controllers\RegisterController::class, 'updatePassword'])->name('update-password');
+
+
+Route::get('download-template', [ConsumerController::class, 'download_templates'])->name('download.template');
