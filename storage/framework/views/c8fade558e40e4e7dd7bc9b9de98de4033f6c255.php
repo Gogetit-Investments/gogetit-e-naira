@@ -29,7 +29,7 @@
 
 
 					
-					<?php if(Auth::user()->role_id=="1"): ?>
+					<?php if(Auth::user()->role_id=="1" ?? null): ?>
 						
 					
 					<li class="sidebar-list">
@@ -59,14 +59,14 @@
 
 					<li class="sidebar-list">
 						
-						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'active' : ''); ?>" href="#">
+						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/download-template' ? 'active' : ''); ?>" href="/download-template">
 							<i data-feather="arrow-down-circle"></i><span>Download Template </span>
-							<div class="according-menu"><i class=""></i></div>
+							
 						</a>
 					
 					</li>
 
-					<?php elseif(Auth::user()->role_id=="2"): ?>
+					<?php elseif(Auth::user()->role_id=="2" ?? null): ?>
 
 					<li class="sidebar-list">
 						
@@ -106,15 +106,15 @@
 
 					<li class="sidebar-list">
 						
-						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'active' : ''); ?>" href="#">
+						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/download-template' ? 'active' : ''); ?>" href="/download-template">
 							<i data-feather="arrow-down-circle"></i><span>Download Template </span>
-							<div class="according-menu"><i class=""></i></div>
+							
 						</a>
 					
 					</li>
 
 
-					<?php elseif(Auth::user()->role_id=="3"): ?>
+					<?php elseif(Auth::user()->role_id=="3" ?? null): ?>
 
 					<li class="sidebar-list">
 						
@@ -154,9 +154,9 @@
 
 					<li class="sidebar-list">
 						
-						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'active' : ''); ?>" href="#">
+						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/download-template' ? 'active' : ''); ?>" href="/download-template">
 							<i data-feather="arrow-down-circle"></i><span>Download Template </span>
-							<div class="according-menu"><i class=""></i></div>
+							
 						</a>
 					
 					</li>

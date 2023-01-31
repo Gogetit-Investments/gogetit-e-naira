@@ -64,7 +64,7 @@
 
 
 					{{------------------------------Data Agent Menu-------------------------}}
-					@if (Auth::user()->role_id=="1")
+					@if (Auth::user()->role_id=="1" ?? null)
 						
 					
 					<li class="sidebar-list">
@@ -94,14 +94,14 @@
 
 					<li class="sidebar-list">
 						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
-						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/consumer' ? 'active' : '' }}" href="#">
+						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/download-template' ? 'active' : '' }}" href="/download-template">
 							<i data-feather="arrow-down-circle"></i><span>Download Template </span>
-							<div class="according-menu"><i class=""></i></div>
+							{{-- <div class="according-menu"><i class=""></i></div> --}}
 						</a>
 					
 					</li>
 
-					@elseif (Auth::user()->role_id=="2")
+					@elseif (Auth::user()->role_id=="2" ?? null)
 
 					<li class="sidebar-list">
 						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
@@ -141,15 +141,15 @@
 
 					<li class="sidebar-list">
 						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
-						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/consumer' ? 'active' : '' }}" href="#">
+						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/download-template' ? 'active' : '' }}" href="/download-template">
 							<i data-feather="arrow-down-circle"></i><span>Download Template </span>
-							<div class="according-menu"><i class=""></i></div>
+							{{-- <div class="according-menu"><i class=""></i></div> --}}
 						</a>
 					
 					</li>
 
 
-					@elseif (Auth::user()->role_id=="3")
+					@elseif (Auth::user()->role_id=="3" ?? null)
 
 					<li class="sidebar-list">
 						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
@@ -189,9 +189,9 @@
 
 					<li class="sidebar-list">
 						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
-						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/consumer' ? 'active' : '' }}" href="#">
+						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/download-template' ? 'active' : '' }}" href="/download-template">
 							<i data-feather="arrow-down-circle"></i><span>Download Template </span>
-							<div class="according-menu"><i class=""></i></div>
+							{{-- <div class="according-menu"><i class=""></i></div> --}}
 						</a>
 					
 					</li>
