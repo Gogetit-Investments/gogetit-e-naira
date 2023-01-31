@@ -20,7 +20,7 @@
 <!-- Plugins JS Ends-->
 <!-- Theme js-->
 <script src="<?php echo e(asset('assets/js/script.js')); ?>"></script>
-<script src="<?php echo e(asset('assets/js/theme-customizer/customizer.js')); ?>"></script>
+
 
 
 <?php /**PATH /Users/victoroseji/Documents/jobs/Cuba/resources/views/layouts/simple/script.blade.php ENDPATH**/ ?>

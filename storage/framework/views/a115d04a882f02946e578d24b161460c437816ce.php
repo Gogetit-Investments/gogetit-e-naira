@@ -49,12 +49,7 @@
                 <div class="col-6">
                   <?php echo $__env->yieldContent('breadcrumb-title'); ?>
                 </div>
-                <div class="col-6">
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?php echo e(route('/')); ?>"> <i data-feather="home"></i></a></li>
-                    <?php echo $__env->yieldContent('breadcrumb-items'); ?>
-                  </ol>
-                </div>
+                
               </div>
             </div>
           </div>
