@@ -175,7 +175,7 @@
             </div>
           </div>
         </li> --}}
-        <li><span class="header-search"><i data-feather="search"></i></span></li>
+        {{-- <li><span class="header-search"><i data-feather="search"></i></span></li> --}}
         {{-- <li class="onhover-dropdown">
           <div class="notification-box"><i data-feather="bell"> </i><span class="badge rounded-pill badge-secondary">4                                </span></div>
           <ul class="notification-dropdown onhover-show-div">
@@ -341,10 +341,11 @@
        
         <li class="profile-nav onhover-dropdown p-0 me-0">
           <div class="media profile-media">
-            <img class="b-r-10" src="{{asset('assets/images/dashboard/profile.jpg')}}" alt="">
+            <a href="/edit-profile"><img class="b-r-10" src="{{asset('assets/avatar.png')}}" alt="">
             <div class="media-body">
               <span>{{Auth::user()->first_name}} {{Auth::user()->last_name}}</span>
-              <p class="mb-0 font-roboto">Admin <i class="middle fa fa-angle-down"></i></p>
+              <p class="mb-0 font-roboto">{{Auth::user()->role_info->role_name ?? null}} <i class="middle fa fa-angle-down"></i></p>
+            </a>
             </div>
           </div>
           <ul class="profile-dropdown onhover-show-div">
