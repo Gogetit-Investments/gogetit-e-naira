@@ -51,8 +51,8 @@
 							<div class="according-menu"><i class="fa fa-angle-<?php echo e(request()->route()->getPrefix() == '/consumer' ? 'down' : 'right'); ?>"></i></div>
 						</a>
 						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;'); ?>">
-		                    <li><a href="<?php echo e(route('consumer-list.show')); ?>" class="<?php echo e(Route::currentRouteName()=='consumer' ? 'active' : ''); ?>">Consumer List</a></li>
-		                    <li><a href="<?php echo e(route('consumer.upload')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Upload Consumers</a></li>
+		                    <li><a href="#" class="<?php echo e(Route::currentRouteName()=='merchant' ? 'active' : ''); ?>">My Merchant List</a></li>
+		                    <li><a href="#" class="<?php echo e(Route::currentRouteName()=='merchant-upload' ? 'active' : ''); ?>">Upload My Merchants</a></li>
 		                </ul>
 					</li>
 
@@ -98,9 +98,9 @@
 							<i data-feather="box"></i><span>Merchant Data </span>
 							<div class="according-menu"><i class="fa fa-angle-<?php echo e(request()->route()->getPrefix() == '/consumer' ? 'down' : 'right'); ?>"></i></div>
 						</a>
-						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;'); ?>">
-		                    <li><a href="<?php echo e(route('consumer-list.show')); ?>" class="<?php echo e(Route::currentRouteName()=='consumer' ? 'active' : ''); ?>">Consumer List</a></li>
-		                    <li><a href="<?php echo e(route('consumer.upload')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Upload Consumers</a></li>
+						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/merchant' ? 'block;' : 'none;'); ?>">
+		                    <li><a href="#" class="<?php echo e(Route::currentRouteName()=='merchant' ? 'active' : ''); ?>">Merchant List</a></li>
+		                    <li><a href="#" class="<?php echo e(Route::currentRouteName()=='merchant-upload' ? 'active' : ''); ?>">Upload Merchants</a></li>
 		                </ul>
 					</li>
 
@@ -146,9 +146,9 @@
 							<i data-feather="box"></i><span>Merchant Data </span>
 							<div class="according-menu"><i class="fa fa-angle-<?php echo e(request()->route()->getPrefix() == '/consumer' ? 'down' : 'right'); ?>"></i></div>
 						</a>
-						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;'); ?>">
-		                    <li><a href="<?php echo e(route('consumer-list.show')); ?>" class="<?php echo e(Route::currentRouteName()=='consumer' ? 'active' : ''); ?>">Consumer List</a></li>
-		                    <li><a href="<?php echo e(route('consumer.upload')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Upload Consumers</a></li>
+						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/merchant' ? 'block;' : 'none;'); ?>">
+		                    <li><a href="#" class="<?php echo e(Route::currentRouteName()=='merchants' ? 'active' : ''); ?>">Merchant List</a></li>
+		                    <li><a href="#" class="<?php echo e(Route::currentRouteName()=='merchant-upload' ? 'active' : ''); ?>">Upload Merchants</a></li>
 		                </ul>
 					</li>
 

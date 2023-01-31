@@ -86,8 +86,8 @@
 							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/consumer' ? 'down' : 'right' }}"></i></div>
 						</a>
 						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;' }}">
-		                    <li><a href="{{route('consumer-list.show')}}" class="{{ Route::currentRouteName()=='consumer' ? 'active' : '' }}">Consumer List</a></li>
-		                    <li><a href="{{route('consumer.upload')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Upload Consumers</a></li>
+		                    <li><a href="#" class="{{ Route::currentRouteName()=='merchant' ? 'active' : '' }}">My Merchant List</a></li>
+		                    <li><a href="#" class="{{ Route::currentRouteName()=='merchant-upload' ? 'active' : '' }}">Upload My Merchants</a></li>
 		                </ul>
 					</li>
 
@@ -133,9 +133,9 @@
 							<i data-feather="box"></i><span>Merchant Data </span>
 							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/consumer' ? 'down' : 'right' }}"></i></div>
 						</a>
-						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;' }}">
-		                    <li><a href="{{route('consumer-list.show')}}" class="{{ Route::currentRouteName()=='consumer' ? 'active' : '' }}">Consumer List</a></li>
-		                    <li><a href="{{route('consumer.upload')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Upload Consumers</a></li>
+						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/merchant' ? 'block;' : 'none;' }}">
+		                    <li><a href="#" class="{{ Route::currentRouteName()=='merchant' ? 'active' : '' }}">Merchant List</a></li>
+		                    <li><a href="#" class="{{ Route::currentRouteName()=='merchant-upload' ? 'active' : '' }}">Upload Merchants</a></li>
 		                </ul>
 					</li>
 
@@ -181,9 +181,9 @@
 							<i data-feather="box"></i><span>Merchant Data </span>
 							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/consumer' ? 'down' : 'right' }}"></i></div>
 						</a>
-						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;' }}">
-		                    <li><a href="{{route('consumer-list.show')}}" class="{{ Route::currentRouteName()=='consumer' ? 'active' : '' }}">Consumer List</a></li>
-		                    <li><a href="{{route('consumer.upload')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Upload Consumers</a></li>
+						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/merchant' ? 'block;' : 'none;' }}">
+		                    <li><a href="#" class="{{ Route::currentRouteName()=='merchants' ? 'active' : '' }}">Merchant List</a></li>
+		                    <li><a href="#" class="{{ Route::currentRouteName()=='merchant-upload' ? 'active' : '' }}">Upload Merchants</a></li>
 		                </ul>
 					</li>
 
