@@ -10,6 +10,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb-title'); ?>
+<br/>
 <h3>Welcome <b><?php echo e(Auth::user()->first_name ?? null); ?>!</b> <br/>You're logged in as a <b><?php echo e(Auth::user()->role_info->role_name ?? null); ?></b></h3>
 
 <?php $__env->stopSection(); ?>
@@ -81,26 +82,7 @@
 		
 		
 		
-		<div class="col-xl-4 xl-50 news box-col-6">
-			<div class="card">
-				<div class="card-header">
-					<div class="header-top">
-						<h5 class="m-0">News & Update</h5>
-						
-					</div>
-				</div>
-				<div class="card-body p-0">
-					<div class="news-update">
-						<h6>36% off For pixel lights Couslations Types.</h6>
-						<span>Lorem Ipsum is simply dummy...</span>
-					</div>
-					<div class="news-update">
-						<h6>We are produce new product this</h6>
-						<span> Lorem Ipsum is simply text of the printing... </span>
-					</div>
-					
-			</div>
-		</div>
+		
 		
 		
 		

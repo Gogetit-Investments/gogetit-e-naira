@@ -99,7 +99,14 @@
 							<i data-feather="arrow-down-circle"></i><span>Download Template </span>
 							{{-- <div class="according-menu"><i class=""></i></div> --}}
 						</a>
-					
+					</li>
+
+					<li class="sidebar-list">
+						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
+						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/edit-profile' ? 'active' : '' }}" href="/edit-profile">
+							<i data-feather="user"></i><span>Edit My Profile </span>
+							{{-- <div class="according-menu"><i class=""></i></div> --}}
+						</a>
 					</li>
 
 					@elseif (Auth::user()->role_id=="2" ?? null)
@@ -149,6 +156,14 @@
 					
 					</li>
 
+					<li class="sidebar-list">
+						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
+						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/edit-profile' ? 'active' : '' }}" href="/edit-profile">
+							<i data-feather="user"></i><span>Edit My Profile </span>
+							{{-- <div class="according-menu"><i class=""></i></div> --}}
+						</a>
+					</li>
+
 
 					@elseif (Auth::user()->role_id=="3" ?? null)
 
@@ -195,6 +210,14 @@
 							{{-- <div class="according-menu"><i class=""></i></div> --}}
 						</a>
 					
+					</li>
+
+					<li class="sidebar-list">
+						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
+						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/edit-profile' ? 'active' : '' }}" href="/edit-profile">
+							<i data-feather="user"></i><span>Edit My Profile </span>
+							{{-- <div class="according-menu"><i class=""></i></div> --}}
+						</a>
 					</li>
 
 					@endif

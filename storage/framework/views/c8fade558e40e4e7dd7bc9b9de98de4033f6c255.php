@@ -64,7 +64,14 @@
 							<i data-feather="arrow-down-circle"></i><span>Download Template </span>
 							
 						</a>
-					
+					</li>
+
+					<li class="sidebar-list">
+						
+						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/edit-profile' ? 'active' : ''); ?>" href="/edit-profile">
+							<i data-feather="user"></i><span>Edit My Profile </span>
+							
+						</a>
 					</li>
 
 					<?php elseif(Auth::user()->role_id=="2" ?? null): ?>
@@ -114,6 +121,14 @@
 					
 					</li>
 
+					<li class="sidebar-list">
+						
+						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/edit-profile' ? 'active' : ''); ?>" href="/edit-profile">
+							<i data-feather="user"></i><span>Edit My Profile </span>
+							
+						</a>
+					</li>
+
 
 					<?php elseif(Auth::user()->role_id=="3" ?? null): ?>
 
@@ -160,6 +175,14 @@
 							
 						</a>
 					
+					</li>
+
+					<li class="sidebar-list">
+						
+						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/edit-profile' ? 'active' : ''); ?>" href="/edit-profile">
+							<i data-feather="user"></i><span>Edit My Profile </span>
+							
+						</a>
 					</li>
 
 					<?php endif; ?>

@@ -19,6 +19,7 @@
     </div>
     <div class="left-header col horizontal-wrapper ps-0">
       <ul class="horizontal-menu">
+        <h3>Gogetit eNaira Data Agents Portal</h3>
         {{-- <li class="mega-menu outside">
           <a class="nav-link" href="#!"><i data-feather="layers"></i><span>Bonus Ui</span></a>
           <div class="mega-menu-container nav-submenu menu-to-be-close header-mega">
