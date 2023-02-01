@@ -8,9 +8,9 @@
 
 <?php $__env->startSection('style'); ?>
 <?php $__env->stopSection(); ?>
-
-<?php $__env->startSection('breadcrumb-title'); ?>
 <br/>
+<?php $__env->startSection('breadcrumb-title'); ?>
+
 <h3>Welcome <b><?php echo e(Auth::user()->first_name ?? null); ?>!</b> <br/>You're logged in as a <b><?php echo e(Auth::user()->role_info->role_name ?? null); ?></b></h3>
 
 <?php $__env->stopSection(); ?>

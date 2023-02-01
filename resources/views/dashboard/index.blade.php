@@ -11,9 +11,9 @@
 
 @section('style')
 @endsection
-
-@section('breadcrumb-title')
 <br/>
+@section('breadcrumb-title')
+
 <h3>Welcome <b>{{Auth::user()->first_name ?? null}}!</b> <br/>You're logged in as a <b>{{Auth::user()->role_info->role_name ?? null}}</b></h3>
 
 @endsection

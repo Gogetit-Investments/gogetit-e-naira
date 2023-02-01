@@ -9,7 +9,7 @@
 
 @section('style')
 @endsection
-
+<br/>
 @section('breadcrumb-title')
 <h3>Consumers Bulk Upload</h3>
 @endsection

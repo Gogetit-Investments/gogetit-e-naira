@@ -6,7 +6,7 @@
 
 <?php $__env->startSection('style'); ?>
 <?php $__env->stopSection(); ?>
-
+<br/>
 <?php $__env->startSection('breadcrumb-title'); ?>
 <h3>Bulk Onboarding Templates</h3>
 <?php $__env->stopSection(); ?>

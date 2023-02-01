@@ -7,7 +7,7 @@
 
 @section('style')
 @endsection
-
+<br/>
 @section('breadcrumb-title')
 <h3>Bulk Onboarding Templates</h3>
 @endsection
