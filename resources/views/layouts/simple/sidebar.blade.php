@@ -109,12 +109,14 @@
 						</a>
 					</li>
 
+
+					{{-- Coordinator Dashboard --}}
 					@elseif (Auth::user()->role_id=="2" ?? null)
 
 					<li class="sidebar-list">
 						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
 						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/user' ? 'active' : '' }}" href="#">
-							<i data-feather="users"></i><span>Users </span>
+							<i data-feather="users"></i><span>My Agents </span>
 							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/user' ? 'down' : 'right' }}"></i></div>
 						</a>
 						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/user' ? 'block;' : 'none;' }}">
@@ -164,7 +166,9 @@
 						</a>
 					</li>
 
-
+					
+					
+					{{-- Admin Dashboard --}}
 					@elseif (Auth::user()->role_id=="3" ?? null)
 
 					<li class="sidebar-list">
