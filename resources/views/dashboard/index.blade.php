@@ -26,13 +26,15 @@
 @section('content')
 <div class="container-fluid">
 	<div class="row second-chart-list third-news-update">
+		{{-- Data Agent Analytics --}}
+		@if (Auth::user()->role_id=="1" ?? null)
 		<div class="col-sm-6 col-xl-3 col-lg-6">
 			<div class="card o-hidden">
 			   <div class="bg-primary b-r-4 card-body">
 				  <div class="media static-top-widget">
 					 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
 					 <div class="media-body">
-						<span class="m-0">Enrolments Today</span>
+						<span class="m-0">My Enrolments Today</span>
 						<h4 class="mb-0 counter">6659</h4>
 						<i class="icon-bg" data-feather="calendar"></i>
 					 </div>
@@ -47,7 +49,7 @@
 				  <div class="media static-top-widget">
 					 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
 					 <div class="media-body">
-						<span class="m-0">Enrolments This Week</span>
+						<span class="m-0">My Enrolments This Week</span>
 						<h4 class="mb-0 counter">893</h4>
 						<i class="icon-bg" data-feather="calendar"></i>
 					 </div>
@@ -61,7 +63,7 @@
 				  <div class="media static-top-widget">
 					 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
 					 <div class="media-body">
-						<span class="m-0">Enrolments This Week</span>
+						<span class="m-0">My Enrolments This Week</span>
 						<h4 class="mb-0 counter">45631</h4>
 						<i class="icon-bg" data-feather="calendar"></i>
 					 </div>
@@ -76,7 +78,7 @@
 				  <div class="media static-top-widget">
 					 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
 					 <div class="media-body">
-						<span class="m-0">Total Enrolments</span>
+						<span class="m-0">My Total Enrolments</span>
 						<h4 class="mb-0 counter">9856</h4>
 						<i class="icon-bg" data-feather="calendar"></i>
 					 </div>
@@ -84,6 +86,152 @@
 			   </div>
 			</div>
 		 </div>
+
+
+{{-- Coordinator Analytics --}}
+@elseif (Auth::user()->role_id=="2" ?? null)
+<div class="col-sm-6 col-xl-3 col-lg-6">
+	<div class="card o-hidden">
+	   <div class="bg-primary b-r-4 card-body">
+		  <div class="media static-top-widget">
+			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
+			 <div class="media-body">
+				<span class="m-0">My Agents' Enrolments Today</span>
+				<h4 class="mb-0 counter">6659</h4>
+				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
+			 </div>
+			 <div class="media-body">
+				<span class="m-0">My Enrolments Today</span>
+				<h4 class="mb-0 counter">6659</h4>
+				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
+			 </div>
+		  </div>
+	   </div>
+	</div>
+ </div>
+
+ <div class="col-sm-6 col-xl-3 col-lg-6">
+	<div class="card o-hidden">
+	   <div class="bg-primary b-r-4 card-body">
+		  <div class="media static-top-widget">
+			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
+			 <div class="media-body">
+				<span class="m-0">My Agents' Enrolments This Week</span>
+				<h4 class="mb-0 counter">893</h4>
+				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
+			 </div>
+			 <div class="media-body">
+				<span class="m-0">My Enrolments This Week</span>
+				<h4 class="mb-0 counter">893</h4>
+				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
+			 </div>
+		  </div>
+	   </div>
+	</div>
+ </div>
+ <div class="col-sm-6 col-xl-3 col-lg-6">
+	<div class="card o-hidden">
+	   <div class="bg-primary b-r-4 card-body">
+		  <div class="media static-top-widget">
+			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
+			 <div class="media-body">
+				<span class="m-0">My Agents' Enrolments This Month</span>
+				<h4 class="mb-0 counter">45631</h4>
+				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
+			 </div>
+			 <div class="media-body">
+				<span class="m-0">My Enrolments This Month</span>
+				<h4 class="mb-0 counter">45631</h4>
+				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
+			 </div>
+		  </div>
+	   </div>
+	</div>
+ </div>
+
+ <div class="col-sm-6 col-xl-3 col-lg-6">
+	<div class="card o-hidden">
+	   <div class="bg-secondary b-r-4 card-body">
+		  <div class="media static-top-widget">
+			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
+			 <div class="media-body">
+				<span class="m-0">My Agents' Total Enrolments</span>
+				<h4 class="mb-0 counter">9856</h4>
+				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
+			 </div>
+			 <div class="media-body">
+				<span class="m-0">My Total Enrolments</span>
+				<h4 class="mb-0 counter">9856</h4>
+				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
+			 </div>
+		  </div>
+	   </div>
+	</div>
+ </div>
+
+
+
+ {{-- Admin Analytics --}}
+ @elseif (Auth::user()->role_id=="3" ?? null)
+ <div class="col-sm-6 col-xl-3 col-lg-6">
+	<div class="card o-hidden">
+	   <div class="bg-primary b-r-4 card-body">
+		  <div class="media static-top-widget">
+			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
+			 <div class="media-body">
+				<span class="m-0">Enrolments Today</span>
+				<h4 class="mb-0 counter">6659</h4>
+				<i class="icon-bg" data-feather="calendar"></i>
+			 </div>
+		  </div>
+	   </div>
+	</div>
+ </div>
+
+ <div class="col-sm-6 col-xl-3 col-lg-6">
+	<div class="card o-hidden">
+	   <div class="bg-primary b-r-4 card-body">
+		  <div class="media static-top-widget">
+			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
+			 <div class="media-body">
+				<span class="m-0">Enrolments This Week</span>
+				<h4 class="mb-0 counter">893</h4>
+				<i class="icon-bg" data-feather="calendar"></i>
+			 </div>
+		  </div>
+	   </div>
+	</div>
+ </div>
+ <div class="col-sm-6 col-xl-3 col-lg-6">
+	<div class="card o-hidden">
+	   <div class="bg-primary b-r-4 card-body">
+		  <div class="media static-top-widget">
+			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
+			 <div class="media-body">
+				<span class="m-0">Enrolments This Week</span>
+				<h4 class="mb-0 counter">45631</h4>
+				<i class="icon-bg" data-feather="calendar"></i>
+			 </div>
+		  </div>
+	   </div>
+	</div>
+ </div>
+
+ <div class="col-sm-6 col-xl-3 col-lg-6">
+	<div class="card o-hidden">
+	   <div class="bg-secondary b-r-4 card-body">
+		  <div class="media static-top-widget">
+			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
+			 <div class="media-body">
+				<span class="m-0">Total Enrolments</span>
+				<h4 class="mb-0 counter">9856</h4>
+				<i class="icon-bg" data-feather="calendar"></i>
+			 </div>
+		  </div>
+	   </div>
+	</div>
+ </div>
+ @endif
 		{{-- <div class="col-xl-4 col-lg-12 xl-50 morning-sec box-col-12">
 			<div class="card o-hidden profile-greeting">
 				<div class="card-body">
