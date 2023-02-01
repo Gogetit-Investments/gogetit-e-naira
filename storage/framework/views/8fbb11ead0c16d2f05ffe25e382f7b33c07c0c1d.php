@@ -68,9 +68,9 @@
 			<div class="card o-hidden">
 			   <div class="bg-secondary b-r-4 card-body">
 				  <div class="media static-top-widget">
-					 <div class="align-self-center text-center">Total Enrolments<i data-feather="calendar"></i></div>
+					 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
 					 <div class="media-body">
-						<span class="m-0"></span>
+						<span class="m-0">Total Enrolments</span>
 						<h4 class="mb-0 counter">9856</h4>
 						<i class="icon-bg" data-feather="calendar"></i>
 					 </div>
