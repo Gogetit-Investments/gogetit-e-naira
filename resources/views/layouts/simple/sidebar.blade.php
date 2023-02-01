@@ -5,15 +5,16 @@
 			<div class="back-btn"><i class="fa fa-angle-left"></i></div>
 			{{-- <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid"> </i></div> --}}
 		</div>
-		<div class="logo-icon-wrapper"><a href="{{route('/')}}"><img class="img-fluid" src="{{asset('assets/images/Gogetit-logo2.png')}}" alt=""></a></div>
+		<div class="logo-icon-wrapper"><a href="{{route('/')}}"><img class="img-fluid" src="{{asset('assets/images/Gogetit-logo2.png')}}" width="50px" alt="Gogetit Logo"></a></div>
 		<nav class="sidebar-main">
 			<div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
 			<div id="sidebar-menu">
 				<ul class="sidebar-links" id="simple-bar">
-					<li class="back-btn">
+					{{-- <li class="back-btn">
 						<a href="{{route('/')}}"><img class="img-fluid" src="{{asset('assets/images/Gogetit-logo2.png')}}" alt=""></a>
 						<div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
-					</li>
+					</li> --}}
+					<br/><br/>
 					<li class="sidebar-main-title">
 						<div>
 							<h6 class="lan-1"><a href="/dashboard">Dashboard </a></h6>
