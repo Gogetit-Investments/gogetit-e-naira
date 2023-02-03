@@ -1219,6 +1219,56 @@
             "install-path": "../fruitcake/laravel-cors"
         },
         {
+            "name": "googee/entity",
+            "version": "v2.3.1",
+            "version_normalized": "2.3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GooGee/Entity.git",
+                "reference": "d015bc4d20190174d176ff35c60d02ae8ccbee58"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GooGee/Entity/zipball/d015bc4d20190174d176ff35c60d02ae8ccbee58",
+                "reference": "d015bc4d20190174d176ff35c60d02ae8ccbee58",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": ">=5.5"
+            },
+            "time": "2021-02-05T03:01:19+00:00",
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "GooGee\\Entity\\EntityServiceProvider"
+                    ]
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "GooGee\\Entity\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "GooGee",
+                    "email": "mou-gj@live.com"
+                }
+            ],
+            "description": "laravel code generator",
+            "support": {
+                "issues": "https://github.com/GooGee/Entity/issues",
+                "source": "https://github.com/GooGee/Entity/tree/v2.3.1"
+            },
+            "install-path": "../googee/entity"
+        },
+        {
             "name": "graham-campbell/result-type",
             "version": "v1.1.0",
             "version_normalized": "1.1.0.0",
@@ -8533,6 +8583,7 @@
         "facade/ignition-contracts",
         "fakerphp/faker",
         "filp/whoops",
+        "googee/entity",
         "hamcrest/hamcrest-php",
         "laravel/sail",
         "mockery/mockery",

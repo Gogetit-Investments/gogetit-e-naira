@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "14223493d7620848d94d427e9b271d6b",
+    "content-hash": "3f684abf3ac60f8fe8e2557fdd96d8a9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6318,6 +6318,53 @@
                 }
             ],
             "time": "2022-11-02T16:23:29+00:00"
+        },
+        {
+            "name": "googee/entity",
+            "version": "v2.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GooGee/Entity.git",
+                "reference": "d015bc4d20190174d176ff35c60d02ae8ccbee58"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GooGee/Entity/zipball/d015bc4d20190174d176ff35c60d02ae8ccbee58",
+                "reference": "d015bc4d20190174d176ff35c60d02ae8ccbee58",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": ">=5.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "GooGee\\Entity\\EntityServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GooGee\\Entity\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "GooGee",
+                    "email": "mou-gj@live.com"
+                }
+            ],
+            "description": "laravel code generator",
+            "support": {
+                "issues": "https://github.com/GooGee/Entity/issues",
+                "source": "https://github.com/GooGee/Entity/tree/v2.3.1"
+            },
+            "time": "2021-02-05T03:01:19+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",

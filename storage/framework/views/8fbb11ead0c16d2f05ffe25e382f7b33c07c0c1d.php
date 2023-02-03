@@ -153,7 +153,6 @@
 				<h4 class="mb-0 counter">9856</h4>
 				
 			 </div>
-			 <vr/>
 			 <div class="media-body">
 				<span class="m-0">My Total Enrolments</span>
 				<h4 class="mb-0 counter">9856</h4>

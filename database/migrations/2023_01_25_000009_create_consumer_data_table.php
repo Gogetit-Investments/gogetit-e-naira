@@ -37,7 +37,7 @@ class CreateConsumerDataTable extends Migration
             $table->string('first_name', 45)->nullable();
             $table->string('middle_name', 45)->nullable();
             $table->string('postal_code', 45)->nullable();
-            $table->string('contact_address', 45)->nullable();
+            $table->string('contact_address', 500)->nullable();
             $table->string('city', 45)->nullable();
             $table->string('lga', 32)->references('lga_code')->on('lga');
             // $table->unsignedInteger('lga', 45)->nullable();

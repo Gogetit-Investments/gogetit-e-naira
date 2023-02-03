@@ -1,3 +1,4 @@
+{{-- @if (Auth::user()->check()) --}}
 <div class="sidebar-wrapper">
 	<div>
 		<div class="logo-wrapper">
@@ -62,10 +63,13 @@
 					</li> --}}
 
 	
-
-
+					{{-- @else
+					<script type="text/javascript">
+					  window.location = "/login";
+					</script>
+@endif --}}
 					{{------------------------------Data Agent Menu-------------------------}}
-					@if (Auth::user()->role_id=="1" ?? null)
+					@if (Auth::user()->role_id==1 ?? null)
 						
 					
 					<li class="sidebar-list">
@@ -77,6 +81,7 @@
 						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;' }}">
 		                    <li><a href="{{route('consumer-list.show')}}" class="{{ Route::currentRouteName()=='consumer' ? 'active' : '' }}">Consumer List</a></li>
 		                    <li><a href="{{route('consumer.upload')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Upload Consumers</a></li>
+							<li><a href="{{route('consumer_single.show')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Bulk Upload Consumers</a></li>
 		                </ul>
 					</li>
 
@@ -111,7 +116,7 @@
 
 
 					{{-- Coordinator Dashboard --}}
-					@elseif (Auth::user()->role_id=="2" ?? null)
+					@elseif (Auth::user()->role_id==2 ?? null)
 
 					<li class="sidebar-list">
 						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
@@ -133,7 +138,8 @@
 						</a>
 						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;' }}">
 		                    <li><a href="{{route('consumer-list.show')}}" class="{{ Route::currentRouteName()=='consumer' ? 'active' : '' }}">Consumer List</a></li>
-		                    <li><a href="{{route('consumer.upload')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Upload Consumers</a></li>
+							<li><a href="{{route('consumer_single.show')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Upload Single Consumer</a></li>
+		                    <li><a href="{{route('consumer.upload')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Bulk Upload Consumers</a></li>
 		                </ul>
 					</li>
 
@@ -169,7 +175,7 @@
 					
 					
 					{{-- Admin Dashboard --}}
-					@elseif (Auth::user()->role_id=="3" ?? null)
+					@elseif (Auth::user()->role_id==3 ?? null)
 
 					<li class="sidebar-list">
 						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
@@ -190,8 +196,9 @@
 							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/consumer' ? 'down' : 'right' }}"></i></div>
 						</a>
 						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;' }}">
-		                    <li><a href="{{route('consumer-list.show')}}" class="{{ Route::currentRouteName()=='consumer' ? 'active' : '' }}">Consumer List</a></li>
-		                    <li><a href="{{route('consumer.upload')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Upload Consumers</a></li>
+		                    		                    <li><a href="{{route('consumer-list.show')}}" class="{{ Route::currentRouteName()=='consumer' ? 'active' : '' }}">Consumer List</a></li>
+							<li><a href="{{route('consumer_single.show')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Upload Single Consumer</a></li>
+		                    <li><a href="{{route('consumer.upload')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Bulk Upload Consumers</a></li>
 		                </ul>
 					</li>
 
@@ -223,6 +230,7 @@
 							{{-- <div class="according-menu"><i class=""></i></div> --}}
 						</a>
 					</li>
+				
 
 					@endif
 					

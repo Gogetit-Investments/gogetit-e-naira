@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Consumer;
+use App\Models\Country;
 use App\Models\Lga;
 use App\Models\State;
 use Illuminate\Http\Request;
@@ -32,6 +33,30 @@ class ConsumerController extends Controller
     {
         return view('pages.consumer-data.consumer-upload');
     }
+
+    // public function upload_show()
+    // {
+    //     return view('pages.consumer-data.consumer_single-upload');
+    // }
+
+
+    public function upload_show()
+    {
+        $data['country'] = Country::get(["country_code", "country_name"]);
+        return view('pages.consumer-data.consumer_single-upload', $data);
+    }
+    public function fetchState(Request $request)
+    {
+        $data['state'] = State::where("country_code",$request->country_code)->get(["state_name", "state_code"]);
+        return response()->json($data);
+    }
+    public function fetchCity(Request $request)
+    {
+        $data['lga'] = Lga::where("state_code",$request->state_code)->get(["lga_name", "lga_code"]);
+        return response()->json($data);
+    }
+
+
 
     public function consumer_list()
     {
@@ -73,15 +98,74 @@ class ConsumerController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function register(ConsumerRequest $request) 
-    {
-        $user = Consumer::create($request->validated());
+    // public function register(ConsumerRequest $request) 
+    // {
+        // $consumer = Consumer::create($request->validated());
+
+        // $push=$request->validated();
+        // $push['username'] = $push['phone_number'];
+        // $registration_number=$push['registration_number'];
+        // $first_name=$push['first_name'];
+        // $last_name=$push['last_name'];
+        // $password=$push['password'];
+        // $phone_number=$push['phone_number'];
+        // $push['user_id'] = auth()->user()->id;
+        
+        
+        // $user = Consumer::create($push);
 
         // auth()->login($user);
+// return redirect('/consumer_single-upload')->with('success', "Consumer successfully registered.");
+// return back()->with('success', "Consumer successfully registered.");
+        // return redirect('/')->with('success', "Upload successful.");
+    // }
 
-        return redirect('/')->with('success', "Upload successful.");
-    }
+    public function register(Request $request)
+  {
+    $this->validate($request, [
+      'phone_number' => 'required|string',
+    //   'remarks' => 'required|string',
+    //   'created_by' => 'required',
 
+    ]);
+
+    $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+// generate a pin based on 2 * 7 digits + a random character
+$pin = mt_rand(1000000, 9999999)
+    . mt_rand(1000000, 9999999)
+    . $characters[rand(0, strlen($characters) - 1)];
+
+// shuffle the result
+$string = str_shuffle($pin);
+    // \Log::info($request->all());
+    $consumer = new Consumer();
+    $consumer->phone_number = $request->phone_number;
+    $consumer->registration_number = $string;
+    $consumer->tier_id = $request->tier_id;
+    $consumer->bvn = $request->bvn;
+    $consumer->nin = $request->nin;
+    $consumer->lga = $request->lga;
+    $consumer->state_code = $request->state_code;
+    $consumer->country = $request->country;
+    $consumer->state_of_birth = $request->state_of_birth;
+    $consumer->country_of_birth = $request->country_of_birth;
+    $consumer->title_code = $request->title_code;
+
+    $consumer->first_name = $request->first_name;
+    $consumer->last_name = $request->last_name;
+    $consumer->middle_name = $request->middle_name;
+    $consumer->dob = $request->dob;
+    $consumer->contact_address = $request->contact_address;
+    $consumer->postal_code = $request->postal_code;
+    $consumer->city = $request->city;
+
+    $consumer->added_by = auth()->id();
+
+    $consumer->save();
+
+    return back()->with('success', "Consumer successfully registered.");
+  }
 
     public function allConsumers()
     {

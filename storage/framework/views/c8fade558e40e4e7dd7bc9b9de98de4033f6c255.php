@@ -1,3 +1,4 @@
+
 <div class="sidebar-wrapper">
 	<div>
 		<div class="logo-wrapper">
@@ -27,10 +28,9 @@
 					
 
 	
-
-
 					
-					<?php if(Auth::user()->role_id=="1" ?? null): ?>
+					
+					<?php if(Auth::user()->role_id==1 ?? null): ?>
 						
 					
 					<li class="sidebar-list">
@@ -42,6 +42,7 @@
 						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;'); ?>">
 		                    <li><a href="<?php echo e(route('consumer-list.show')); ?>" class="<?php echo e(Route::currentRouteName()=='consumer' ? 'active' : ''); ?>">Consumer List</a></li>
 		                    <li><a href="<?php echo e(route('consumer.upload')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Upload Consumers</a></li>
+							<li><a href="<?php echo e(route('consumer_single.show')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Bulk Upload Consumers</a></li>
 		                </ul>
 					</li>
 
@@ -76,7 +77,7 @@
 
 
 					
-					<?php elseif(Auth::user()->role_id=="2" ?? null): ?>
+					<?php elseif(Auth::user()->role_id==2 ?? null): ?>
 
 					<li class="sidebar-list">
 						
@@ -98,7 +99,8 @@
 						</a>
 						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;'); ?>">
 		                    <li><a href="<?php echo e(route('consumer-list.show')); ?>" class="<?php echo e(Route::currentRouteName()=='consumer' ? 'active' : ''); ?>">Consumer List</a></li>
-		                    <li><a href="<?php echo e(route('consumer.upload')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Upload Consumers</a></li>
+							<li><a href="<?php echo e(route('consumer_single.show')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Upload Single Consumer</a></li>
+		                    <li><a href="<?php echo e(route('consumer.upload')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Bulk Upload Consumers</a></li>
 		                </ul>
 					</li>
 
@@ -134,7 +136,7 @@
 					
 					
 					
-					<?php elseif(Auth::user()->role_id=="3" ?? null): ?>
+					<?php elseif(Auth::user()->role_id==3 ?? null): ?>
 
 					<li class="sidebar-list">
 						
@@ -155,8 +157,9 @@
 							<div class="according-menu"><i class="fa fa-angle-<?php echo e(request()->route()->getPrefix() == '/consumer' ? 'down' : 'right'); ?>"></i></div>
 						</a>
 						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;'); ?>">
-		                    <li><a href="<?php echo e(route('consumer-list.show')); ?>" class="<?php echo e(Route::currentRouteName()=='consumer' ? 'active' : ''); ?>">Consumer List</a></li>
-		                    <li><a href="<?php echo e(route('consumer.upload')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Upload Consumers</a></li>
+		                    		                    <li><a href="<?php echo e(route('consumer-list.show')); ?>" class="<?php echo e(Route::currentRouteName()=='consumer' ? 'active' : ''); ?>">Consumer List</a></li>
+							<li><a href="<?php echo e(route('consumer_single.show')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Upload Single Consumer</a></li>
+		                    <li><a href="<?php echo e(route('consumer.upload')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Bulk Upload Consumers</a></li>
 		                </ul>
 					</li>
 
@@ -188,6 +191,7 @@
 							
 						</a>
 					</li>
+				
 
 					<?php endif; ?>
 					
@@ -197,4 +201,5 @@
 			<div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
 		</nav>
 	</div>
-</div><?php /**PATH /Users/victoroseji/Documents/jobs/Cuba/resources/views/layouts/simple/sidebar.blade.php ENDPATH**/ ?>
+</div>
+<?php /**PATH /Users/victoroseji/Documents/jobs/Cuba/resources/views/layouts/simple/sidebar.blade.php ENDPATH**/ ?>

@@ -10,6 +10,8 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ConsumerController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DropdownController;
+
 
 // use App\Mail\SignupMail;
 // use Illuminate\Support\Facades\Mail;
@@ -382,9 +384,12 @@ Route::get('file-import-export', [UserController::class, 'fileImportExport']);
 Route::post('file-import', [UserController::class, 'fileImport'])->name('file-import');
 
 Route::get('consumer-upload', [ConsumerController::class, 'show'])->name('consumer.show');
+
 Route::get('consumer-list', [ConsumerController::class, 'allConsumers'])->name('consumer-list.show');
 Route::post('consumer-upload', [ConsumerController::class, 'fileImport'])->name('consumer.upload');
-
+Route::get('consumer_single-show', [ConsumerController::class, 'upload_show'])->name('consumer_single.show');
+Route::post('consumer_single-upload', [ConsumerController::class, 'register'])->name('consumer_single.upload');
+// Route::get('consumer_single-upload', [ConsumerController::class, 'show'])->name('consumer_single.show');
 
 Route::get('edit-profile', [RegisterController::class, 'edit_profile'])->name('edit.profile');
 Route::get('create-user', [RegisterController::class, 'create_user'])->name('create.user');
@@ -415,3 +420,8 @@ Route::post('/change-password', [App\Http\Controllers\RegisterController::class,
 
 
 Route::get('download-template', [ConsumerController::class, 'download_templates'])->name('download.template');
+
+
+Route::get('dependent-dropdown', [DropdownController::class, 'index']);
+Route::post('api/fetch-states', [DropdownController::class, 'fetchState']);
+Route::post('api/fetch-cities', [DropdownController::class, 'fetchCity']);

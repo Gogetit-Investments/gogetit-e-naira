@@ -36,15 +36,21 @@ $pin = mt_rand(1000000, 9999999)
 $string = str_shuffle($pin);
 
         return [
-            'registration_number' => $string,
+            'registration_number' => $pin,
             'tier_id' => 'int',
             'bvn' => 'string',
             'nin' => 'string',
             'first_name' => 'string',
             'last_name' => 'string',
-            'other_names' => 'string',
+            'middle_name' => 'string',
             'phone_number' => 'string',
-            'added_by' =>  Auth::user()->id,
+            'title_code' => 'string',
+            'lga' => 'string',
+            'state_code' => 'string',
+            'country' => 'string',
+            'state_of_birth' => 'string',
+            'country_of_birth' => 'string',
+            // 'added_by' =>  Auth::user()->id,
         ];
     }
 }
