@@ -8,13 +8,10 @@
 <?php $__env->stopSection(); ?>
 <br/>
 <?php $__env->startSection('breadcrumb-title'); ?>
-<h3>Users</h3>
+<h3>Agents</h3>
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('breadcrumb-items'); ?>
-<li class="breadcrumb-item">Users</li>
-<li class="breadcrumb-item active">New User Upload Form</li>
-<?php $__env->stopSection(); ?>
+
 
 <?php $__env->startSection('content'); ?>
 <div class="container-fluid">
@@ -24,11 +21,11 @@
 				<div class="col-sm-12">
 					<div class="card">
 						<div class="card-header">
-							<h5>New User Upload Form</h5>
-							<span>Only an authorized admin is permitted to do this</span>
+							<h5>New Agent Upload Form</h5>
+							<span>Only an authorized Coordinator is permitted to do this</span>
 						</div>
 						<div class="card-body">
-							<form class="theme-form" action="<?php echo e(route('register.perform')); ?>" method="POST">
+							<form class="theme-form" action="<?php echo e(route('register_agent.perform')); ?>" method="POST">
 								<?php echo csrf_field(); ?>
 								
 								<?php if(session('success')): ?>
@@ -114,35 +111,7 @@
 									</i>
 									<?php endif; ?>
 								</div>
-								<div class="mb-2">
-									<div class="col-form-label">Assign Role</div>
-									<select class="js-example-basic-single col-sm-12" name="role_id">
-										<optgroup label="Roles">
-											<?php echo e($roles =  App\Models\Role::select('role_name', 'id')->get()); ?>
-
-											<?php $__empty_1 = true; $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-											<option value="<?php echo e($item->id); ?>" ><?php echo e($item->role_name); ?></option>
-											<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-											<?php endif; ?>
-										</optgroup>
-
-									</select>
-								</div>
-
-								<div class="mb-2">
-									<div class="col-form-label">Assign Coordinator</div>
-									<select class="js-example-basic-single col-sm-12" name="coordinator_id">
-										<optgroup label="Coordinators">
-											<?php echo e($coordinators =  App\Models\User::select('first_name', 'last_name', 'id')->where('role_id', '2')->get()); ?>
-
-											<?php $__empty_1 = true; $__currentLoopData = $coordinators; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-											<option value="<?php echo e($item->id); ?>" ><?php echo e($item->first_name); ?> <?php echo e($item->last_name); ?></option>
-											<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-											<?php endif; ?>
-										</optgroup>
-
-									</select>
-								</div>
+								
 
 								
 
@@ -168,4 +137,4 @@
 <script src="<?php echo e(asset('assets/js/select2/select2.full.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/select2/select2-custom.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.simple.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/victoroseji/Documents/jobs/Cuba/resources/views/pages/user/create-user.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.simple.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/victoroseji/Documents/jobs/Cuba/resources/views/pages/user/create-agent.blade.php ENDPATH**/ ?>

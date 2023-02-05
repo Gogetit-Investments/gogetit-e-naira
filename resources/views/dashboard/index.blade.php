@@ -35,7 +35,14 @@
 					 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
 					 <div class="media-body">
 						<span class="m-0">My Enrolments Today</span>
-						<h4 class="mb-0 counter">6659</h4>
+
+
+						<h4 class="mb-0 counter">
+							{{App\Models\Consumer::where(['added_by' => Auth::user()->id])->whereDay('created_at', Carbon\Carbon::now()->day)->count();}}
+							
+						</h4>
+
+
 						<i class="icon-bg" data-feather="calendar"></i>
 					 </div>
 				  </div>
@@ -50,7 +57,9 @@
 					 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
 					 <div class="media-body">
 						<span class="m-0">My Enrolments This Week</span>
-						<h4 class="mb-0 counter">893</h4>
+						<h4 class="mb-0 counter">
+							{{App\Models\Consumer::where(['added_by' => Auth::user()->id])->whereBetween('created_at', [Carbon\Carbon::now()->startOfWeek(), Carbon\Carbon::now()->endOfWeek()])->count()}}
+						</h4>
 						<i class="icon-bg" data-feather="calendar"></i>
 					 </div>
 				  </div>
@@ -63,8 +72,10 @@
 				  <div class="media static-top-widget">
 					 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
 					 <div class="media-body">
-						<span class="m-0">My Enrolments This Week</span>
-						<h4 class="mb-0 counter">45631</h4>
+						<span class="m-0">My Enrolments This Month</span>
+						<h4 class="mb-0 counter">
+							{{App\Models\Consumer::where(['added_by' => Auth::user()->id])->whereMonth('created_at', Carbon\Carbon::now()->month)->count()}}
+						</h4>
 						<i class="icon-bg" data-feather="calendar"></i>
 					 </div>
 				  </div>
@@ -79,7 +90,9 @@
 					 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
 					 <div class="media-body">
 						<span class="m-0">My Total Enrolments</span>
-						<h4 class="mb-0 counter">9856</h4>
+						<h4 class="mb-0 counter">
+							{{App\Models\Consumer::where(['added_by' => Auth::user()->id])->count();}}
+						</h4>
 						<i class="icon-bg" data-feather="calendar"></i>
 					 </div>
 				  </div>
@@ -93,19 +106,26 @@
 <div class="col-sm-6 col-xl-3 col-lg-6">
 	<div class="card o-hidden">
 	   <div class="bg-primary b-r-4 card-body">
-		  <div class="media static-top-widget">
-			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
+		  {{-- <div class="media static-top-widget"> --}}
+			 {{-- <div class="align-self-center text-center"><i data-feather="calendar"></i></div> --}}
 			 <div class="media-body">
 				<span class="m-0">My Agents' Enrolments Today</span>
-				<h4 class="mb-0 counter">6659</h4>
+				<h4 class="mb-0 counter">
+					{{DB::table('consumer_data')
+					->select('select consumer_data.* from consumer_data')
+					->where('user.coordinator_id', '=', Auth::user()->id)
+					->whereDay('consumer_data.created_at', Carbon\Carbon::now()->day)
+					->leftjoin('user', 'user.coordinator_id','=','consumer_data.added_by')
+					->count();}}
+				</h4>
 				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
-			 </div>
+			 </div><hr/>
 			 <div class="media-body">
 				<span class="m-0">My Enrolments Today</span>
-				<h4 class="mb-0 counter">6659</h4>
+				<h4 class="mb-0 counter">{{App\Models\Consumer::where(['added_by' => Auth::user()->id])->whereDay('created_at', Carbon\Carbon::now()->day)->count();}}</h4>
 				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
 			 </div>
-		  </div>
+		  {{-- </div> --}}
 	   </div>
 	</div>
  </div>
@@ -113,38 +133,52 @@
  <div class="col-sm-6 col-xl-3 col-lg-6">
 	<div class="card o-hidden">
 	   <div class="bg-primary b-r-4 card-body">
-		  <div class="media static-top-widget">
-			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
+		  {{-- <div class="media static-top-widget">
+			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div> --}}
 			 <div class="media-body">
 				<span class="m-0">My Agents' Enrolments This Week</span>
-				<h4 class="mb-0 counter">893</h4>
+				<h4 class="mb-0 counter">
+					{{DB::table('consumer_data')
+					->select('select consumer_data.* from consumer_data')
+					->where('user.coordinator_id', '=', Auth::user()->id)
+					->whereBetween('consumer_data.created_at', [Carbon\Carbon::now()->startOfWeek(), Carbon\Carbon::now()->endOfWeek()])
+					->leftjoin('user', 'user.coordinator_id','=','consumer_data.added_by')
+					->count();}}
+				</h4>
 				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
-			 </div>
+			 </div><hr/>
 			 <div class="media-body">
 				<span class="m-0">My Enrolments This Week</span>
-				<h4 class="mb-0 counter">893</h4>
+				<h4 class="mb-0 counter">{{App\Models\Consumer::where(['added_by' => Auth::user()->id])->whereBetween('created_at', [Carbon\Carbon::now()->startOfWeek(), Carbon\Carbon::now()->endOfWeek()])->count()}}</h4>
 				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
 			 </div>
-		  </div>
+		  {{-- </div> --}}
 	   </div>
 	</div>
  </div>
  <div class="col-sm-6 col-xl-3 col-lg-6">
 	<div class="card o-hidden">
 	   <div class="bg-primary b-r-4 card-body">
-		  <div class="media static-top-widget">
-			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
+		  {{-- <div class="media static-top-widget">
+			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div> --}}
 			 <div class="media-body">
 				<span class="m-0">My Agents' Enrolments This Month</span>
-				<h4 class="mb-0 counter">45631</h4>
+				<h4 class="mb-0 counter">
+					{{DB::table('consumer_data')
+					->select('select consumer_data.* from consumer_data')
+					->where('user.coordinator_id', '=', Auth::user()->id)
+					->whereMonth('consumer_data.created_at', Carbon\Carbon::now()->month)
+					->leftjoin('user', 'user.coordinator_id','=','consumer_data.added_by')
+					->count();}}
+				</h4>
 				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
-			 </div>
+			 </div><hr/>
 			 <div class="media-body">
 				<span class="m-0">My Enrolments This Month</span>
-				<h4 class="mb-0 counter">45631</h4>
+				<h4 class="mb-0 counter">{{App\Models\Consumer::where(['added_by' => Auth::user()->id])->whereMonth('created_at', Carbon\Carbon::now()->month)->count()}}</h4>
 				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
 			 </div>
-		  </div>
+		  {{-- </div> --}}
 	   </div>
 	</div>
  </div>
@@ -152,19 +186,25 @@
  <div class="col-sm-6 col-xl-3 col-lg-6">
 	<div class="card o-hidden">
 	   <div class="bg-secondary b-r-4 card-body">
-		  <div class="media static-top-widget">
-			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
+		  {{-- <div class="media static-top-widget">
+			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div> --}}
 			 <div class="media-body">
 				<span class="m-0">My Agents' Total Enrolments</span>
-				<h4 class="mb-0 counter">9856</h4>
+				<h4 class="mb-0 counter">
+				{{DB::table('consumer_data')
+				->select('select consumer_data.* from consumer_data')
+				->where('user.coordinator_id', '=', Auth::user()->id)
+				->leftjoin('user', 'user.coordinator_id','=','consumer_data.added_by')
+				->count();}}</h4>
 				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
 			 </div>
+			 <hr/>
 			 <div class="media-body">
 				<span class="m-0">My Total Enrolments</span>
-				<h4 class="mb-0 counter">9856</h4>
+				<h4 class="mb-0 counter">{{App\Models\Consumer::where(['added_by' => Auth::user()->id])->count();}}</h4>
 				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
 			 </div>
-		  </div>
+		  {{-- </div> --}}
 	   </div>
 	</div>
  </div>
@@ -176,14 +216,26 @@
  <div class="col-sm-6 col-xl-3 col-lg-6">
 	<div class="card o-hidden">
 	   <div class="bg-primary b-r-4 card-body">
-		  <div class="media static-top-widget">
-			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
+		  {{-- <div class="media static-top-widget"> --}}
+			 {{-- <div class="align-self-center text-center"><i data-feather="calendar"></i></div> --}}
 			 <div class="media-body">
-				<span class="m-0">Enrolments Today</span>
-				<h4 class="mb-0 counter">6659</h4>
-				<i class="icon-bg" data-feather="calendar"></i>
+				<span class="m-0">All Agents' Enrolments Today</span>
+				<h4 class="mb-0 counter">
+					{{DB::table('consumer_data')
+					->select('select consumer_data.* from consumer_data')
+					// ->where('user.coordinator_id', '=', Auth::user()->id)
+					->whereDay('consumer_data.created_at', Carbon\Carbon::now()->day)
+					->leftjoin('user', 'user.coordinator_id','=','consumer_data.added_by')
+					->count();}}
+				</h4>
+				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
+			 </div><hr/>
+			 <div class="media-body">
+				<span class="m-0">My Enrolments Today</span>
+				<h4 class="mb-0 counter">{{App\Models\Consumer::where(['added_by' => Auth::user()->id])->whereDay('created_at', Carbon\Carbon::now()->day)->count();}}</h4>
+				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
 			 </div>
-		  </div>
+		  {{-- </div> --}}
 	   </div>
 	</div>
  </div>
@@ -191,28 +243,52 @@
  <div class="col-sm-6 col-xl-3 col-lg-6">
 	<div class="card o-hidden">
 	   <div class="bg-primary b-r-4 card-body">
-		  <div class="media static-top-widget">
-			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
+		  {{-- <div class="media static-top-widget">
+			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div> --}}
 			 <div class="media-body">
-				<span class="m-0">Enrolments This Week</span>
-				<h4 class="mb-0 counter">893</h4>
-				<i class="icon-bg" data-feather="calendar"></i>
+				<span class="m-0">All Agents' Enrolments This Week</span>
+				<h4 class="mb-0 counter">
+					{{DB::table('consumer_data')
+					->select('select consumer_data.* from consumer_data')
+					// ->where('user.coordinator_id', '=', Auth::user()->id)
+					->whereBetween('consumer_data.created_at', [Carbon\Carbon::now()->startOfWeek(), Carbon\Carbon::now()->endOfWeek()])
+					->leftjoin('user', 'user.coordinator_id','=','consumer_data.added_by')
+					->count();}}
+				</h4>
+				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
+			 </div><hr/>
+			 <div class="media-body">
+				<span class="m-0">My Enrolments This Week</span>
+				<h4 class="mb-0 counter">{{App\Models\Consumer::where(['added_by' => Auth::user()->id])->whereBetween('created_at', [Carbon\Carbon::now()->startOfWeek(), Carbon\Carbon::now()->endOfWeek()])->count()}}</h4>
+				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
 			 </div>
-		  </div>
+		  {{-- </div> --}}
 	   </div>
 	</div>
  </div>
  <div class="col-sm-6 col-xl-3 col-lg-6">
 	<div class="card o-hidden">
 	   <div class="bg-primary b-r-4 card-body">
-		  <div class="media static-top-widget">
-			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
+		  {{-- <div class="media static-top-widget">
+			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div> --}}
 			 <div class="media-body">
-				<span class="m-0">Enrolments This Week</span>
-				<h4 class="mb-0 counter">45631</h4>
-				<i class="icon-bg" data-feather="calendar"></i>
+				<span class="m-0">All Agents' Enrolments This Month</span>
+				<h4 class="mb-0 counter">
+					{{DB::table('consumer_data')
+					->select('select consumer_data.* from consumer_data')
+					// ->where('user.coordinator_id', '=', Auth::user()->id)
+					->whereMonth('consumer_data.created_at', Carbon\Carbon::now()->month)
+					->leftjoin('user', 'user.coordinator_id','=','consumer_data.added_by')
+					->count();}}
+				</h4>
+				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
+			 </div><hr/>
+			 <div class="media-body">
+				<span class="m-0">My Enrolments This Month</span>
+				<h4 class="mb-0 counter">{{App\Models\Consumer::where(['added_by' => Auth::user()->id])->whereMonth('created_at', Carbon\Carbon::now()->month)->count()}}</h4>
+				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
 			 </div>
-		  </div>
+		  {{-- </div> --}}
 	   </div>
 	</div>
  </div>
@@ -220,14 +296,25 @@
  <div class="col-sm-6 col-xl-3 col-lg-6">
 	<div class="card o-hidden">
 	   <div class="bg-secondary b-r-4 card-body">
-		  <div class="media static-top-widget">
-			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div>
+		  {{-- <div class="media static-top-widget">
+			 <div class="align-self-center text-center"><i data-feather="calendar"></i></div> --}}
 			 <div class="media-body">
-				<span class="m-0">Total Enrolments</span>
-				<h4 class="mb-0 counter">9856</h4>
-				<i class="icon-bg" data-feather="calendar"></i>
+				<span class="m-0">All Agents' Total Enrolments</span>
+				<h4 class="mb-0 counter">
+				{{DB::table('consumer_data')
+				->select('select consumer_data.* from consumer_data')
+				// ->where('user.coordinator_id', '=', Auth::user()->id)
+				->leftjoin('user', 'user.coordinator_id','=','consumer_data.added_by')
+				->count();}}</h4>
+				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
 			 </div>
-		  </div>
+			 <hr/>
+			 <div class="media-body">
+				<span class="m-0">My Total Enrolments</span>
+				<h4 class="mb-0 counter">{{App\Models\Consumer::where(['added_by' => Auth::user()->id])->count();}}</h4>
+				{{-- <i class="icon-bg" data-feather="calendar"></i> --}}
+			 </div>
+		  {{-- </div> --}}
 	   </div>
 	</div>
  </div>
@@ -410,36 +497,310 @@
 				</div>
 			</div>
 		</div> --}}
-		{{-- <div class="col-xl-3 xl-50 chart_data_right box-col-12">
+		{{-- <div class="col-xl-1 xl-40 chart_data_right box-col-6"> --}}
+
+			{{-- Data Agents Income Statistics --}}
+			@if (Auth::user()->role_id=="1" ?? null)
+			<div class="col-sm-6 col-xl-3 col-lg-6">
 			<div class="card">
 				<div class="card-body">
 					<div class="media align-items-center">
 						<div class="media-body right-chart-content">
-							<h4>$95,900<span class="new-box">Hot</span></h4>
-							<span>Purchase Order Value</span>
-						</div>
-						<div class="knob-block text-center">
-							<input class="knob1" data-width="10" data-height="70" data-thickness=".3" data-angleoffset="0" data-linecap="round" data-fgcolor="#7366ff" data-bgcolor="#eef5fb" value="60">
+							<h4>&#8358;{{number_format(App\Models\Consumer::where(['added_by' => Auth::user()->id])->whereDay('created_at', Carbon\Carbon::now()->day)->count()*(App\Models\Settings::select('agent_commission')->value('agent_commission')), 2)}}<span class="new-box"></span></h4>
+							<span>Earnings Today</span>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col-xl-3 xl-50 chart_data_right second d-none">
+		<div class="col-sm-6 col-xl-3 col-lg-6">
 			<div class="card">
 				<div class="card-body">
 					<div class="media align-items-center">
 						<div class="media-body right-chart-content">
-							<h4>$95,000<span class="new-box">New</span></h4>
-							<span>Product Order Value</span>
-						</div>
-						<div class="knob-block text-center">
-							<input class="knob1" data-width="50" data-height="70" data-thickness=".3" data-fgcolor="#7366ff" data-linecap="round" data-angleoffset="0" value="60">
+							<h4>&#8358;{{number_format(App\Models\Consumer::where(['added_by' => Auth::user()->id])->whereBetween('created_at', [Carbon\Carbon::now()->startOfWeek(), Carbon\Carbon::now()->endOfWeek()])->count()*(App\Models\Settings::select('agent_commission')->value('agent_commission')), 2)}}<span class="new-box"></span></h4>
+							<span>Earnings This Week</span>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div> --}}
+		</div>
+		<div class="col-sm-6 col-xl-3 col-lg-6">
+			<div class="card">
+				<div class="card-body">
+					<div class="media align-items-center">
+						<div class="media-body right-chart-content">
+							<h4>&#8358;{{number_format(App\Models\Consumer::where(['added_by' => Auth::user()->id])->whereMonth('created_at', Carbon\Carbon::now()->month)->count()*(App\Models\Settings::select('agent_commission')->value('agent_commission')), 2)}}<span class="new-box"></span></h4>
+							<span>Earnings This Month</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-xl-3 col-lg-6">
+			<div class="card">
+				<div class="card-body">
+					<div class="media align-items-center">
+						<div class="media-body right-chart-content">
+							<h4>&#8358; {{number_format(App\Models\Consumer::where(['added_by' => Auth::user()->id])->count()*(App\Models\Settings::select('agent_commission')->value('agent_commission')), 2)}}<span class="new-box"></span></h4>
+							<span>Total Earnings </span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		{{-- Coordinators Income Statistics --}}
+		@elseif (Auth::user()->role_id=="2" ?? null)
+		<div class="col-sm-6 col-xl-3 col-lg-6">
+			<div class="card">
+				<div class="card-body">
+					<div class="media align-items-center">
+						<div class="media-body right-chart-content">
+							<h4>&#8358;
+								{{-- {{number_format(DB::table('consumer_data')
+								->select('select consumer_data.* from consumer_data')
+								->where('user.coordinator_id', '=', Auth::user()->id)
+								->whereMonth('consumer_data.created_at', Carbon\Carbon::now()->month)
+								->leftjoin('user', 'user.coordinator_id','=','consumer_data.added_by')
+								->count()*(App\Models\Settings::select('agent_commission')->value('agent_commission')), 2)}} --}}
+								{{number_format(DB::table('consumer_data')
+								->selectRaw('SUM(consumer_data.commission) as cons')
+								->where('user.coordinator_id', '=', Auth::user()->id)
+								->whereMonth('consumer_data.created_at', Carbon\Carbon::now()->month)
+								->leftjoin('user', 'user.coordinator_id','=','consumer_data.added_by')
+								->value('cons'), 2);
+								}}
+								
+							<span class="new-box"></span></h4>
+							<span>My Agents' Earnings Today</span>
+						</div>
+					</div>
+				</div>
+<hr/>
+				<div class="card-body">
+					<div class="media align-items-center">
+						<div class="media-body right-chart-content">
+							<h4>&#8358;{{number_format(App\Models\Consumer::where(['added_by' => Auth::user()->id])->whereDay('created_at', Carbon\Carbon::now()->day)->count()*(App\Models\Settings::select('agent_commission')->value('agent_commission')), 2)}}<span class="new-box"></span></h4>
+							<span>My Earnings Today</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="col-sm-6 col-xl-3 col-lg-6">
+			<div class="card">
+				<div class="card-body">
+					<div class="media align-items-center">
+						<div class="media-body right-chart-content">
+							<h4>&#8358;
+								{{number_format(DB::table('consumer_data')
+								->selectRaw('SUM(consumer_data.commission) as cons')
+								->where('user.coordinator_id', '=', Auth::user()->id)
+								->whereBetween('consumer_data.created_at', [Carbon\Carbon::now()->startOfWeek(), Carbon\Carbon::now()->endOfWeek()])
+								->leftjoin('user', 'user.coordinator_id','=','consumer_data.added_by')
+								->value('cons'), 2);
+								}}
+							</h4>
+							<span>My Agents' Earnings This Week</span>
+						</div>
+					</div>
+				</div><hr/>
+				<div class="card-body">
+					<div class="media align-items-center">
+						<div class="media-body right-chart-content">
+							<h4>&#8358;{{number_format(App\Models\Consumer::where(['added_by' => Auth::user()->id])->whereBetween('created_at', [Carbon\Carbon::now()->startOfWeek(), Carbon\Carbon::now()->endOfWeek()])->count()*(App\Models\Settings::select('agent_commission')->value('agent_commission')), 2)}}<span class="new-box"></span></h4>
+							<span>My Earnings This Week</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-sm-6 col-xl-3 col-lg-6">
+			<div class="card">
+				<div class="card-body">
+					<div class="media align-items-center">
+						<div class="media-body right-chart-content">
+							<h4>&#8358;
+								{{number_format(DB::table('consumer_data')
+								->selectRaw('SUM(consumer_data.commission) as cons')
+								->where('user.coordinator_id', '=', Auth::user()->id)
+								->whereMonth('consumer_data.created_at', Carbon\Carbon::now()->month)
+								->leftjoin('user', 'user.coordinator_id','=','consumer_data.added_by')
+								->value('cons'), 2);
+								}}
+								</h4>
+							<span>My Agents' Earnings This Month</span>
+						</div>
+					</div>
+				</div><hr/>
+				<div class="card-body">
+					<div class="media align-items-center">
+						<div class="media-body right-chart-content">
+							<h4>&#8358;{{number_format(App\Models\Consumer::where(['added_by' => Auth::user()->id])->whereMonth('created_at', Carbon\Carbon::now()->month)->count()*(App\Models\Settings::select('agent_commission')->value('agent_commission')), 2)}}<span class="new-box"></span></h4>
+							<span>My Earnings This Month</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6 col-xl-3 col-lg-6">
+			<div class="card">
+				<div class="card-body">
+					<div class="media align-items-center">
+						<div class="media-body right-chart-content">
+							<h4>&#8358; 
+								{{number_format(DB::table('consumer_data')
+								->selectRaw('SUM(consumer_data.commission) as cons')
+								->where('user.coordinator_id', '=', Auth::user()->id)
+								// ->whereMonth('consumer_data.created_at', Carbon\Carbon::now()->month)
+								->leftjoin('user', 'user.coordinator_id','=','consumer_data.added_by')
+								->value('cons'), 2);
+								}}
+								</h4>
+							<span>My Agents' Total Earnings </span>
+						</div>
+					</div>
+				</div><hr/>
+				<div class="card-body">
+					<div class="media align-items-center">
+						<div class="media-body right-chart-content">
+							<h4>&#8358; {{number_format(App\Models\Consumer::where(['added_by' => Auth::user()->id])->count()*(App\Models\Settings::select('agent_commission')->value('agent_commission')), 2)}}<span class="new-box"></span></h4>
+							<span>My Total Earnings </span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+{{-- Admin Income Statistics --}}
+
+@elseif(Auth::user()->role_id=="3" ?? null)
+
+<div class="col-sm-6 col-xl-3 col-lg-6">
+	<div class="card">
+		<div class="card-body">
+			<div class="media align-items-center">
+				<div class="media-body right-chart-content">
+					<h4>&#8358;
+						{{number_format(DB::table('consumer_data')
+						->selectRaw('SUM(consumer_data.commission) as cons')
+						// ->where('user.coordinator_id', '=', Auth::user()->id)
+						->whereMonth('consumer_data.created_at', Carbon\Carbon::now()->month)
+						->leftjoin('user', 'user.coordinator_id','=','consumer_data.added_by')
+						->value('cons'), 2);
+						}}
+						
+					<span class="new-box"></span></h4>
+					<span>My Agents' Earnings Today</span>
+				</div>
+			</div>
+		</div>
+<hr/>
+		<div class="card-body">
+			<div class="media align-items-center">
+				<div class="media-body right-chart-content">
+					<h4>&#8358;{{number_format(App\Models\Consumer::where(['added_by' => Auth::user()->id])->whereDay('created_at', Carbon\Carbon::now()->day)->count()*(App\Models\Settings::select('agent_commission')->value('agent_commission')), 2)}}<span class="new-box"></span></h4>
+					<span>My Earnings Today</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<div class="col-sm-6 col-xl-3 col-lg-6">
+	<div class="card">
+		<div class="card-body">
+			<div class="media align-items-center">
+				<div class="media-body right-chart-content">
+					<h4>&#8358;
+						{{number_format(DB::table('consumer_data')
+						->selectRaw('SUM(consumer_data.commission) as cons')
+						// ->where('user.coordinator_id', '=', Auth::user()->id)
+						->whereBetween('consumer_data.created_at', [Carbon\Carbon::now()->startOfWeek(), Carbon\Carbon::now()->endOfWeek()])
+						->leftjoin('user', 'user.coordinator_id','=','consumer_data.added_by')
+						->value('cons'), 2);
+						}}
+					</h4>
+					<span>My Agents' Earnings This Week</span>
+				</div>
+			</div>
+		</div><hr/>
+		<div class="card-body">
+			<div class="media align-items-center">
+				<div class="media-body right-chart-content">
+					<h4>&#8358;{{number_format(App\Models\Consumer::where(['added_by' => Auth::user()->id])->whereBetween('created_at', [Carbon\Carbon::now()->startOfWeek(), Carbon\Carbon::now()->endOfWeek()])->count()*(App\Models\Settings::select('agent_commission')->value('agent_commission')), 2)}}<span class="new-box"></span></h4>
+					<span>My Earnings This Week</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="col-sm-6 col-xl-3 col-lg-6">
+	<div class="card">
+		<div class="card-body">
+			<div class="media align-items-center">
+				<div class="media-body right-chart-content">
+					<h4>&#8358;
+						{{number_format(DB::table('consumer_data')
+						->selectRaw('SUM(consumer_data.commission) as cons')
+						// ->where('user.coordinator_id', '=', Auth::user()->id)
+						->whereMonth('consumer_data.created_at', Carbon\Carbon::now()->month)
+						->leftjoin('user', 'user.coordinator_id','=','consumer_data.added_by')
+						->value('cons'), 2);
+						}}
+						</h4>
+					<span>My Agents' Earnings This Month</span>
+				</div>
+			</div>
+		</div><hr/>
+		<div class="card-body">
+			<div class="media align-items-center">
+				<div class="media-body right-chart-content">
+					<h4>&#8358;{{number_format(App\Models\Consumer::where(['added_by' => Auth::user()->id])->whereMonth('created_at', Carbon\Carbon::now()->month)->count()*(App\Models\Settings::select('agent_commission')->value('agent_commission')), 2)}}<span class="new-box"></span></h4>
+					<span>My Earnings This Month</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="col-sm-6 col-xl-3 col-lg-6">
+	<div class="card">
+		<div class="card-body">
+			<div class="media align-items-center">
+				<div class="media-body right-chart-content">
+					<h4>&#8358; 
+						{{number_format(DB::table('consumer_data')
+						->selectRaw('SUM(consumer_data.commission) as cons')
+						// ->where('user.coordinator_id', '=', Auth::user()->id)
+						// ->whereMonth('consumer_data.created_at', Carbon\Carbon::now()->month)
+						->leftjoin('user', 'user.coordinator_id','=','consumer_data.added_by')
+						->value('cons'), 2);
+						}}
+						</h4>
+					<span>My Agents' Total Earnings </span>
+				</div>
+			</div>
+		</div><hr/>
+		<div class="card-body">
+			<div class="media align-items-center">
+				<div class="media-body right-chart-content">
+					<h4>&#8358; {{number_format(App\Models\Consumer::where(['added_by' => Auth::user()->id])->count()*(App\Models\Settings::select('agent_commission')->value('agent_commission')), 2)}}<span class="new-box"></span></h4>
+					<span>My Total Earnings </span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@endif
 		{{-- <div class="col-xl-4 xl-50 news box-col-6">
 			<div class="card">
 				<div class="card-header">

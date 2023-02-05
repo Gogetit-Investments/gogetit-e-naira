@@ -80,8 +80,8 @@
 						</a>
 						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;' }}">
 		                    <li><a href="{{route('consumer-list.show')}}" class="{{ Route::currentRouteName()=='consumer' ? 'active' : '' }}">Consumer List</a></li>
-		                    <li><a href="{{route('consumer.upload')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Upload Consumers</a></li>
-							<li><a href="{{route('consumer_single.show')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Bulk Upload Consumers</a></li>
+							<li><a href="{{route('consumer_single.show')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Upload Single Consumer</a></li>
+		                    <li><a href="{{route('consumer.upload')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Bulk Upload Consumers</a></li>
 		                </ul>
 					</li>
 
@@ -92,8 +92,9 @@
 							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/consumer' ? 'down' : 'right' }}"></i></div>
 						</a>
 						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;' }}">
-		                    <li><a href="#" class="{{ Route::currentRouteName()=='merchant' ? 'active' : '' }}">My Merchant List</a></li>
-		                    <li><a href="#" class="{{ Route::currentRouteName()=='merchant-upload' ? 'active' : '' }}">Upload My Merchants</a></li>
+		                    <li><a href="{{route('consumer-list.show')}}" class="{{ Route::currentRouteName()=='consumer' ? 'active' : '' }}">Consumer List</a></li>
+							<li><a href="{{route('consumer_single.show')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Upload Single Consumer</a></li>
+		                    <li><a href="{{route('consumer.upload')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Bulk Upload Consumers</a></li>
 		                </ul>
 					</li>
 
@@ -120,14 +121,14 @@
 
 					<li class="sidebar-list">
 						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
-						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/user' ? 'active' : '' }}" href="#">
+						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/user' ? 'active' : '' }}" href="/my-agents">
 							<i data-feather="users"></i><span>My Agents </span>
-							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/user' ? 'down' : 'right' }}"></i></div>
+							{{-- <div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/user' ? 'down' : 'right' }}"></i></div> --}}
 						</a>
-						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/user' ? 'block;' : 'none;' }}">
+						{{-- <ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/user' ? 'block;' : 'none;' }}">
 		                    <li><a href="{{route('user-list.show')}}" class="{{ Route::currentRouteName()=='user' ? 'active' : '' }}">User List</a></li>
 		                    <li><a href="{{route('create.user')}}" class="{{ Route::currentRouteName()=='create-user' ? 'active' : '' }}">Create New User</a></li>
-		                </ul>
+		                </ul> --}}
 					</li>
 
 					<li class="sidebar-list">
@@ -196,7 +197,7 @@
 							<div class="according-menu"><i class="fa fa-angle-{{request()->route()->getPrefix() == '/consumer' ? 'down' : 'right' }}"></i></div>
 						</a>
 						<ul class="sidebar-submenu" style="display: {{ request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;' }}">
-		                    		                    <li><a href="{{route('consumer-list.show')}}" class="{{ Route::currentRouteName()=='consumer' ? 'active' : '' }}">Consumer List</a></li>
+		                    <li><a href="{{route('consumer-list.show')}}" class="{{ Route::currentRouteName()=='consumer' ? 'active' : '' }}">Consumer List</a></li>
 							<li><a href="{{route('consumer_single.show')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Upload Single Consumer</a></li>
 		                    <li><a href="{{route('consumer.upload')}}" class="{{ Route::currentRouteName()=='projectcreate' ? 'active' : '' }}">Bulk Upload Consumers</a></li>
 		                </ul>
@@ -231,6 +232,21 @@
 						</a>
 					</li>
 				
+					<li class="sidebar-list">
+						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
+						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/settings' ? 'active' : '' }}" href="/settings-list">
+							<i data-feather="settings"></i><span>Settings </span>
+							{{-- <div class="according-menu"><i class=""></i></div> --}}
+						</a>
+					</li>
+
+					<li class="sidebar-list">
+						{{-- <label class="badge badge-danger">{{ trans('lang.New') }}</label> --}}
+						<a class="sidebar-link sidebar-title {{request()->route()->getPrefix() == '/settings' ? 'active' : '' }}" href="/search">
+							<i data-feather="book"></i><span>Reports </span>
+							{{-- <div class="according-menu"><i class=""></i></div> --}}
+						</a>
+					</li>
 
 					@endif
 					

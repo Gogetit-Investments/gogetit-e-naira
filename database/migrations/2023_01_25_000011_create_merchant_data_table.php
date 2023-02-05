@@ -46,6 +46,7 @@ class CreateMerchantDataTable extends Migration
             $table->string('state_of_origin', 32)->references('state_code')->on('state');
             // $table->string('account_name', 100)->nullable();
             $table->unsignedInteger('bank_id')->nullable();
+            $table->double('commission')->nullable();
             $table->unsignedInteger('added_by')->nullable();
             // $table->unsignedInteger('lga')->nullable();
             // $table->unsignedInteger('state_of_origin')->nullable();

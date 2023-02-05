@@ -41,8 +41,8 @@
 						</a>
 						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;'); ?>">
 		                    <li><a href="<?php echo e(route('consumer-list.show')); ?>" class="<?php echo e(Route::currentRouteName()=='consumer' ? 'active' : ''); ?>">Consumer List</a></li>
-		                    <li><a href="<?php echo e(route('consumer.upload')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Upload Consumers</a></li>
-							<li><a href="<?php echo e(route('consumer_single.show')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Bulk Upload Consumers</a></li>
+							<li><a href="<?php echo e(route('consumer_single.show')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Upload Single Consumer</a></li>
+		                    <li><a href="<?php echo e(route('consumer.upload')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Bulk Upload Consumers</a></li>
 		                </ul>
 					</li>
 
@@ -53,8 +53,9 @@
 							<div class="according-menu"><i class="fa fa-angle-<?php echo e(request()->route()->getPrefix() == '/consumer' ? 'down' : 'right'); ?>"></i></div>
 						</a>
 						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;'); ?>">
-		                    <li><a href="#" class="<?php echo e(Route::currentRouteName()=='merchant' ? 'active' : ''); ?>">My Merchant List</a></li>
-		                    <li><a href="#" class="<?php echo e(Route::currentRouteName()=='merchant-upload' ? 'active' : ''); ?>">Upload My Merchants</a></li>
+		                    <li><a href="<?php echo e(route('consumer-list.show')); ?>" class="<?php echo e(Route::currentRouteName()=='consumer' ? 'active' : ''); ?>">Consumer List</a></li>
+							<li><a href="<?php echo e(route('consumer_single.show')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Upload Single Consumer</a></li>
+		                    <li><a href="<?php echo e(route('consumer.upload')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Bulk Upload Consumers</a></li>
 		                </ul>
 					</li>
 
@@ -81,14 +82,11 @@
 
 					<li class="sidebar-list">
 						
-						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/user' ? 'active' : ''); ?>" href="#">
+						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/user' ? 'active' : ''); ?>" href="/my-agents">
 							<i data-feather="users"></i><span>My Agents </span>
-							<div class="according-menu"><i class="fa fa-angle-<?php echo e(request()->route()->getPrefix() == '/user' ? 'down' : 'right'); ?>"></i></div>
+							
 						</a>
-						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/user' ? 'block;' : 'none;'); ?>">
-		                    <li><a href="<?php echo e(route('user-list.show')); ?>" class="<?php echo e(Route::currentRouteName()=='user' ? 'active' : ''); ?>">User List</a></li>
-		                    <li><a href="<?php echo e(route('create.user')); ?>" class="<?php echo e(Route::currentRouteName()=='create-user' ? 'active' : ''); ?>">Create New User</a></li>
-		                </ul>
+						
 					</li>
 
 					<li class="sidebar-list">
@@ -157,7 +155,7 @@
 							<div class="according-menu"><i class="fa fa-angle-<?php echo e(request()->route()->getPrefix() == '/consumer' ? 'down' : 'right'); ?>"></i></div>
 						</a>
 						<ul class="sidebar-submenu" style="display: <?php echo e(request()->route()->getPrefix() == '/consumer' ? 'block;' : 'none;'); ?>">
-		                    		                    <li><a href="<?php echo e(route('consumer-list.show')); ?>" class="<?php echo e(Route::currentRouteName()=='consumer' ? 'active' : ''); ?>">Consumer List</a></li>
+		                    <li><a href="<?php echo e(route('consumer-list.show')); ?>" class="<?php echo e(Route::currentRouteName()=='consumer' ? 'active' : ''); ?>">Consumer List</a></li>
 							<li><a href="<?php echo e(route('consumer_single.show')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Upload Single Consumer</a></li>
 		                    <li><a href="<?php echo e(route('consumer.upload')); ?>" class="<?php echo e(Route::currentRouteName()=='projectcreate' ? 'active' : ''); ?>">Bulk Upload Consumers</a></li>
 		                </ul>
@@ -192,6 +190,21 @@
 						</a>
 					</li>
 				
+					<li class="sidebar-list">
+						
+						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/settings' ? 'active' : ''); ?>" href="/settings-list">
+							<i data-feather="settings"></i><span>Settings </span>
+							
+						</a>
+					</li>
+
+					<li class="sidebar-list">
+						
+						<a class="sidebar-link sidebar-title <?php echo e(request()->route()->getPrefix() == '/settings' ? 'active' : ''); ?>" href="/search">
+							<i data-feather="book"></i><span>Reports </span>
+							
+						</a>
+					</li>
 
 					<?php endif; ?>
 					

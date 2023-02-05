@@ -40,17 +40,24 @@ $string = str_shuffle($pin);
             'tier_id' => 'int',
             'bvn' => 'string',
             'nin' => 'string',
-            'first_name' => 'string',
-            'last_name' => 'string',
-            'middle_name' => 'string',
             'phone_number' => 'string',
             'title_code' => 'string',
+            'last_name' => 'string',
+            'first_name' => 'string',
+            'middle_name' => 'string',
+            'postal_code' => 'string',
+            'contact_address' => 'string',
+            'city' => 'string',
             'lga' => 'string',
             'state_code' => 'string',
             'country' => 'string',
-            'state_of_birth' => 'string',
+            'dob' => 'string',
             'country_of_birth' => 'string',
+            'state_of_birth' => 'string',
+            'referral_code' => 'string',
+            'commission' => 'string'
             // 'added_by' =>  Auth::user()->id,
         ];
     }
 }
+

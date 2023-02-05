@@ -34,6 +34,7 @@ class RegisterRequest extends FormRequest
             'last_name' => 'string',
             'other_names' => 'string|nullable',
             'role_id' => 'int',
+            'coordinator_id' => 'int',
         ];
     }
 }

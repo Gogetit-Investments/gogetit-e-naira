@@ -29,10 +29,17 @@ class RegisterController extends Controller
         return view('pages.user.create-user');
     }
 
+    public function create_agent()
+    {
+        return view('pages.user.create-agent');
+    }
+
     public function edit_profile()
     {
         return view('pages.user.edit-profile');
     }
+
+
 
     // public function changePasswordPost(Request $request) {
     //     if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
@@ -100,6 +107,7 @@ class RegisterController extends Controller
         $last_name=$push['last_name'];
         $password=$push['password'];
         $phone_number=$push['phone_number'];
+        $coordinator_id=$push['coordinator_id'];
         
         
         
@@ -110,6 +118,41 @@ class RegisterController extends Controller
 
         return back()->with('success', "Thanks Admin. This account has been successfully registered. Kindly ask the user to check their email for login details");
     }
+
+
+
+    public function register_agent(Request $request)
+  {
+    $this->validate($request, [
+      'phone_number' => 'required|string',
+    ]);
+    $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+								
+    // generate a pin based on 2 * 7 digits + a random character
+    $pin = mt_rand(1000, 9999)
+        . mt_rand(1000, 9999)
+        . $characters[rand(0, strlen($characters) - 1)];
+    
+    // shuffle the result
+    $password = str_shuffle($pin);
+
+    // \Log::info($request->all());
+    $agent = new User();
+    $agent->email = $request->email;
+    $agent->first_name = $request->first_name;
+    $agent->last_name = $request->last_name;
+    $agent->other_names = $request->other_names;
+    $agent->phone_number = $request->phone_number;
+    $agent->username = $request->phone_number;
+    $agent->role_id = "1";
+    $agent->coordinator_id = auth()->id();
+    $agent->password = $password;
+
+    $agent->save();
+    Mail::to($request->email)->send(new SignupMail($request->email, $request->first_name, $request->last_name, $password, $request->phone_number));
+    return back()->with('success', "Agent successfully registered.");
+  }
+
 
     public function allUsers()
     {
@@ -123,5 +166,13 @@ class RegisterController extends Controller
         return view('pages.user.user-list', compact('users') );
 
     }
+
+
+    public function my_agents()
+    {
+        $agents = User::query()->where('coordinator_id', '=', Auth::user()->id)->get();
+        return view('pages.user.my-agents', compact('agents'));
+    }
+
 
 }

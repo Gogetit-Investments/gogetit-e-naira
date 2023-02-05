@@ -1,6 +1,7 @@
 <?php
 namespace App\Imports;
 use App\Models\Consumer;
+use App\Models\Settings;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -45,6 +46,10 @@ $pin = mt_rand(1000000, 9999999)
 // shuffle the result
 $string = str_shuffle($pin);
 
+$commission = Settings::select('agent_commission')->value('agent_commission');
+$referral_code = Settings::select('referral_code')->value('referral_code');
+// $consumer->added_by = auth()->id();
+
         return new Consumer([
             'registration_number' => $string,
             'tier_id'     => $row[0],
@@ -64,7 +69,8 @@ $string = str_shuffle($pin);
             'dob'    => $row[14],
             'country_of_birth'    => $row[15],
             'state_of_birth'    => $row[16],
-            'referral_code'    => $row[17],
+            'referral_code'    => $referral_code,
+            'commission' => $commission,
             'added_by' =>  Auth::user()->id,
 
             // 'added_by' => Hash::make($row[5])

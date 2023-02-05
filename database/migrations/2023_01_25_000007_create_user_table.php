@@ -36,12 +36,14 @@ class CreateUserTable extends Migration
             $table->string('phone_number')->nullable();
             $table->string('status', 45)->default('ACTIVE');
             $table->unsignedInteger('added_by')->nullable();
+            $table->unsignedInteger('coordinator_id')->nullable();
             $table->unique(["email"], 'email_UNIQUE');
             $table->unique(["username"], 'username_UNIQUE');
             $table->unique(["phone_number"], 'phoneNumber_UNIQUE');
 
             $table->index(["role_id"], 'roleId_idx');
             $table->index(["added_by"], 'addedBy_idx5');
+            $table->index(["coordinator_id"], 'coordinator_Id');
             $table->softDeletes();
             $table->nullableTimestamps();
 
@@ -52,6 +54,11 @@ class CreateUserTable extends Migration
                 ->onUpdate('no action');
 
                 $table->foreign('added_by', 'addedBy_idx5')
+                ->references('id')->on('user')
+                ->onDelete('no action')
+                ->onUpdate('no action');
+
+                $table->foreign('coordinator_id', 'coordinator_Id')
                 ->references('id')->on('user')
                 ->onDelete('no action')
                 ->onUpdate('no action');

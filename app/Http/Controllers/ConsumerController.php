@@ -13,7 +13,7 @@ use DB;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ConsumerImport;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Settings;
 use App\Utilities\AppConstants;
 use App\Utilities\AppHelpers;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -159,7 +159,9 @@ $string = str_shuffle($pin);
     $consumer->contact_address = $request->contact_address;
     $consumer->postal_code = $request->postal_code;
     $consumer->city = $request->city;
-
+    
+    $consumer->commission = Settings::select('agent_commission')->value('agent_commission');
+    $consumer->referral_code = Settings::select('referral_code')->value('referral_code');
     $consumer->added_by = auth()->id();
 
     $consumer->save();
@@ -169,15 +171,8 @@ $string = str_shuffle($pin);
 
     public function allConsumers()
     {
-
-    // $consumers = Consumer::query()
-    // ->select('state.state_name')
-    // ->leftjoin('state', 'state.state_code','=', 'consumer_data.state_code')
-    // ->orderBy('consumer_data.created_at', 'desc')->get();
-    // DB::raw("CONCAT(user.first_name, ' ', user.last_name) as addedby"),
-    
     $consumers = Consumer::query()
-    ->where('added_by', '=', Auth::user()->id)
+    // ->where('added_by', '=', Auth::user()->id)
     ->with(['state_of_residence' => function ($query) {$query->select('state_code', 'state_name as state_of_residence');}])
     ->with(['state_of_origin' => function ($query) {$query->select('state_code', 'state_name as state_of_birth');}])
     ->with(['tier_info' => function ($query) {$query->select('code', 'description as tier_name');}])
@@ -185,16 +180,6 @@ $string = str_shuffle($pin);
     ->with(['country_info' => function ($query) {$query->select('country_code', 'country_name as country_of_residence');}])
     ->with(['country_of_origin' => function ($query) {$query->select('country_code', 'country_name as country_of_birth');}])
     ->get();
-
-        // $consumers = DB::table('consumer_data')
-        // ->select('consumer_data.*', 'user.first_name', 'user.last_name',  'state.state_name as state', )
-        //     ->leftjoin('user', 'user.id', '=', 'consumer_data.added_by')
-        //     // ->leftjoin('tier', 'tier.code', '=', 'consumer_data.tier_id')
-        //     ->leftjoin('state', 'state.state_code', '=', 'consumer_data.state_code')
-        //     ->leftjoin('tier', 'tier.code', '=', 'consumer_data.tier_id')
-        //     ->where('consumer_data.added_by','=', Auth::user()->id)
-        //     ->get();
-// return $users;
         return view('pages.consumer-data.consumer-list', compact('consumers') );
 
     }

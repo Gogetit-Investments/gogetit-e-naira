@@ -9,13 +9,13 @@
 @endsection
 <br/>
 @section('breadcrumb-title')
-<h3>Users</h3>
+<h3>Agents</h3>
 @endsection
 
-@section('breadcrumb-items')
+{{-- @section('breadcrumb-items')
 <li class="breadcrumb-item">Users</li>
-<li class="breadcrumb-item active">New User Upload Form</li>
-@endsection
+<li class="breadcrumb-item active">New Agent Upload Form</li>
+@endsection --}}
 
 @section('content')
 <div class="container-fluid">
@@ -25,11 +25,11 @@
 				<div class="col-sm-12">
 					<div class="card">
 						<div class="card-header">
-							<h5>New User Upload Form</h5>
-							<span>Only an authorized admin is permitted to do this</span>
+							<h5>New Agent Upload Form</h5>
+							<span>Only an authorized Coordinator is permitted to do this</span>
 						</div>
 						<div class="card-body">
-							<form class="theme-form" action="{{route('register.perform')}}" method="POST">
+							<form class="theme-form" action="{{route('register_agent.perform')}}" method="POST">
 								@csrf
 								{{-- <div class="mb-3">
 									<label class="col-form-label pt-0" for="exampleInputEmail1">Username</label>
@@ -45,18 +45,7 @@
 								  {{ @session('error') }}  
 								</div>
 								@endif
-								<?php
-								// Available alpha caracters
-								$characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-								
-								// generate a pin based on 2 * 7 digits + a random character
-								$pin = mt_rand(1000, 9999)
-									. mt_rand(1000, 9999)
-									. $characters[rand(0, strlen($characters) - 1)];
-								
-								// shuffle the result
-								$string = str_shuffle($pin);
-								?>
+						
 								<div class="mb-3">
 									<label class="col-form-label pt-0" for="exampleInputEmail1">Email address</label>
 									<input class="form-control " id="exampleInputEmail1" type="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
@@ -67,8 +56,8 @@
 									@endif
 								</div>
 
-								<input class="form-control" id="exampleInputPassword1" type="hidden" name="password" value="<?php echo $string ?>">
-								<input class="form-control" id="exampleInputPassword1" type="hidden" name="password_confirmation" value="<?php echo $string ?>">
+								{{-- <input class="form-control" id="exampleInputPassword1" type="hidden" name="password" value="<?php echo $string ?>">
+								<input class="form-control" id="exampleInputPassword1" type="hidden" name="password_confirmation" value="<?php echo $string ?>"> --}}
 								{{-- <div class="mb-3">
 									<label class="col-form-label pt-0" for="exampleInputPassword1">Password</label>
 								</div>
@@ -129,7 +118,7 @@
 									</i>
 									@endif
 								</div>
-								<div class="mb-2">
+								{{-- <div class="mb-2">
 									<div class="col-form-label">Assign Role</div>
 									<select class="js-example-basic-single col-sm-12" name="role_id">
 										<optgroup label="Roles">
@@ -155,7 +144,7 @@
 										</optgroup>
 
 									</select>
-								</div>
+								</div> --}}
 
 								{{-- <div class="checkbox p-0">
 									<input id="dafault-checkbox" type="checkbox">

@@ -51,6 +51,7 @@ class CreateConsumerDataTable extends Migration
             $table->string('state_of_birth', 32)->references('state_code')->on('state');
             // $table->unsignedInteger('state_of_origin')->nullable();
             $table->string('referral_code', 45)->nullable();
+            $table->double('commission')->nullable();
             $table->unsignedInteger('added_by')->nullable();
 
             // $table->unique(["tier_id"], 'tier_id_UNIQUE');

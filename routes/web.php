@@ -11,7 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ConsumerController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DropdownController;
-
+use App\Http\Controllers\SearchQueryController;
 
 // use App\Mail\SignupMail;
 // use Illuminate\Support\Facades\Mail;
@@ -393,8 +393,10 @@ Route::post('consumer_single-upload', [ConsumerController::class, 'register'])->
 
 Route::get('edit-profile', [RegisterController::class, 'edit_profile'])->name('edit.profile');
 Route::get('create-user', [RegisterController::class, 'create_user'])->name('create.user');
+Route::get('new-agent', [RegisterController::class, 'create_agent'])->name('create.agent');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.perform');
-
+Route::get('my-agents', [RegisterController::class, 'my_agents'])->name('my-agents.show');
+Route::post('/register-agent', [RegisterController::class, 'register_agent'])->name('register_agent.perform');
 
 Route::get('user-list', [RegisterController::class, 'allUsers'])->name('user-list.show');
 
@@ -425,3 +427,10 @@ Route::get('download-template', [ConsumerController::class, 'download_templates'
 Route::get('dependent-dropdown', [DropdownController::class, 'index']);
 Route::post('api/fetch-states', [DropdownController::class, 'fetchState']);
 Route::post('api/fetch-cities', [DropdownController::class, 'fetchCity']);
+
+Route::get('settings-list', [HomeController::class, 'settings_list'])->name('settings.list');
+Route::get('settings-edit/{id}', [HomeController::class, 'settings'])->name('settings.show');
+Route::post('update-settings/{id}', [HomeController::class, 'updateSettings'])->name('settings.update');
+
+
+Route::get('/search', [SearchQueryController::class, 'search'])->name('search');
