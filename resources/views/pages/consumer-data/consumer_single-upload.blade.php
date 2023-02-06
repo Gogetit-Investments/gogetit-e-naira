@@ -8,14 +8,14 @@
 @section('style')
 @endsection
 <br/>
-@section('breadcrumb-title')
+{{-- @section('breadcrumb-title')
 <h3>Users</h3>
 @endsection
 
 @section('breadcrumb-items')
 <li class="breadcrumb-item">Consumers</li>
 <li class="breadcrumb-item active">New Consumer Upload Form</li>
-@endsection
+@endsection --}}
 
 @section('content')
 <div class="container-fluid">

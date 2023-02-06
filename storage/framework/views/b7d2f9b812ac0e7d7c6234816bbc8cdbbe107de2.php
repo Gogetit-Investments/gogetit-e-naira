@@ -17,7 +17,7 @@
                   <form class="theme-form"  action="<?php echo e(route('login.perform')); ?>" method="POST">
                      <?php echo csrf_field(); ?>
                      <img  src="<?php echo e(asset('assets/images/Gogetit-logo2.png')); ?>" alt="Gogetit Logo" width="200px"><br/><br/>
-                     <h4>Welcome to Gogetit e-Naira Data Agents Portal</h4>
+                     <h4>Welcome to <?php echo e(App\Models\Settings::select('app_name')->value('app_name')); ?></h4>
                      <p>Enter your email & password to continue</p>
                      <?php if(session('success')): ?>
           <div class="alert alert-success dark" role="alert">

@@ -7,14 +7,7 @@
 <?php $__env->startSection('style'); ?>
 <?php $__env->stopSection(); ?>
 <br/>
-<?php $__env->startSection('breadcrumb-title'); ?>
-<h3>Users</h3>
-<?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('breadcrumb-items'); ?>
-<li class="breadcrumb-item">Consumers</li>
-<li class="breadcrumb-item active">New Consumer Upload Form</li>
-<?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
 <div class="container-fluid">

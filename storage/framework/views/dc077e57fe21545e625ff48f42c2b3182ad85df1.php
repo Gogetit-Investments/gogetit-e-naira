@@ -21,7 +21,7 @@
     </div>
     <div class="left-header col horizontal-wrapper ps-0">
       <ul class="horizontal-menu">
-        <h3>Gogetit eNaira Data Agents Portal</h3>
+        <h3><?php echo e(App\Models\Settings::select('app_name')->value('app_name')); ?></h3>
         
         
       </ul>

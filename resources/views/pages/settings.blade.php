@@ -7,10 +7,10 @@
 @section('style')
 @endsection
 <br/>
-@section('breadcrumb-title')
+{{-- @section('breadcrumb-title')
 
 <h3>Settings</h3>
-@endsection
+@endsection --}}
 
 
 

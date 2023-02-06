@@ -10,14 +10,14 @@
 @section('style')
 @endsection
 <br/>
-@section('breadcrumb-title')
+{{-- @section('breadcrumb-title')
 <h3>Consumers Bulk Upload</h3>
 @endsection
 
 @section('breadcrumb-items')
 <li class="breadcrumb-item">Consumers</li>
 <li class="breadcrumb-item active">Bulk Upload</li>
-@endsection
+@endsection --}}
 {{-- <form action="{{route('consumer.upload')}}" method="POST" > --}}
 @section('content')
 <div class="container-fluid">
@@ -106,7 +106,7 @@
             <div class="row">
               <div class="col">
                 <div class="mb-3">
-                  <label>Upload consumer list</label>
+                  <label>Bulk Upload consumer list</label>
                   @if(session('success'))
                   <div class="alert alert-success dark" role="alert">
                     {{ @session('success') }}  

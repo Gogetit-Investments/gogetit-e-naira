@@ -8,9 +8,9 @@
 @section('style')
 @endsection
 <br/>
-@section('breadcrumb-title')
+{{-- @section('breadcrumb-title')
 <h3>Agents</h3>
-@endsection
+@endsection --}}
 
 {{-- @section('breadcrumb-items')
 <li class="breadcrumb-item">Users</li>

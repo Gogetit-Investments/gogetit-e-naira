@@ -7,7 +7,7 @@
 @section('style')
 @endsection
 <br/>
-@section('breadcrumb-title')
+{{-- @section('breadcrumb-title')
 
 <h3>Edit Profile</h3>
 @endsection
@@ -15,7 +15,7 @@
 @section('breadcrumb-items')
 <li class="breadcrumb-item">Users</li>
 <li class="breadcrumb-item active">Edit Profile</li>
-@endsection
+@endsection --}}
 
 @section('content')
 <div class="container-fluid">
