@@ -175,4 +175,10 @@ class RegisterController extends Controller
     }
 
 
+    public function delete_user($id)
+    {
+        // DB::table('user')->where('id', $request->$id)->delete();
+        DB::delete('delete from user where id = ?',[$id]);
+        return back()->with('success', "User successfully deleted.");
+    }
 }

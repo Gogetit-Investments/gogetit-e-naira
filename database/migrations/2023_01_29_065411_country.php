@@ -21,9 +21,7 @@ class Country extends Migration
             $table->string('country_name', 45)->nullable();
             $table->softDeletes();
             $table->nullableTimestamps();
-
-
-        });
+            });
     }
 
     /**

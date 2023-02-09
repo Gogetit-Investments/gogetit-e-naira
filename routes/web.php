@@ -399,6 +399,7 @@ Route::get('my-agents', [RegisterController::class, 'my_agents'])->name('my-agen
 Route::post('/register-agent', [RegisterController::class, 'register_agent'])->name('register_agent.perform');
 
 Route::get('user-list', [RegisterController::class, 'allUsers'])->name('user-list.show');
+Route::get('delete_user/{id}', [RegisterController::class, 'delete_user'])->name('delete_user.show');
 
 Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
 Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 

@@ -36,14 +36,14 @@ class CreateMerchantDataTable extends Migration
             $table->string('director_phone_number', 45)->nullable();
             $table->string('director_email', 45)->nullable();
             $table->string('city', 100)->nullable();
-            $table->string('state_code', 32)->references('state_code')->on('state');
-            $table->string('lga', 32)->references('lga_code')->on('lga');
+            $table->string('state_code', 32)->references('state_code')->on('state')->nullable();
+            $table->string('lga', 32)->references('lga_code')->on('lga')->nullable();
             $table->string('address', 200)->nullable();
             // $table->unsignedInteger('state')->nullable();
             // $table->string('country', 45)->nullable();
-            $table->string('country', 32)->references('country_code')->on('country');
+            $table->string('country', 32)->references('country_code')->on('country')->nullable();
             $table->integer('account_number')->nullable();
-            $table->string('state_of_origin', 32)->references('state_code')->on('state');
+            $table->string('state_of_origin', 32)->references('state_code')->on('state')->nullable();
             // $table->string('account_name', 100)->nullable();
             $table->unsignedInteger('bank_id')->nullable();
             $table->double('commission')->nullable();

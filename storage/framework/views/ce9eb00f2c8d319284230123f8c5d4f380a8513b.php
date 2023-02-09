@@ -8,15 +8,7 @@
 <?php $__env->startSection('style'); ?>
 <?php $__env->stopSection(); ?>
 <br/>
-<?php $__env->startSection('breadcrumb-title'); ?>
 
-<h3>Users</h3>
-<?php $__env->stopSection(); ?>
-
-<?php $__env->startSection('breadcrumb-items'); ?>
-<li class="breadcrumb-item">Users</li>
-<li class="breadcrumb-item active">Users List</li>
-<?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
 <div class="container-fluid">
@@ -49,11 +41,31 @@
 									<th>Phone Number</th>
 									
 									<th>Added By</th>
-									<th>Created Date</th>
+									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php $__empty_1 = true; $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+								<div class="modal fade" id="exampleModal-<?php echo e($user->id); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog" role="document">
+									   <div class="modal-content">
+										  <div class="modal-header">
+											 <h5 class="modal-title" id="exampleModalLabel">Delete User <?php echo e($user->username); ?></h5>
+											 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+										  </div>
+										  <div class="modal-body"><h2>You are about to delete: <br/><?php echo e($user->first_name); ?> <?php echo e($user->last_name); ?>?</h2>
+										<br/><h4>Are you sure?</h4>
+										</div>
+										  <div class="modal-footer">
+											
+											
+											 <a href="delete_user/<?php echo e($user->id); ?>"> <button class="btn btn-secondary" type="submit">Delete User</button></a>
+											  
+											 <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button>
+										  </div>
+									   </div>
+									</div>
+								 </div>
 								<tr>
 									<td><?php echo e($user->username); ?></td>
 									<td><?php echo e($user->email); ?></td>
@@ -61,16 +73,21 @@
 									<td><?php echo e($user->phone_number); ?></td>
 									<td><?php echo e($user->first_name); ?></td>
 									<td><?php echo e($user->created_at); ?></td>
+									<td><button class="btn btn-square btn-secondary" type="button" data-bs-toggle="modal" data-original-title="test" data-bs-target="#exampleModal-<?php echo e($user->id); ?>">Delete User</button></td>
 								</tr>
+
+
+								
+							
 
 								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 								<tr>
 									<td colspan="5" style="color:red">Oops! No users registered yet</td>
 								  </tr>
 								<?php endif; ?>
-								
+				
 							</tbody>
-							
+		
 						</table>
 					</div>
 				</div>
