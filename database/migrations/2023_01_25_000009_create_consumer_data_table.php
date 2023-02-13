@@ -27,9 +27,9 @@ class CreateConsumerDataTable extends Migration
             $table->increments('id');
             $table->string('registration_number', 45)->nullable();
             // $table->unsignedInteger('tier_id');
-            $table->string('tier_id', 32)->references('code')->on('tier')->nullable();
-            $table->integer('bvn')->nullable();
-            $table->integer('nin')->nullable();
+            // $table->string('tier_id', 32)->references('code')->on('tier')->nullable();
+            // $table->integer('bvn')->nullable();
+            // $table->integer('nin')->nullable();
             $table->string('phone_number');
             // $table->string('title', 45)->nullable();
             $table->string('title_code', 32)->references('code')->on('title');
@@ -57,9 +57,9 @@ class CreateConsumerDataTable extends Migration
             // $table->unique(["tier_id"], 'tier_id_UNIQUE');
 
             $table->unique(["registration_number"], 'registration_number_UNIQUE');
-            $table->unique(["bvn"], 'bvn_UNIQUE');
+            // $table->unique(["bvn"], 'bvn_UNIQUE');
             $table->unique(["phone_number"], 'phone_number_UNIQUE');
-            $table->unique(["nin"], 'nin_UNIQUE');
+            // $table->unique(["nin"], 'nin_UNIQUE');
 
             $table->index(["added_by"], 'addedBy_idx2');
 
@@ -71,6 +71,7 @@ class CreateConsumerDataTable extends Migration
             // $table->index(["state_of_origin"], 'state_of_origin_idx');
             $table->softDeletes();
             $table->nullableTimestamps();
+            
 
 
             $table->foreign('added_by', 'addedBy_idx2')

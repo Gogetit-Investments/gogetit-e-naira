@@ -61,7 +61,7 @@
 								$string = str_shuffle($pin);
 								?>
 
-<div class="mb-2">
+{{-- <div class="mb-2">
 	<div class="col-form-label">Tier</div>
 	<select class="js-example-basic-single col-sm-12" name="tier_id">
 		<optgroup label="Tier">
@@ -73,9 +73,9 @@
 		</optgroup>
 
 	</select>
-</div>
+</div> --}}
 
-								<div class="mb-3">
+								{{-- <div class="mb-3">
 									<label class="col-form-label pt-0" for="exampleInputEmail1">BVN</label>
 									<input class="form-control " id="exampleInputEmail1" type="text" name="bvn" aria-describedby="emailHelp" placeholder="Enter BVN">
 									@if ($errors->has('bvn'))
@@ -83,7 +83,7 @@
 										{{ $errors->first('bvn') }}
 									</i>
 									@endif
-								</div>
+								</div> --}}
 
 								{{-- <input class="form-control" id="exampleInputPassword1" type="hidden" name="password" value="<?php echo $string ?>">
 								<input class="form-control" id="exampleInputPassword1" type="hidden" name="password_confirmation" value="<?php echo $string ?>"> --}}
@@ -104,7 +104,7 @@
 									@endif
 								</small> --}}
 
-								<div class="mb-3">
+								{{-- <div class="mb-3">
 									<label class="col-form-label pt-0" for="first_name">NIN</label>
 									<input class="form-control" id="nin" type="text" name="nin" placeholder="Enter NIN">
 									@if ($errors->has('nin'))
@@ -112,7 +112,7 @@
 										{{ $errors->first('nin') }}
 									</i>
 									@endif
-								</div>
+								</div> --}}
 
 																{{-- <div class="mb-3">
 									<label class="col-form-label pt-0" for="exampleInputPassword1">Password</label>

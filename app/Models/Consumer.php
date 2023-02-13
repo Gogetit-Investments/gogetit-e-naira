@@ -12,8 +12,19 @@ class Consumer extends Model
 {
     use HasFactory;
     protected $table = 'consumer_data';
-    public $fillable = ['registration_number','tier_id', 'bvn', 'nin', 'first_name', 'last_name', 'other_names', 'added_by', 'phone_number', 'postal_code', 'contact_address', 'city', 'lga', 'state', 'country', 'dob', 'country_of_birth', 'state_of_birth', 'referral_code', 'state_code', 'title_code', 'commission'];
+    public $fillable = ['registration_number', 'first_name', 'last_name', 'other_names', 'added_by', 'phone_number', 'postal_code', 'contact_address', 'city', 'lga', 'state', 'country', 'dob', 'country_of_birth', 'state_of_birth', 'referral_code', 'state_code', 'title_code', 'commission'];
+    // protected $casts = ['dob' => 'datetime:d/m/Y'];
+    // protected $dateFormat = 'd/m/Y';
 
+    protected $dates = [
+        'dob',
+    ];
+
+    public function getCreatedFormatAttribute()
+    {  
+        return $this->dob->format('d/m/Y');
+    }
+  protected $appends = ['dob'];
 
 /**
  * Get the user associated with the Consumer

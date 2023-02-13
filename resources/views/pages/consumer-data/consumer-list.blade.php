@@ -43,9 +43,9 @@
 						
 							<thead>
 								<tr>
-									<th>Tier</th>
+									{{-- <th>Tier</th>
 									<th>BVN</th>
-									<th>NIN</th>
+									<th>NIN</th> --}}
 									<th>Phone Number</th>
 									<th>Name</th>
 									<th>Postal Code</th>
@@ -65,9 +65,9 @@
 							<tbody>
 								@forelse ($consumers as $consumer)
 								<tr>
-									<td>{{$consumer->tier_info->tier_name ?? null}}</td>
+									{{-- <td>{{$consumer->tier_info->tier_name ?? null}}</td>
 									<td>{{$consumer->bvn ?? null}}</td>
-									<td>{{$consumer->nin ?? null}}</td>
+									<td>{{$consumer->nin ?? null}}</td> --}}
 									<td>{{$consumer->phone_number ?? null}}</td>
 									<td>{{$consumer->title ?? null}} {{$consumer->last_name ?? null}} {{$consumer->first_name ?? null}} {{$consumer->middle_name ?? null}}</td>
 									<td>{{$consumer->postal_code ?? null}}</td>

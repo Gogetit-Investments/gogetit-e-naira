@@ -8,14 +8,7 @@
 <?php $__env->startSection('style'); ?>
 <?php $__env->stopSection(); ?>
 <br/>
-<?php $__env->startSection('breadcrumb-title'); ?>
-<h3>Consumers</h3>
-<?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('breadcrumb-items'); ?>
-<li class="breadcrumb-item">Consumers</li>
-<li class="breadcrumb-item active">Consumer List</li>
-<?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
 <div class="container-fluid">
@@ -42,9 +35,7 @@
 						
 							<thead>
 								<tr>
-									<th>Tier</th>
-									<th>BVN</th>
-									<th>NIN</th>
+									
 									<th>Phone Number</th>
 									<th>Name</th>
 									<th>Postal Code</th>
@@ -64,9 +55,7 @@
 							<tbody>
 								<?php $__empty_1 = true; $__currentLoopData = $consumers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $consumer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
 								<tr>
-									<td><?php echo e($consumer->tier_info->tier_name ?? null); ?></td>
-									<td><?php echo e($consumer->bvn ?? null); ?></td>
-									<td><?php echo e($consumer->nin ?? null); ?></td>
+									
 									<td><?php echo e($consumer->phone_number ?? null); ?></td>
 									<td><?php echo e($consumer->title ?? null); ?> <?php echo e($consumer->last_name ?? null); ?> <?php echo e($consumer->first_name ?? null); ?> <?php echo e($consumer->middle_name ?? null); ?></td>
 									<td><?php echo e($consumer->postal_code ?? null); ?></td>

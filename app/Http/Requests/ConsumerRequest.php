@@ -37,9 +37,9 @@ $string = str_shuffle($pin);
 
         return [
             'registration_number' => $pin,
-            'tier_id' => 'int',
-            'bvn' => 'string',
-            'nin' => 'string',
+            // 'tier_id' => 'int',
+            // 'bvn' => 'string',
+            // 'nin' => 'string',
             'phone_number' => 'string',
             'title_code' => 'string',
             'last_name' => 'string',

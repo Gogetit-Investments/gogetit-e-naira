@@ -9,14 +9,7 @@
 <?php $__env->startSection('style'); ?>
 <?php $__env->stopSection(); ?>
 <br/>
-<?php $__env->startSection('breadcrumb-title'); ?>
-<h3>Consumers Bulk Upload</h3>
-<?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('breadcrumb-items'); ?>
-<li class="breadcrumb-item">Consumers</li>
-<li class="breadcrumb-item active">Bulk Upload</li>
-<?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
 <div class="container-fluid">
@@ -31,7 +24,7 @@
             <div class="row">
               <div class="col">
                 <div class="mb-3">
-                  <label>Upload consumer list</label>
+                  <label>Bulk Upload consumer list</label>
                   <?php if(session('success')): ?>
                   <div class="alert alert-success dark" role="alert">
                     <?php echo e(@session('success')); ?>  

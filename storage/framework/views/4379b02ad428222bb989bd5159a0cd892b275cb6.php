@@ -50,47 +50,16 @@
 								$string = str_shuffle($pin);
 								?>
 
-<div class="mb-2">
-	<div class="col-form-label">Tier</div>
-	<select class="js-example-basic-single col-sm-12" name="tier_id">
-		<optgroup label="Tier">
-			<?php echo e($tiers =  App\Models\Tier::select('description', 'code')->get()); ?>
 
-			<?php $__empty_1 = true; $__currentLoopData = $tiers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-			<option value="<?php echo e($item->code); ?>" ><?php echo e($item->description); ?></option>
-			<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-			<?php endif; ?>
-		</optgroup>
 
-	</select>
-</div>
-
-								<div class="mb-3">
-									<label class="col-form-label pt-0" for="exampleInputEmail1">BVN</label>
-									<input class="form-control " id="exampleInputEmail1" type="text" name="bvn" aria-describedby="emailHelp" placeholder="Enter BVN">
-									<?php if($errors->has('bvn')): ?>
-									<i style="color:coral">
-										<?php echo e($errors->first('bvn')); ?>
-
-									</i>
-									<?php endif; ?>
-								</div>
+								
 
 								
 								
 
 								
 
-								<div class="mb-3">
-									<label class="col-form-label pt-0" for="first_name">NIN</label>
-									<input class="form-control" id="nin" type="text" name="nin" placeholder="Enter NIN">
-									<?php if($errors->has('nin')): ?>
-									<i style="color:coral">
-										<?php echo e($errors->first('nin')); ?>
-
-									</i>
-									<?php endif; ?>
-								</div>
+								
 
 																
 								<div class="mb-3">

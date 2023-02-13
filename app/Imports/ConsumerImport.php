@@ -7,6 +7,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ConsumerImport implements ToModel, WithStartRow
 {
@@ -52,25 +53,26 @@ $referral_code = Settings::select('referral_code')->value('referral_code');
 
         return new Consumer([
             'registration_number' => $string,
-            'tier_id'     => $row[0],
-            'bvn' => $row[1],
-            'nin' => $row[2],
-            'phone_number'    => $row[3],
-            'title_code'    => $row[4],
-            'last_name'    => $row[5],
-            'first_name' => $row[6],
-            'middle_name'    => $row[7],
-            'postal_code'    => $row[8],
-            'contact_address'    => $row[9],
-            'city'    => $row[10],
-            'lga'    => $row[11],
-            'state_code'    => $row[12],
-            'country'    => $row[13],
-            'dob'    => $row[14],
-            'country_of_birth'    => $row[15],
-            'state_of_birth'    => $row[16],
-            'referral_code'    => $referral_code,
-            'commission' => $commission,
+            // 'tier_id'     => $row[0],
+            // 'bvn' => $row[1],
+            // 'nin' => $row[2],
+            'phone_number'    => $row[0],
+            'title_code'    => $row[1],
+            'last_name'    => $row[2],
+            'first_name' => $row[3],
+            'middle_name'    => $row[4],
+            'postal_code'    => $row[5],
+            'contact_address'    => $row[6],
+            'city'    => $row[7],
+            'lga'    => $row[8],
+            'state_code'    => $row[9],
+            'country'    => $row[10],
+            'dob'    =>  $row[11],
+            // 'dob'    => Carbon::createFromFormat('d/m/Y', $row[11]),
+            'country_of_birth'    => $row[12],
+            'state_of_birth'    => $row[13],
+            'referral_code'    => Settings::select('referral_code')->value('referral_code'),
+            'commission' => Settings::select('agent_commission')->value('agent_commission'),
             'added_by' =>  Auth::user()->id,
 
             // 'added_by' => Hash::make($row[5])
