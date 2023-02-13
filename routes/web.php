@@ -435,3 +435,7 @@ Route::post('update-settings/{id}', [HomeController::class, 'updateSettings'])->
 
 
 Route::get('/search', [SearchQueryController::class, 'search'])->name('search');
+
+Route::get('/foo', function () {
+    Artisan::call('storage:link');
+});
