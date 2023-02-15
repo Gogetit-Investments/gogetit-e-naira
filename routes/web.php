@@ -391,6 +391,8 @@ Route::get('consumer_single-show', [ConsumerController::class, 'upload_show'])->
 Route::post('consumer_single-upload', [ConsumerController::class, 'register'])->name('consumer_single.upload');
 // Route::get('consumer_single-upload', [ConsumerController::class, 'show'])->name('consumer_single.show');
 
+Route::post('check_phone_number', [ConsumerController::class, 'check_phone_number'])->name('ajax');
+
 Route::get('edit-profile', [RegisterController::class, 'edit_profile'])->name('edit.profile');
 Route::get('create-user', [RegisterController::class, 'create_user'])->name('create.user');
 Route::get('new-agent', [RegisterController::class, 'create_agent'])->name('create.agent');

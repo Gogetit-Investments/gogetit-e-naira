@@ -30,7 +30,7 @@
 						</div>
 						<div class="card-body">
 							<form class="theme-form" action="{{route('consumer_single.upload')}}" method="POST">
-								@csrf
+								{{-- @csrf --}}
 								{{-- <div class="mb-3">
 									<label class="col-form-label pt-0" for="exampleInputEmail1">Username</label>
 									<input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email"><small class="form-text text-muted" id="emailHelp">We'll never share your email with anyone else.</small>
@@ -118,14 +118,21 @@
 									<label class="col-form-label pt-0" for="exampleInputPassword1">Password</label>
 									<input class="form-control" id="exampleInputPassword1" type="password" name="password" placeholder="Password">
 								</div> --}}
+								<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 								<div class="mb-3">
 									<label class="col-form-label pt-0" for="phone_number">Phone Number</label>
-									<input class="form-control " id="phone_number" type="text" name="phone_number"  placeholder="Enter Phone Number">
+									<input class="form-control" onblur="checkmain(this.value)" id="phone_number" type="text" name="phone_number" required placeholder="Enter Phone Number">
 									@if ($errors->has('phone_number'))
 									<i style="color:coral">
 										{{ $errors->first('phone_number') }}
 									</i>
 									@endif
+									{{-- @if (session('error'))
+									<div class="alert alert-danger">{{ session('error') }}</div>
+									@endif --}}
+									<span style="color:brown" id="resultmessage"></span>
+									<span style="color:rgb(30, 147, 85)" id="resultmessage2"></span>
+									{{-- = "<i data-feather='check'></i>"; --}}
 								</div>
 
 								<div class="mb-3">
@@ -516,6 +523,41 @@
 @section('script')
 <script src="{{asset('assets/js/select2/select2.full.min.js')}}"></script>
 <script src="{{asset('assets/js/select2/select2-custom.js')}}"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" type="text/javascript"></script>
+
+
+<script>    
+function checkmain(phone_number)
+{
+	
+$.ajax({
+	// headers: {
+    //             'X-CSRF-TOKEN': jQuery('meta[name="@csrf"]').attr('content')
+    //         },
+url: 'check_phone_number',
+type: 'POST',
+data: { 
+	phone_number: phone_number,
+	"_token": $('#token').val(),
+ },
+}).done(function(response) {
+if(response == "duplicate")
+{
+	document.getElementById('resultmessage').innerHTML = "😩 Sorry! This phone number is already registered.";
+    // e.preventDefault();
+    // return false;
+// alert("Phone Number already in use.");
+}
+else
+{
+	var good = '<i data-feather="check"></i>';
+	document.getElementById('resultmessage2').innerHTML = "<i data-feather='check' class='fa fa-check'>This phone number has not been registered</i>";
+}
+});
+}
+</script>
 {{-- 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>

@@ -18,9 +18,8 @@ use App\Utilities\AppConstants;
 use App\Utilities\AppHelpers;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-
-
-
+Use Response;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ConsumerController extends Controller
 {
@@ -128,12 +127,23 @@ class ConsumerController extends Controller
 
     public function register(Request $request)
   {
+   
+   
+   
     $this->validate($request, [
       'phone_number' => 'required|string',
     //   'remarks' => 'required|string',
     //   'created_by' => 'required',
 
     ]);
+
+    // // $data = $request->all(); // This will get all the request data.
+	// $phoneNumberCount = Consumer::where('phone_number', $request->phone_number);
+	// if ($phoneNumberCount->count()) {
+	// 	return Response::json(array('msg' => 'true'));
+	// } else {
+	// 	return Response::json(array('msg' => 'false'));
+	// }
 
     $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
@@ -145,7 +155,15 @@ $pin = mt_rand(1000000, 9999999)
 // shuffle the result
 $string = str_shuffle($pin);
     // \Log::info($request->all());
-    $consumer = new Consumer();
+
+    try {
+        $user_phone_number = Consumer::find($request->phone_number);
+        if (!$user_phone_number) {
+            throw new ModelNotFoundException('Phone Number not found by ID ' . $request->phone_number);
+        }
+
+
+        $consumer = new Consumer();
     $consumer->phone_number = $request->phone_number;
     $consumer->registration_number = $string;
     // $consumer->tier_id = $request->tier_id;
@@ -172,6 +190,17 @@ $string = str_shuffle($pin);
 
     $consumer->save();
 
+    } catch (ModelNotFoundException $exception) {
+
+        // return back()->withError($exception->getMessage())->withInput();
+        return back()->withError('Hey! I told you ' . $request->phone_number . ' already exists. Why you dey stress me?')->withInput();
+
+    }
+    // return view('users.search', compact('user'));
+
+
+    
+
     return back()->with('success', "Consumer successfully registered.");
   }
 
@@ -188,6 +217,20 @@ $string = str_shuffle($pin);
     ->get();
         return view('pages.consumer-data.consumer-list', compact('consumers') );
 
+    }
+
+    public function check_phone_number(Request $request)
+{
+    {
+        $phone_number = $request->phone_number;
+        $phone_number_check = DB::table('consumer_data')->where('phone_number',$phone_number)->count();
+        if($phone_number_check > 0)
+        {
+        // echo "Phone Number Already In Use.";
+        return Response::json("duplicate");
+        // return back()->with("message", "Phone number");
+        }
+        }
     }
 
 

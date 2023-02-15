@@ -22,7 +22,7 @@
 						</div>
 						<div class="card-body">
 							<form class="theme-form" action="<?php echo e(route('consumer_single.upload')); ?>" method="POST">
-								<?php echo csrf_field(); ?>
+								
 								
 		
 
@@ -62,15 +62,20 @@
 								
 
 																
+								<input type="hidden" name="_token" id="token" value="<?php echo e(csrf_token()); ?>">
 								<div class="mb-3">
 									<label class="col-form-label pt-0" for="phone_number">Phone Number</label>
-									<input class="form-control " id="phone_number" type="text" name="phone_number"  placeholder="Enter Phone Number">
+									<input class="form-control" onblur="checkmain(this.value)" id="phone_number" type="text" name="phone_number" required placeholder="Enter Phone Number">
 									<?php if($errors->has('phone_number')): ?>
 									<i style="color:coral">
 										<?php echo e($errors->first('phone_number')); ?>
 
 									</i>
 									<?php endif; ?>
+									
+									<span style="color:brown" id="resultmessage"></span>
+									<span style="color:rgb(30, 147, 85)" id="resultmessage2"></span>
+									
 								</div>
 
 								<div class="mb-3">
@@ -278,6 +283,41 @@
 <?php $__env->startSection('script'); ?>
 <script src="<?php echo e(asset('assets/js/select2/select2.full.min.js')); ?>"></script>
 <script src="<?php echo e(asset('assets/js/select2/select2-custom.js')); ?>"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" type="text/javascript"></script>
+
+
+<script>    
+function checkmain(phone_number)
+{
+	
+$.ajax({
+	// headers: {
+    //             'X-CSRF-TOKEN': jQuery('meta[name="<?php echo csrf_field(); ?>"]').attr('content')
+    //         },
+url: 'check_phone_number',
+type: 'POST',
+data: { 
+	phone_number: phone_number,
+	"_token": $('#token').val(),
+ },
+}).done(function(response) {
+if(response == "duplicate")
+{
+	document.getElementById('resultmessage').innerHTML = "😩 Sorry! This phone number is already registered.";
+    // e.preventDefault();
+    // return false;
+// alert("Phone Number already in use.");
+}
+else
+{
+	var good = '<i data-feather="check"></i>';
+	document.getElementById('resultmessage2').innerHTML = "<i data-feather='check' class='fa fa-check'>This phone number has not been registered</i>";
+}
+});
+}
+</script>
 
 	
 <?php $__env->stopSection(); ?>

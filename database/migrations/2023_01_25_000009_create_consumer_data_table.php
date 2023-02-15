@@ -32,7 +32,7 @@ class CreateConsumerDataTable extends Migration
             // $table->integer('nin')->nullable();
             $table->string('phone_number');
             // $table->string('title', 45)->nullable();
-            $table->string('title_code', 32)->references('code')->on('title');
+            $table->string('title_code', 32)->references('code')->on('title')->nullable();
             $table->string('last_name', 45)->nullable();
             $table->string('first_name', 45)->nullable();
             $table->string('middle_name', 45)->nullable();
