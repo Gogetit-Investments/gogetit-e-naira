@@ -9,7 +9,11 @@ use App\Http\Requests\ConsumerRequest;
 
 class SearchQueryController extends Controller
 {
-
+    public function __construct()
+    {
+        // user must log in to use this controller
+        $this->middleware('auth');        
+    }
 public function search(Request $request){
     // Get the search value from the request
     $search = $request->search;

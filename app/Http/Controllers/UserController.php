@@ -6,6 +6,11 @@ use App\Imports\UsersImport;
 // use App\Exports\UsersExport;
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        // user must log in to use this controller
+        $this->middleware('auth');        
+    }
     /**
     * @return \Illuminate\Support\Collection
     */
